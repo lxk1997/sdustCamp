@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="90dp"
+    android:background="#fafafc"
+    android:layout_gravity="center">
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/riv_news_msg_avator"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:riv_oval="true"
+        android:layout_gravity="center"
+        android:layout_marginStart="10dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/profile"
+        />
+    
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_news_msg_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="7dp"
+            android:textSize="22sp"
+            android:textColor="#1f1f1f"
+            android:maxLength="7"
+            android:maxLines="1"
+            android:ellipsize="end" />
+
+        <TextView
+            android:id="@+id/tv_news_msg_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="19sp"
+            android:textColor="#adadad"
+            android:ellipsize="end"
+            android:maxLength="11"
+            android:maxLines="1"
+            android:layout_marginLeft="8dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_news_msg_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="17sp"
+            android:maxLines="1" />
+
+    </LinearLayout>
+    
+    
+</LinearLayout>

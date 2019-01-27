@@ -1,0 +1,60 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="#f0eef4" >
+
+    <TextView
+        android:id="@+id/tv_kdyw"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:drawableLeft="@drawable/arrowleft"
+        android:textColor="#000"
+        android:textSize="20sp"
+        android:gravity="center|left"
+        android:background="#fafafc"
+        android:layout_alignParentTop="true"
+        android:paddingLeft="10dp"/>
+
+    <TextView
+        android:id="@+id/tv_titlekdyw"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_kdyw"
+        android:paddingLeft="10dp"
+        android:paddingRight="15dp"
+        android:textSize="20sp"
+        android:text="可达比uhi后来好了好了"
+        android:gravity="center|left"
+        android:background="#fafafc" />
+
+    <TextView
+        android:id="@+id/tv_timekdyw"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_below="@id/tv_titlekdyw"
+        android:paddingLeft="10dp"
+        android:paddingRight="15dp"
+        android:textSize="15sp"
+        android:text="时间  2018-9-1 · 点击量 4567"
+        android:gravity="center|left"
+        android:background="#fafafc"
+        android:textColor="#a8a8a8"
+        />
+
+    <TextView
+        android:id="@+id/tv_contentkdyw"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_timekdyw"
+        android:paddingLeft="10dp"
+        android:paddingRight="5dp"
+        android:textSize="15sp"
+        android:textColor="#5e5e5e"
+        android:layout_marginTop="5dp"
+        android:text="dasdasdsadasdasdsadsadsaddasdassadasdadadasdasdsa"
+        android:gravity="center|left"
+        android:background="#fafafc"
+        android:scrollbars="vertical" />
+
+</RelativeLayout>

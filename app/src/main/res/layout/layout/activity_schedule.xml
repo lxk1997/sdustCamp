@@ -1,0 +1,788 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="#f0eef4" >
+
+    <Button
+        android:id="@+id/btn_schedule_left"
+        android:layout_height="35dp"
+        android:layout_width="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:background="@drawable/left"/>
+
+    <TextView
+        android:id="@+id/tv_schedule"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="#0359a2"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@id/btn_schedule_left"
+        android:text="   课程表"
+        android:textSize="20sp"
+        android:gravity="center|left"
+        android:textColor="#fff"/>
+    <Spinner
+        android:id="@+id/sp_week"
+        android:layout_width="80dp"
+        android:layout_height="25dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="7dp"
+        android:background="#0359a2"/>
+
+    <LinearLayout
+        android:id="@+id/ll_week"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:orientation="horizontal"
+        android:background="#00000000"
+        android:layout_marginTop="50dp">
+
+        <TextView
+            android:id="@+id/tv_week0"
+            android:layout_width="20dp"
+            android:layout_height="20dp"/>
+        <TextView
+            android:id="@+id/tv_week1"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:text="一"
+            android:gravity="center"
+            android:layout_weight="0.15"
+            android:background="@drawable/tv_shape"/>
+        <TextView
+            android:id="@+id/tv_week2"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:text="二"
+            android:gravity="center"
+            android:layout_weight="0.15"
+            android:background="@drawable/tv_shape"/>
+        <TextView
+            android:id="@+id/tv_week3"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:text="三"
+            android:gravity="center"
+            android:layout_weight="0.15"
+            android:background="@drawable/tv_shape"/>
+        <TextView
+            android:id="@+id/tv_week4"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:text="四"
+            android:gravity="center"
+            android:layout_weight="0.15"
+            android:background="@drawable/tv_shape"/>
+        <TextView
+            android:id="@+id/tv_week5"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:text="五"
+            android:gravity="center"
+            android:layout_weight="0.15"
+            android:background="@drawable/tv_shape"/>
+        <TextView
+            android:id="@+id/tv_week6"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:text="六"
+            android:gravity="center"
+            android:layout_weight="0.15"
+            android:background="@drawable/tv_shape"/>
+        <TextView
+            android:id="@+id/tv_week7"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:text="日"
+            android:gravity="center"
+            android:layout_weight="0.15"
+            android:background="@drawable/tv_shape"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_day"
+        android:layout_width="20dp"
+        android:layout_height="match_parent"
+        android:layout_below="@id/ll_week"
+        android:orientation="vertical"
+        android:background="#00000000">
+
+        <TextView
+            android:id="@+id/tv_day1"
+            android:layout_height="50dp"
+            android:layout_width="20dp"
+            android:background="@drawable/tv_shape"
+            android:layout_weight="0.1"
+            android:gravity="center"
+            android:text="1"/>
+
+        <TextView
+            android:id="@+id/tv_day2"
+            android:layout_height="50dp"
+            android:layout_width="20dp"
+            android:background="@drawable/tv_shape"
+            android:layout_weight="0.1"
+            android:gravity="center"
+            android:text="2"/>
+
+        <TextView
+            android:id="@+id/tv_day3"
+            android:layout_height="50dp"
+            android:layout_width="20dp"
+            android:background="@drawable/tv_shape"
+            android:layout_weight="0.1"
+            android:gravity="center"
+            android:text="3"/>
+
+        <TextView
+            android:id="@+id/tv_day4"
+            android:layout_height="50dp"
+            android:layout_width="20dp"
+            android:background="@drawable/tv_shape"
+            android:layout_weight="0.1"
+            android:gravity="center"
+            android:text="4"/>
+
+        <TextView
+            android:id="@+id/tv_day5"
+            android:layout_height="50dp"
+            android:layout_width="20dp"
+            android:background="@drawable/tv_shape"
+            android:layout_weight="0.1"
+            android:gravity="center"
+            android:text="5"/>
+
+        <TextView
+            android:id="@+id/tv_day6"
+            android:layout_height="50dp"
+            android:layout_width="20dp"
+            android:background="@drawable/tv_shape"
+            android:layout_weight="0.1"
+            android:gravity="center"
+            android:text="6"/>
+
+        <TextView
+            android:id="@+id/tv_day7"
+            android:layout_height="50dp"
+            android:layout_width="20dp"
+            android:background="@drawable/tv_shape"
+            android:layout_weight="0.1"
+            android:gravity="center"
+            android:text="7"/>
+
+        <TextView
+            android:id="@+id/tv_day8"
+            android:layout_height="50dp"
+            android:layout_width="20dp"
+            android:background="@drawable/tv_shape"
+            android:layout_weight="0.1"
+            android:gravity="center"
+            android:text="8"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_11"
+        android:layout_below="@id/ll_week"
+        android:layout_toRightOf="@id/ll_day"
+        android:layout_margin="2dp"
+        android:layout_height="124dp"
+        android:stateListAnimator="@null"
+        android:layout_width="52dp"
+        android:padding="4dp"
+        android:textSize="13sp"
+        android:background="@drawable/bt_shape"/>
+
+    <Button
+        android:id="@+id/btn_12"
+        android:layout_toRightOf="@id/btn_11"
+        android:layout_margin="2dp"
+        android:layout_below="@id/ll_week"
+        android:layout_height="124dp"
+        android:stateListAnimator="@null"
+        android:layout_width="52dp"
+        android:padding="4dp"
+        android:textSize="13sp"
+        android:background="@drawable/bt_shape"/>
+
+    <Button
+        android:id="@+id/btn_13"
+        android:layout_toRightOf="@id/btn_12"
+        android:layout_margin="2dp"
+        android:layout_below="@id/ll_week"
+        android:layout_height="124dp"
+        android:stateListAnimator="@null"
+        android:layout_width="52dp"
+        android:padding="4dp"
+        android:textSize="13sp"
+        android:background="@drawable/bt_shape"/>
+
+    <Button
+        android:id="@+id/btn_14"
+        android:layout_toRightOf="@id/btn_13"
+        android:layout_margin="2dp"
+        android:layout_below="@id/ll_week"
+        android:stateListAnimator="@null"
+        android:layout_height="124dp"
+        android:layout_width="52dp"
+        android:padding="4dp"
+        android:textSize="13sp"
+
+        android:background="@drawable/bt_shape"/>
+
+    <Button
+        android:id="@+id/btn_15"
+        android:layout_toRightOf="@id/btn_14"
+        android:layout_margin="2dp"
+        android:layout_below="@id/ll_week"
+        android:stateListAnimator="@null"
+        android:layout_height="124dp"
+        android:layout_width="52dp"
+        android:padding="4dp"
+        android:textSize="13sp"
+        android:background="@drawable/bt_shape"/>
+
+    <Button
+        android:id="@+id/btn_16"
+        android:layout_toRightOf="@id/btn_15"
+        android:layout_margin="2dp"
+        android:layout_below="@id/ll_week"
+        android:stateListAnimator="@null"
+        android:layout_height="124dp"
+        android:layout_width="52dp"
+        android:padding="4dp"
+        android:textSize="13sp"
+        android:background="@drawable/bt_shape"/>
+
+    <Button
+        android:id="@+id/btn_17"
+        android:layout_toRightOf="@id/btn_16"
+        android:layout_margin="2dp"
+        android:layout_below="@id/ll_week"
+        android:layout_height="124dp"
+        android:stateListAnimator="@null"
+        android:layout_width="52dp"
+        android:padding="4dp"
+        android:textSize="13sp"
+        android:background="@drawable/bt_shape"/>
+
+    <Button
+        android:id="@+id/btn_21"
+        android:layout_toRightOf="@id/ll_day"
+        android:layout_below="@id/btn_11"
+        android:layout_height="124dp"
+        android:stateListAnimator="@null"
+        android:layout_width="52dp"
+        android:padding="4dp"
+        android:textSize="13sp"
+        android:layout_margin="2dp"
+        android:background="@drawable/bt_shape"/>
+
+    <Button
+        android:id="@+id/btn_22"
+        android:layout_toRightOf="@id/btn_21"
+        android:layout_below="@id/btn_12"
+        android:layout_height="124dp"
+        android:layout_width="52dp"
+        android:stateListAnimator="@null"
+        android:padding="4dp"
+        android:textSize="13sp"
+        android:layout_margin="2dp"
+        android:background="@drawable/bt_shape"/>
+
+    <Button
+        android:id="@+id/btn_23"
+        android:layout_toRightOf="@id/btn_22"
+        android:layout_below="@id/btn_13"
+        android:layout_height="124dp"
+        android:layout_width="52dp"
+        android:stateListAnimator="@null"
+        android:padding="4dp"
+        android:textSize="13sp"
+        android:layout_margin="2dp"
+        android:background="@drawable/bt_shape"/>
+
+    <Button
+        android:id="@+id/btn_24"
+        android:layout_toRightOf="@id/btn_23"
+        android:layout_below="@id/btn_14"
+        android:layout_height="124dp"
+        android:stateListAnimator="@null"
+        android:layout_width="52dp"
+        android:padding="4dp"
+        android:textSize="13sp"
+        android:layout_margin="2dp"
+        android:background="@drawable/bt_shape"/>
+
+    <Button
+        android:id="@+id/btn_25"
+        android:layout_toRightOf="@id/btn_24"
+        android:layout_below="@id/btn_15"
+        android:layout_height="124dp"
+        android:stateListAnimator="@null"
+        android:layout_width="52dp"
+        android:padding="4dp"
+        android:textSize="13sp"
+        android:layout_margin="2dp"
+        android:background="@drawable/bt_shape"/>
+
+    <Button
+        android:id="@+id/btn_26"
+        android:layout_toRightOf="@id/btn_25"
+        android:layout_below="@id/btn_16"
+        android:layout_height="124dp"
+        android:layout_width="52dp"
+        android:stateListAnimator="@null"
+        android:padding="4dp"
+        android:textSize="13sp"
+        android:layout_margin="2dp"
+        android:background="@drawable/bt_shape"/>
+
+    <Button
+        android:id="@+id/btn_27"
+        android:layout_toRightOf="@id/btn_26"
+        android:layout_below="@id/btn_17"
+        android:layout_height="124dp"
+        android:layout_width="52dp"
+        android:stateListAnimator="@null"
+        android:padding="4dp"
+        android:textSize="13sp"
+        android:layout_margin="2dp"
+        android:background="@drawable/bt_shape"/>
+
+    <Button
+        android:id="@+id/btn_31"
+        android:layout_toRightOf="@id/ll_day"
+        android:layout_below="@id/btn_21"
+        android:layout_height="124dp"
+        android:layout_width="52dp"
+        android:padding="4dp"
+        android:stateListAnimator="@null"
+        android:textSize="13sp"
+        android:layout_margin="2dp"
+        android:background="@drawable/bt_shape"/>
+
+    <Button
+        android:id="@+id/btn_32"
+        android:layout_toRightOf="@id/btn_31"
+        android:layout_below="@id/btn_22"
+        android:layout_height="124dp"
+        android:layout_width="52dp"
+        android:padding="4dp"
+        android:stateListAnimator="@null"
+        android:textSize="13sp"
+        android:layout_margin="2dp"
+        android:background="@drawable/bt_shape"/>
+
+    <Button
+        android:id="@+id/btn_33"
+        android:layout_toRightOf="@id/btn_32"
+        android:layout_below="@id/btn_23"
+        android:layout_height="124dp"
+        android:layout_width="52dp"
+        android:stateListAnimator="@null"
+        android:padding="4dp"
+        android:textSize="13sp"
+        android:layout_margin="2dp"
+        android:background="@drawable/bt_shape"/>
+
+    <Button
+        android:id="@+id/btn_34"
+        android:layout_toRightOf="@id/btn_33"
+        android:layout_below="@id/btn_24"
+        android:layout_height="124dp"
+        android:layout_width="52dp"
+        android:stateListAnimator="@null"
+        android:padding="4dp"
+        android:textSize="13sp"
+        android:layout_margin="2dp"
+        android:background="@drawable/bt_shape"/>
+
+    <Button
+        android:id="@+id/btn_35"
+        android:layout_toRightOf="@id/btn_34"
+        android:layout_below="@id/btn_25"
+        android:layout_height="124dp"
+        android:layout_width="52dp"
+        android:padding="4dp"
+        android:textSize="13sp"
+        android:stateListAnimator="@null"
+        android:layout_margin="2dp"
+        android:background="@drawable/bt_shape"/>
+
+    <Button
+        android:id="@+id/btn_36"
+        android:layout_toRightOf="@id/btn_35"
+        android:layout_below="@id/btn_26"
+        android:layout_height="124dp"
+        android:layout_width="52dp"
+        android:stateListAnimator="@null"
+        android:padding="4dp"
+        android:textSize="13sp"
+        android:layout_margin="2dp"
+        android:background="@drawable/bt_shape"/>
+
+    <Button
+        android:id="@+id/btn_37"
+        android:layout_toRightOf="@id/btn_36"
+        android:layout_below="@id/btn_27"
+        android:layout_height="124dp"
+        android:layout_width="52dp"
+        android:stateListAnimator="@null"
+        android:padding="4dp"
+        android:textSize="13sp"
+        android:layout_margin="2dp"
+        android:background="@drawable/bt_shape"/>
+
+    <Button
+        android:id="@+id/btn_41"
+        android:layout_toRightOf="@id/ll_day"
+        android:layout_below="@id/btn_31"
+        android:layout_height="124dp"
+        android:layout_width="52dp"
+        android:padding="4dp"
+        android:stateListAnimator="@null"
+        android:textSize="13sp"
+        android:layout_margin="2dp"
+        android:background="@drawable/bt_shape"/>
+
+    <Button
+        android:id="@+id/btn_42"
+        android:layout_toRightOf="@id/btn_41"
+        android:layout_below="@id/btn_32"
+        android:layout_height="124dp"
+        android:layout_width="52dp"
+        android:padding="4dp"
+        android:stateListAnimator="@null"
+        android:textSize="13sp"
+        android:layout_margin="2dp"
+        android:background="@drawable/bt_shape"/>
+
+    <Button
+        android:id="@+id/btn_43"
+        android:layout_toRightOf="@id/btn_42"
+        android:layout_below="@id/btn_33"
+        android:layout_height="124dp"
+        android:layout_width="52dp"
+        android:padding="4dp"
+        android:stateListAnimator="@null"
+        android:textSize="13sp"
+        android:layout_margin="2dp"
+        android:background="@drawable/bt_shape"/>
+
+    <Button
+        android:id="@+id/btn_44"
+        android:layout_toRightOf="@id/btn_43"
+        android:layout_below="@id/btn_34"
+        android:layout_height="124dp"
+        android:layout_width="52dp"
+        android:padding="4dp"
+        android:textSize="13sp"
+        android:stateListAnimator="@null"
+        android:layout_margin="2dp"
+        android:background="@drawable/bt_shape"/>
+
+    <Button
+        android:id="@+id/btn_45"
+        android:layout_toRightOf="@id/btn_44"
+        android:layout_below="@id/btn_35"
+        android:layout_height="124dp"
+        android:layout_width="52dp"
+        android:padding="4dp"
+        android:stateListAnimator="@null"
+        android:textSize="13sp"
+        android:layout_margin="2dp"
+        android:background="@drawable/bt_shape"/>
+
+    <Button
+        android:id="@+id/btn_46"
+        android:layout_toRightOf="@id/btn_45"
+        android:layout_below="@id/btn_36"
+        android:layout_height="124dp"
+        android:layout_width="52dp"
+        android:padding="4dp"
+        android:stateListAnimator="@null"
+        android:textSize="13sp"
+        android:layout_margin="2dp"
+        android:background="@drawable/bt_shape"/>
+
+    <Button
+        android:id="@+id/btn_47"
+        android:layout_toRightOf="@id/btn_46"
+        android:layout_below="@id/btn_37"
+        android:layout_height="124dp"
+        android:layout_width="52dp"
+        android:stateListAnimator="@null"
+        android:padding="4dp"
+        android:textSize="13sp"
+        android:layout_margin="2dp"
+        android:background="@drawable/bt_shape"/>
+
+    <LinearLayout
+        android:id="@+id/ll_classItem"
+        android:layout_height="wrap_content"
+        android:layout_width="170dp"
+        android:background="@drawable/tv_shape_item"
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="130dp">
+
+        <TextView
+            android:id="@+id/tv_kcmc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"
+            android:textColor="#5e5e5e"
+            android:gravity="center"
+            android:text="课程名:"/>
+
+        <TextView
+            android:id="@+id/tv_kcmcc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="15sp"
+            android:textColor="#5e5e5e"
+            android:gravity="center"
+            android:text="计算机组成原理"/>
+
+        <TextView
+            android:id="@+id/tv_zc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"
+            android:textColor="#5e5e5e"
+            android:gravity="center"
+            android:text="周次:"/>
+
+        <TextView
+            android:id="@+id/tv_zcc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="15sp"
+            android:textColor="#5e5e5e"
+            android:gravity="center"
+            android:text="2 - 9"/>
+
+        <TextView
+            android:id="@+id/tv_js"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"
+            android:textColor="#5e5e5e"
+            android:gravity="center"
+            android:text="教室:"/>
+
+        <TextView
+            android:id="@+id/tv_jsc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="15sp"
+            android:textColor="#5e5e5e"
+            android:gravity="center"
+            android:text="J7-211"/>
+
+        <TextView
+            android:id="@+id/tv_skjs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"
+            android:textColor="#5e5e5e"
+            android:gravity="center"
+            android:text="授课教师:"/>
+
+        <TextView
+            android:id="@+id/tv_skjsc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="15sp"
+            android:textColor="#5e5e5e"
+            android:gravity="center"
+            android:text="王祖蓝"/>
+
+        <Button
+            android:id="@+id/btn_closeItem"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/close"
+            android:layout_gravity="center_horizontal"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_classInput"
+        android:layout_height="wrap_content"
+        android:layout_width="170dp"
+        android:background="@drawable/tv_shape_item"
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="130dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"
+            android:textColor="#5e5e5e"
+            android:gravity="center"
+            android:text="课程名:"/>
+
+        <EditText
+            android:id="@+id/et_kcmc"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="15sp"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#5e5e5e"
+            android:hint="示例"
+            android:singleLine="true"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"
+            android:textColor="#5e5e5e"
+            android:gravity="center"
+            android:text="周次:"/>
+
+        <EditText
+            android:id="@+id/et_zc"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="15sp"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#5e5e5e"
+            android:gravity="center"
+            android:hint="2-9"
+            android:singleLine="true"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"
+            android:textColor="#5e5e5e"
+            android:gravity="center"
+            android:text="教室:"/>
+
+        <EditText
+            android:id="@+id/et_js"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="15sp"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#5e5e5e"
+            android:gravity="center"
+            android:hint="J7-111"
+            android:singleLine="true"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"
+            android:textColor="#5e5e5e"
+            android:gravity="center"
+            android:text="授课教师:"/>
+
+        <EditText
+            android:id="@+id/et_skjs"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="15sp"
+            android:textColor="#5e5e5e"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:hint="示例"
+            android:singleLine="true"/>
+
+        <LinearLayout
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_sureItem"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/sureitem"
+                android:layout_marginRight="20dp"/>
+
+            <Button
+                android:id="@+id/btn_quitItem"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/close"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_ifInput"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:background="@drawable/tv_shape_item"
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200dp">
+
+        <Button
+            android:id="@+id/btn_iedit"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="编辑"
+            android:textSize="15sp"
+            android:textColor="#5e5e5e"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/tv_shape_item"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/btn_dedit"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="删除"
+            android:textSize="15sp"
+            android:textColor="#5e5e5e"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/tv_shape_item"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/btn_cedit"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="取消"
+            android:textSize="15sp"
+            android:textColor="#5e5e5e"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/tv_shape_item"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

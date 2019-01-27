@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f0eef4">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:orientation="horizontal"
+        android:background="#fafafc">
+
+        <ImageButton
+            android:id="@+id/ib_market_back"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:paddingStart="15dp"
+            android:src="@drawable/arrowleft"
+            android:background="#fafafc"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:text="   市场"
+            android:textColor="#000"
+            android:textSize="20sp"
+            android:gravity="center|start"
+            android:background="#fafafc" />
+
+    </LinearLayout>
+
+    <com.viewpagerindicator.TabPageIndicator
+        android:id="@+id/ti_market_market"
+        android:layout_width="match_parent"
+        android:layout_height="35dp">
+    </com.viewpagerindicator.TabPageIndicator>
+
+    <com.viewpagerindicator.UnderlinePageIndicator
+        android:id="@+id/upi_market_market"
+        android:layout_width="match_parent"
+        android:layout_height="3dp" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_market_market"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="6dp"
+        android:layout_weight="1">
+
+    </android.support.v4.view.ViewPager>
+
+
+
+</LinearLayout>

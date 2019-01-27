@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="35dp"
+    android:layout_gravity="center"
+    android:background="#fafafc">
+
+    <ImageButton
+        android:id="@+id/ib_market_header_back"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/arrowleft"
+        android:layout_gravity="center"
+        android:background="#ffffffff"
+        android:scaleType="fitXY"
+        android:layout_marginLeft="15dp"/>
+
+    <TextView
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="#ffffffff"/>
+
+</LinearLayout>

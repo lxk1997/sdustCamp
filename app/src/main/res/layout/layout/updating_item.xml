@@ -1,0 +1,62 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="#fcfcfc" >
+
+    <TextView
+        android:id="@+id/tv_updatingsItemTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:text="2018-09-11"
+        android:textColor="#a8a8a8"
+        android:textSize="17sp"
+        android:maxLines="1"
+        android:ellipsize="end"/>
+
+    <TextView
+        android:id="@+id/tv_updatingsItemTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_below="@id/tv_updatingsItemTime"
+        android:text="我校师生热议习近平总书记在全国教育大会的重要讲话"
+        android:textSize="18sp"
+        android:maxLines="2"
+        android:ellipsize="end"/>
+
+    <TextView
+        android:id="@+id/tv_updatingsItemContext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="40dp"
+        android:layout_below="@id/tv_updatingsItemTitle"
+        android:text="9月10日，恰逢第34个教师节，全国教育大会在北京召开，习近平总书记作重要讲话。全校师生通过电视、网络等各种媒体关注大会召开，对总书记重要讲话精神，产生热烈反响。
+　　“广大教师贯彻党的教育方针，教书育人，呕心沥血，默默奉献，为国家发展和民族振兴作出了重大贡献。”“教育事业中国特色更加鲜明，教育现代化加速推进，教育方面人民群众获得感明显增强”“加快推进教育现代化、建设教育强国、办好人民满意的教育。” 讲话充分肯定了教育事业改革发展取得的成就，系统总结了教育改革发展中形成的成功经验，科学谋划了新时代教育发展的宏伟蓝图。"
+        android:maxLines="3"
+        android:ellipsize="end"
+        android:textSize="15sp"
+        android:textColor="#5e5e5e"/>
+
+    <TextView
+        android:id="@+id/tv_updatingsItemRate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_updatingsItemContext"
+        android:layout_marginTop="7dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="40dp"
+        android:text="140 点击量"
+        android:textColor="#a8a8a8"
+        android:textSize="17sp"
+        android:maxLines="1"
+        android:ellipsize="end"/>
+
+</RelativeLayout>

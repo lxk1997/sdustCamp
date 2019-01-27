@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f0eef4">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:orientation="horizontal"
+        android:background="#fafafc">
+
+        <ImageButton
+            android:id="@+id/ib_market_back"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:paddingStart="15dp"
+            android:src="@drawable/arrowleft"
+            android:background="#fafafc"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:text="   我的"
+            android:textColor="#000"
+            android:textSize="20sp"
+            android:gravity="center|start"
+            android:background="#fafafc" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal"
+        android:background="#fafafc">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/riv_marketMineProf"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginLeft="15dp"
+            android:layout_gravity="center"
+            android:src="@drawable/profile"
+            android:scaleType="centerCrop"
+            app:riv_oval="true"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_marketMineUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:text="您还未登录"
+                android:textColor="#5e5e5e"
+                android:gravity="center|left"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:singleLine="true"
+                android:ellipsize="end"/>
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ll_market_unused"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fafafc"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+
+        <ImageButton
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/unused"
+            android:layout_gravity="center"
+            android:scaleType="fitXY"
+            android:background="#ffffffff"
+            android:layout_marginStart="15dp"
+            android:clickable="false"/>
+
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="50dp"
+            android:text="    闲置管理"
+            android:gravity="center|left"
+            android:textColor="#5e5e5e"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_market_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fafafc"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+
+        <ImageButton
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/address"
+            android:layout_gravity="center"
+            android:scaleType="fitXY"
+            android:background="#ffffffff"
+            android:layout_marginStart="15dp"
+            android:clickable="false"/>
+
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="50dp"
+            android:text="    地址管理"
+            android:gravity="center|left"
+            android:textColor="#5e5e5e"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+</LinearLayout>

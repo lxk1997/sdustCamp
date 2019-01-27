@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rl_market_buyItem">
+
+    <LinearLayout
+        android:id="@+id/ll_buy_itemTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        android:background="@color/smssdk_transparent">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/iv_2marketUserPro"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/profile"
+            app:riv_oval="true"
+            android:scaleType="centerCrop"
+            />
+        
+        <LinearLayout
+            android:id="@+id/ll_buy_itemTitleInUserMessage"
+            android:layout_width="120dp"
+            android:layout_height="70dp"
+            android:layout_weight="0.1"
+            android:layout_marginLeft="5dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_2marketUserName"
+                android:layout_width="120dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="17dp"
+                android:textStyle="bold"
+                android:textSize="17sp"
+                android:maxLines="1"
+                android:ellipsize="end"/>
+
+            <TextView
+                android:id="@+id/tv_2marketUserTime"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginTop="1dp"
+                android:text="刚刚来过"
+                android:textColor="#a8a8a8"
+                android:textSize="14sp"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_2marketMoney"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:layout_gravity="right"
+            android:layout_marginRight="10dp"
+            android:gravity="center"
+            android:textColor="#FF0000"
+            android:textSize="30sp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_2marketRecomment"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_below="@id/ll_buy_itemTitle"
+        android:layout_marginTop="1dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:textSize="16sp"
+        android:maxLines="1"
+        android:ellipsize="end"/>
+
+    <LinearLayout
+        android:id="@+id/ll_2marketItemImage"
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@id/tv_2marketRecomment"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/iv_2marketImage1"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:scaleType="fitCenter"
+            android:layout_weight="0.1"/>
+
+        <ImageView
+            android:id="@+id/iv_2marketImage2"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:scaleType="fitCenter"
+            android:layout_weight="0.1"/>
+
+        <ImageView
+            android:id="@+id/iv_2marketImage3"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:scaleType="fitCenter"
+            android:layout_weight="0.1"/>
+    </LinearLayout>
+
+</RelativeLayout>

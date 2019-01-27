@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rl_mine"
+    android:fitsSystemWindows="true"
+    android:background="#f0eef4">
+
+    <TextView
+        android:id="@+id/tv_titleMine"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:text="   我的"
+        android:textColor="#fff"
+        android:textSize="20sp"
+        android:gravity="center|left"
+        android:background="#0359a2"
+        android:layout_alignParentTop="true"/>
+
+    <LinearLayout
+        android:id="@+id/ll_userView"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@id/tv_titleMine"
+        android:background="#0359a2"
+        android:orientation="horizontal">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/iv_prof"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/profile"
+            android:scaleType="centerCrop"
+            android:layout_gravity="center"
+            app:riv_oval="true"/>
+
+
+        <TextView
+            android:id="@+id/tv_signIn"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_below="@id/tv_titleMine"
+            android:background="#0359a2"
+            android:drawableRight="@drawable/arrowright"
+            android:gravity="center|left"
+            android:text="点击登陆"
+            android:paddingLeft="30dp"
+            android:textColor="#fff"
+            android:textSize="30sp"
+            android:maxLines="1"
+            android:ellipsize="end"/>
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btn_modifyKey"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#fafafc"
+        android:paddingLeft="10dp"
+        android:drawableLeft="@drawable/modifykey"
+        android:text="   修改密码"
+        android:textColor="#5e5e5e"
+        android:gravity="center|left"
+        android:layout_below="@id/ll_userView"
+        android:layout_marginTop="5dp"/>
+
+    <Button
+        android:id="@+id/btn_stuId"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#fafafc"
+        android:paddingLeft="10dp"
+        android:drawableLeft="@drawable/bundling"
+        android:text="   绑定学号"
+        android:textColor="#5e5e5e"
+        android:gravity="center|left"
+        android:layout_below="@id/btn_modifyKey"
+        android:layout_marginTop="8dp"/>
+
+
+    <Button
+        android:id="@+id/btn_stuQQ"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#fafafc"
+        android:paddingLeft="10dp"
+        android:drawableLeft="@drawable/stuqq"
+        android:text="   绑定QQ"
+        android:textColor="#5e5e5e"
+        android:gravity="center|left"
+        android:layout_below="@id/btn_stuId"/>
+
+    <Button
+        android:id="@+id/btn_stuWecha"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#fafafc"
+        android:paddingLeft="10dp"
+        android:drawableLeft="@drawable/stuwechat"
+        android:text="   绑定微信"
+        android:textColor="#5e5e5e"
+        android:gravity="center|left"
+        android:layout_below="@id/btn_stuQQ"/>
+
+    <Button
+        android:id="@+id/btn_setting"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#fafafc"
+        android:paddingLeft="10dp"
+        android:drawableLeft="@drawable/setting"
+        android:text="   设置"
+        android:textColor="#5e5e5e"
+        android:gravity="center|left"
+        android:layout_below="@id/btn_stuWecha"
+        android:layout_marginTop="8dp"/>
+
+    <LinearLayout
+        android:id="@+id/ll_memuBar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="#fafafc">
+
+        <Button
+            android:id="@+id/btn_updatings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="动态"
+            android:layout_weight="0.2"
+            android:textColor="#5e5e5e"
+            android:textSize="15sp"
+            android:gravity="center|bottom"
+            android:drawableTop="@drawable/updatings"
+            android:background="@color/smssdk_transparent"/>
+
+        <Button
+            android:id="@+id/btn_service"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:text="服务"
+            android:textColor="#5e5e5e"
+            android:textSize="15sp"
+            android:gravity="center|bottom"
+            android:drawableTop="@drawable/service"
+            android:background="@color/smssdk_transparent"/>
+
+        <Button
+            android:id="@+id/btn_index"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="首页"
+            android:layout_weight="0.2"
+            android:textColor="#5e5e5e"
+            android:textSize="15sp"
+            android:gravity="center|bottom"
+            android:drawableTop="@drawable/index"
+            android:background="@color/smssdk_transparent"/>
+
+
+        <Button
+            android:id="@+id/btn_news"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="消息"
+            android:layout_weight="0.2"
+            android:textColor="#5e5e5e"
+            android:textSize="15sp"
+            android:gravity="center|bottom"
+            android:drawableTop="@drawable/news"
+            android:background="@color/smssdk_transparent"/>
+
+        <Button
+            android:id="@+id/btn_mine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:text="我的"
+            android:textColor="#5e5e5e"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:gravity="center|bottom"
+            android:drawableTop="@drawable/mine"
+            android:background="@color/smssdk_transparent"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

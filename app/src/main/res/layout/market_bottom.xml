@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_gravity="center"
+    android:background="#fff"
+    android:layout_height="50dp">
+
+    <LinearLayout
+        android:id="@+id/ll_market_index"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:gravity="center"
+        android:layout_weight="0.1">
+
+        <ImageButton
+            android:id="@+id/ib_market_index"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:src="@drawable/ic_home"
+            android:scaleType="fitXY"
+            android:clickable="false"
+            android:background="#ffffffff"
+            android:contextClickable="false"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="主页"
+            android:textSize="10sp"
+            android:gravity="center|bottom" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_market_market"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:gravity="center"
+        android:layout_weight="0.1">
+
+        <ImageButton
+            android:id="@+id/ib_market_market"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:src="@drawable/ic_market"
+            android:scaleType="fitXY"
+            android:clickable="false"
+            android:background="#ffffffff"
+            android:contextClickable="false"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="市场"
+            android:textSize="10sp"
+            android:gravity="center|bottom" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_market_news"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:gravity="center"
+        android:layout_weight="0.1">
+
+        <ImageButton
+            android:id="@+id/ib_market_news"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:src="@drawable/ic_news"
+            android:scaleType="fitXY"
+            android:clickable="false"
+            android:background="#ffffffff"
+            android:contextClickable="false"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="消息"
+            android:textSize="10sp"
+            android:gravity="center|bottom" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_market_mine"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:gravity="center"
+        android:layout_weight="0.1">
+
+        <ImageButton
+            android:id="@+id/ib_market_mine"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:src="@drawable/ic_mine"
+            android:scaleType="fitXY"
+            android:clickable="false"
+            android:background="#ffffffff"
+            android:contextClickable="false"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="我的"
+            android:textSize="10sp"
+            android:gravity="center|bottom" />
+    </LinearLayout>
+
+
+
+</LinearLayout>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ll_item_im_user"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:layout_gravity="center"
+    android:background="#fafafc">
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/riv_im_user_avatar"
+        android:layout_width="60sp"
+        android:layout_height="60sp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="15dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/profile"
+        app:riv_oval="true"/>
+
+    <TextView
+        android:id="@+id/tv_im_user_nick"
+        android:layout_width="1dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_weight="1"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textSize="30sp" />
+
+    <Button
+        android:id="@+id/btn_im_user_search"
+        android:layout_width="80dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/btn_nomal_shape"
+        android:text="查看"
+        android:textColor="#fff"
+        android:textSize="17sp"
+        android:typeface="monospace" />
+
+</LinearLayout>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="#f0eef4">
+
+    <TextView
+        android:id="@+id/tv_userInfo"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:drawableLeft="@drawable/arrowleft"
+        android:textColor="#000"
+        android:textSize="20sp"
+        android:text="   个人信息"
+        android:gravity="center|left"
+        android:background="#fafafc"
+        android:layout_alignParentTop="true"
+        android:paddingLeft="10dp"/>
+
+    <LinearLayout
+        android:id="@+id/ll_userName"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#fafafc"
+        android:layout_below="@id/tv_userInfo"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:text="用户名："
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:gravity="center"/>
+        <TextView
+            android:id="@+id/tv_userName"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:gravity="center"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_userNime"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#fafafc"
+        android:layout_marginTop="1dp"
+        android:layout_below="@id/ll_userName">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:text="昵称："
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:gravity="center"/>
+        <TextView
+            android:id="@+id/tv_userNime"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="34dp"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:drawableRight="@drawable/arrowrightt"
+            android:gravity="center|left"
+            android:layout_marginRight="4dp"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_userSex"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#fafafc"
+        android:layout_marginTop="1dp"
+        android:layout_below="@id/ll_userNime">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:text="性别："
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:gravity="center"/>
+        <TextView
+            android:id="@+id/tv_userSex"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="34dp"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:gravity="center|left"
+            android:layout_marginRight="4dp"
+            />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_exitUser"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="#fafafc"
+        android:text="退出登录"
+        android:gravity="center"
+        android:textColor="#ff0000"
+        android:textSize="20sp"/>
+
+</RelativeLayout>

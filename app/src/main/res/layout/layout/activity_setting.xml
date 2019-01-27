@@ -1,0 +1,59 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="#f0eef4" >
+
+    <TextView
+        android:id="@+id/tv_titleSetting"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:text="   设置"
+        android:textColor="#000"
+        android:textSize="20sp"
+        android:drawableLeft="@drawable/arrowleft"
+        android:gravity="center|left"
+        android:background="#fafafc"
+        android:layout_alignParentTop="true"
+        android:paddingLeft="10dp"/>
+
+    <Button
+        android:id="@+id/btn_update"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#fafafc"
+        android:paddingLeft="10dp"
+        android:text="   检查更新"
+        android:textColor="#5e5e5e"
+        android:gravity="center|left"
+
+        android:layout_below="@id/tv_titleSetting"
+        android:layout_marginTop="7dp"
+        android:drawableLeft="@drawable/update"/>
+
+    <Button
+        android:id="@+id/btn_feedBack"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/btn_update"
+        android:background="#fafafc"
+        android:paddingLeft="10dp"
+        android:text="   用户反馈"
+        android:textColor="#5e5e5e"
+        android:gravity="center|left"
+        android:drawableLeft="@drawable/feedback"/>
+
+    <Button
+        android:id="@+id/btn_about"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/btn_feedBack"
+        android:background="#fafafc"
+        android:paddingLeft="10dp"
+        android:text="   关于我们"
+        android:textColor="#5e5e5e"
+        android:gravity="center|left"
+        android:drawableLeft="@drawable/about"/>"
+
+
+</RelativeLayout>

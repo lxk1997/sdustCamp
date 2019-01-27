@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fitsSystemWindows="true"
+    android:background="#f0eef4">
+
+    <TextView
+        android:id="@+id/tv_2marketMineTitle"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:text="   我的"
+        android:textColor="#000"
+        android:textSize="20sp"
+        android:gravity="center|start"
+        android:background="#fafafc"
+        android:layout_alignParentTop="true"
+        android:drawableLeft="@drawable/arrowleft"
+        android:paddingLeft="10dp"/>
+
+    <LinearLayout
+        android:id="@+id/ll_2marketMineMessage"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal"
+        android:layout_below="@id/tv_2marketMineTitle"
+        android:background="#fafafc">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/riv_marketMineProf"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginLeft="15dp"
+            android:layout_gravity="center"
+            android:src="@drawable/profile"
+            android:scaleType="centerCrop"
+            app:riv_oval="true"/>
+
+        <LinearLayout
+            android:id="@+id/ll_2marketMineDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_2marketMineUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:text="您还未登录"
+                android:textColor="#5e5e5e"
+                android:gravity="center|left"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:singleLine="true"
+                android:ellipsize="end"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_unused"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/ll_2marketMineMessage"
+        android:background="#fafafc"
+        android:layout_marginTop="10dp"
+        android:drawableLeft="@drawable/unused"
+        android:paddingLeft="8dp"
+        android:text="  闲置管理"
+        android:gravity="center|left"
+        android:textColor="#5e5e5e"/>
+
+    <Button
+        android:id="@+id/btn_address"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/btn_unused"
+        android:background="#fafafc"
+        android:layout_marginTop="10dp"
+        android:drawableLeft="@drawable/address"
+        android:paddingLeft="8dp"
+        android:text="  地址管理"
+        android:gravity="center|left"
+        android:textColor="#5e5e5e"/>
+
+    <LinearLayout
+        android:id="@+id/balabla"
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:background="#fafafc">
+
+        <Button
+            android:id="@+id/btn_2marketIndex"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="主页"
+            android:gravity="center|bottom"
+            android:layout_weight="0.1"
+            android:layout_marginTop="3dp"
+            android:drawableTop="@drawable/marketindex"
+            android:background="@color/smssdk_transparent"/>
+
+        <Button
+            android:id="@+id/btn_2marketIn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@color/smssdk_transparent"
+            android:text="市场"
+            android:drawableTop="@drawable/marketin"
+            android:gravity="center|bottom"
+            android:layout_marginTop="0dp"
+            android:layout_weight="0.1"/>
+
+        <Button
+            android:id="@+id/btn_2marketMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@color/smssdk_transparent"
+            android:text="消息"
+            android:gravity="center|bottom"
+            android:layout_marginTop="3dp"
+            android:drawableTop="@drawable/marketmessage"
+            android:layout_weight="0.1"/>
+
+        <Button
+            android:id="@+id/btn_2marketMine"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@color/smssdk_transparent"
+            android:text="我的"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            android:layout_marginTop="3dp"
+            android:drawableTop="@drawable/marketmine"
+            android:gravity="center|bottom"
+            android:layout_weight="0.1"/>
+    </LinearLayout>
+</RelativeLayout>

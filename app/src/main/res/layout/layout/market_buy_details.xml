@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#f0eef4"
+    android:fitsSystemWindows="true">
+
+    <TextView
+        android:id="@+id/tv_2marketInTitle"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_alignParentTop="true"
+        android:background="#fafafc"
+        android:drawableLeft="@drawable/arrowleft"
+        android:paddingLeft="10dp"/>
+
+    <LinearLayout
+        android:id="@+id/ll_2marketSeller"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:layout_below="@id/tv_2marketInTitle"
+        android:background="#fafafc"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/ll_2marketSellerTitle"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/iv_2marketSellerPro"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="5dp"
+                android:scaleType="centerCrop"
+                app:riv_oval="true"
+                android:src="@drawable/profile" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_weight="0.1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_2marketSellerName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginTop="5dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_2marketSellerAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="17dp"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="#5e5e5e" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_2MarketUserTime"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center"
+                android:text="刚刚来过"
+                android:textColor="#5e5e5e"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_2marketGoodsName"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_2marketGoodsMoney"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_marginLeft="10dp"
+            android:textColor="#ff0000"
+            android:textSize="19sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/sv_2marketGoodsDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_2marketSeller"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="8dp"
+        android:fadingEdge="vertical"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:id="@+id/ll_2marketGoodsDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll_2marketSeller"
+            android:background="#fafafc"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginLeft="4dp"
+                android:gravity="bottom"
+                android:text="商品详情"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_2marketGoodsDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="5dp"
+                />
+
+            <ImageView
+                android:id="@+id/iv_2marketGoodsImage1"
+                android:layout_width="360dp"
+                android:layout_height="360dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginRight="12dp"
+                android:scaleType="fitCenter" />
+
+            <ImageView
+                android:id="@+id/iv_2marketGoodsImage2"
+                android:layout_width="360dp"
+                android:layout_height="360dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="12dp"
+                android:scaleType="fitCenter" />
+
+            <ImageView
+                android:id="@+id/iv_2marketGoodsImage3"
+                android:layout_width="360dp"
+                android:layout_height="360dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="12dp"
+                android:scaleType="fitCenter" />
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

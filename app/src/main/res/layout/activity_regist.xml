@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#f0eef4"
+    android:fitsSystemWindows="true"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+
+    <TextView
+        android:background="#fafafc"
+        android:layout_height="35dp"
+        android:layout_width="match_parent"
+        android:layout_alignParentTop="true"
+        android:gravity="center|left"
+        android:textSize="20sp"
+        android:textColor="#000"
+        android:drawableLeft="@drawable/arrowleft"
+        android:id="@+id/tv_registTitle"
+        android:paddingLeft="10dp"/>
+
+    <RelativeLayout
+        android:background="#f0eef4"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:id="@+id/rl_registPhone"
+        android:layout_marginTop="25dp"
+        android:layout_below="@id/tv_registTitle">
+
+         <EditText
+            android:layout_height="50dp"
+            android:layout_width="match_parent"
+            android:textColor="#5e5e5e"
+            android:drawableLeft="@drawable/stuphone"
+            android:id="@+id/et_phoneNum"
+            android:layout_alignParentLeft="true"
+            android:singleLine="true"
+            android:drawablePadding="10dp"
+            android:maxLength="11"
+             android:hint="手机号"
+             android:layout_marginRight="15dp"
+             android:layout_marginLeft="5dp"/>
+
+        <EditText
+           android:layout_height="50dp"
+           android:layout_width="match_parent"
+           android:textColor="#5e5e5e"
+           android:drawableLeft="@drawable/keyl"
+           android:id="@+id/et_phoneKey"
+           android:layout_below="@id/et_phoneNum"
+           android:layout_alignParentLeft="true"
+           android:singleLine="true"
+           android:drawablePadding="10dp"
+           android:maxLength="15"
+           android:hint="密码"
+           android:layout_marginRight="15dp"
+           android:layout_marginLeft="5dp"
+           android:inputType="textPassword"/>
+
+        <LinearLayout
+            android:id="@+id/ll_modifyPhone"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            android:layout_below="@id/et_phoneKey"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="15dp"
+            >
+            <EditText
+                android:layout_height="60dp"
+                android:layout_width="150dp"
+                android:gravity="center"
+                android:textColor="#5e5e5e"
+                android:id="@+id/et_phoneModify"
+                android:singleLine="true"
+                android:maxLength="6"
+                android:hint="验证码" />
+
+            <Button
+                android:background="#c1c1c1"
+                android:layout_height="35dp"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:id="@+id/btn_phoneModify"
+                android:text="点击发送验证码" />
+
+        </LinearLayout>
+
+      <Button
+          android:background="#0359a2"
+          android:layout_height="50dp"
+          android:layout_width="match_parent"
+          android:textColor="#fff"
+          android:id="@+id/btn_phoneRegist"
+          android:layout_marginTop="7dp"
+          android:layout_below="@id/ll_modifyPhone"
+          android:text="注册"
+          android:layout_marginRight="15dp"
+          android:layout_marginLeft="5dp"/>
+    </RelativeLayout>
+
+</RelativeLayout>

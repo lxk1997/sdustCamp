@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="#f0eef4"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:orientation="horizontal"
+        android:background="#fafafc">
+
+        <ImageButton
+            android:id="@+id/ib_market_mine_goods_back"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/arrowleft"
+            android:layout_gravity="center"
+            android:background="#ffffffff"
+            android:scaleType="fitXY"
+            android:layout_marginLeft="15dp"/>
+
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#ffffffff"/>
+
+        <ImageButton
+            android:id="@+id/ib_market_mine_goods_add"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:src="@drawable/add"
+            android:background="#ffffffff"
+            android:layout_gravity="center"
+            android:layout_marginRight="15dp"/>
+    </LinearLayout>
+
+    <com.viewpagerindicator.TabPageIndicator
+        android:id="@+id/ti_market_mine_goods"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginTop="5dp"
+        android:background="#fafafc">
+    </com.viewpagerindicator.TabPageIndicator>
+
+    <com.viewpagerindicator.UnderlinePageIndicator
+        android:id="@+id/upi_market_mine_goods"
+        android:layout_width="match_parent"
+        android:layout_height="3dp" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_market_mine_goods"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="1"
+        android:layout_marginTop="3dp"
+        android:background="@color/smssdk_transparent">
+    </android.support.v4.view.ViewPager>
+
+</LinearLayout>

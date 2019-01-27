@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f0eef4">
+
+    <TextView
+        android:id="@+id/tv_titleService"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:text="   服务"
+        android:textColor="#fff"
+        android:textSize="20sp"
+        android:gravity="center|left"
+        android:background="#0359a2" />
+
+    <EditText
+        android:id="@+id/et_search"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#fff"
+        android:paddingLeft="10dp"
+        android:paddingRight="15dp"
+        android:hint="   全部应用"
+        android:gravity="center|left"
+        android:drawableLeft="@drawable/search"/>
+
+    <LinearLayout
+        android:id="@+id/ll_myApp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#fff">
+
+        <TextView
+            android:id="@+id/tc_myApp"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:paddingLeft="10dp"
+            android:text="我的应用"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:gravity="center|left"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_recentUse"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="10dp"
+        android:background="#fff">
+
+        <TextView
+            android:id="@+id/tv_recentUse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:text="最近使用"
+            android:gravity="center|left"
+            android:textStyle="bold"/>"
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_allApp"
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:layout_marginTop="10dp"
+        android:background="#fff">
+
+        <TextView
+            android:id="@+id/tv_allApp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:paddingLeft="10dp"
+            android:text="全部应用"
+            android:gravity="center|left"
+            android:textStyle="bold"/>
+
+
+        <LinearLayout
+            android:id="@+id/ll_timeTable"
+            android:layout_width="60dp"
+            android:layout_height="35dp"
+            android:layout_below="@id/tv_allApp"
+            android:layout_marginTop="5dp"
+            android:background="#ffffffff"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:clickable="false"
+                android:src="@drawable/timetable"
+                android:layout_gravity="center"
+                android:scaleType="fitXY"
+                android:background="#ffffffff" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="课程表"
+                android:textSize="10sp"
+                android:textColor="#5e5e5e"
+                android:layout_gravity="center"
+                android:background="#ffffffff"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_2market"
+            android:layout_width="60dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="5dp"
+            android:background="#ffffffff"
+            android:layout_below="@id/ll_timeTable"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:clickable="false"
+                android:src="@drawable/market"
+                android:layout_gravity="center"
+                android:scaleType="fitXY"
+                android:background="#ffffffff"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="二手市场"
+                android:textSize="10sp"
+                android:textColor="#5e5e5e"
+                android:layout_gravity="center"
+                android:background="#ffffffff"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_mobile"
+            android:layout_width="60dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="5dp"
+            android:background="#ffffffff"
+            android:layout_toRightOf="@id/ll_2market"
+            android:layout_alignBottom="@id/ll_2market"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:clickable="false"
+                android:src="@drawable/mobile"
+                android:layout_gravity="center"
+                android:scaleType="fitXY"
+                android:background="#ffffffff"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="话费流量"
+                android:textSize="10sp"
+                android:textColor="#5e5e5e"
+                android:layout_gravity="center"
+                android:background="#ffffffff"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_stuCardRecharge"
+            android:layout_width="60dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="5dp"
+            android:background="#ffffffff"
+            android:layout_toRightOf="@id/ll_mobile"
+            android:layout_alignBottom="@id/ll_mobile"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:clickable="false"
+                android:src="@drawable/stucardrecharge"
+                android:layout_gravity="center"
+                android:scaleType="fitXY"
+                android:background="#ffffffff"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="校园卡充值"
+                android:textSize="10sp"
+                android:textColor="#5e5e5e"
+                android:layout_gravity="center"
+                android:background="#ffffffff"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_stuClass"
+            android:layout_width="60dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="5dp"
+            android:background="#ffffffff"
+            android:layout_alignBottom="@+id/ll_timeTable"
+            android:layout_toRightOf="@+id/ll_timeTable"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:clickable="false"
+                android:src="@drawable/stuclass"
+                android:layout_gravity="center"
+                android:scaleType="fitXY"
+                android:background="#ffffffff"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="空教室"
+                android:textSize="10sp"
+                android:textColor="#5e5e5e"
+                android:layout_gravity="center"
+                android:background="#ffffffff"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_mealCard"
+            android:layout_width="60dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="5dp"
+            android:background="#ffffffff"
+            android:layout_alignBottom="@+id/ll_stuClass"
+            android:layout_alignLeft="@+id/ll_stuCardRecharge"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:clickable="false"
+                android:src="@drawable/mealcard"
+                android:layout_gravity="center"
+                android:scaleType="fitXY"
+                android:background="#ffffffff"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="一卡通"
+                android:textSize="10sp"
+                android:textColor="#5e5e5e"
+                android:layout_gravity="center"
+                android:background="#ffffffff"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_queryScore"
+            android:layout_width="60dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="5dp"
+            android:background="#ffffffff"
+            android:layout_alignBottom="@+id/ll_mealCard"
+            android:layout_toRightOf="@+id/ll_mealCard"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:clickable="false"
+                android:src="@drawable/queryscore"
+                android:layout_gravity="center"
+                android:scaleType="fitXY"
+                android:background="#ffffffff"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="查成绩"
+                android:textSize="10sp"
+                android:textColor="#5e5e5e"
+                android:layout_gravity="center"
+                android:background="#ffffffff"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_library"
+            android:layout_width="60dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="5dp"
+            android:background="#ffffffff"
+            android:layout_alignBottom="@+id/ll_queryScore"
+            android:layout_toRightOf="@+id/ll_queryScore"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:clickable="false"
+                android:src="@drawable/library"
+                android:layout_gravity="center"
+                android:scaleType="fitXY"
+                android:background="#ffffffff"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="图书馆"
+                android:textSize="10sp"
+                android:textColor="#5e5e5e"
+                android:layout_gravity="center"
+                android:background="#ffffffff"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_cet46"
+            android:layout_width="60dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="5dp"
+            android:background="#ffffffff"
+            android:layout_alignBottom="@+id/ll_library"
+            android:layout_toRightOf="@+id/ll_library"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:clickable="false"
+                android:src="@drawable/cet46"
+                android:layout_gravity="center"
+                android:scaleType="fitXY"
+                android:background="#ffffffff"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="四六级"
+                android:textSize="10sp"
+                android:textColor="#5e5e5e"
+                android:layout_gravity="center"
+                android:background="#ffffffff"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

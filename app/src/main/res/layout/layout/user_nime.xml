@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="#f0eef4">
+
+    <TextView
+        android:id="@+id/tv_userInfo"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:drawableLeft="@drawable/arrowleft"
+        android:gravity="center|left"
+        android:background="#fafafc"
+        android:layout_alignParentTop="true"
+        android:paddingLeft="10dp"/>
+
+    <EditText
+        android:id="@+id/et_userNime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_userInfo"
+        android:layout_marginTop="17dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:hint="请输入新昵称"/>
+
+    <Button
+        android:id="@+id/btn_exitUserNime"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="#fafafc"
+        android:text="确认修改"
+        android:gravity="center"
+        android:textColor="#ff0000"
+        android:textSize="20sp"/>
+</RelativeLayout>
