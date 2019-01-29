@@ -11,6 +11,9 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
@@ -118,6 +121,33 @@ public class Utils
         BitmapDrawable bd = new BitmapDrawable(bm);
         bd.setTargetDensity(bm.getDensity());
         return new BitmapDrawable(bm);
+    }
+
+    /**
+     * 将字节流转换成文件
+     *
+     * @param filename
+     * @param data
+     * @throws Exception
+     */
+    public static void saveFile(String filename, byte[] data) {
+
+        if (data != null) {
+            String filepath = filename;
+            File file = new File(filepath);
+            if (file.exists()) {
+                file.delete();
+            }
+            try {
+                FileOutputStream fos = new FileOutputStream(file);
+                fos.write(data, 0, data.length);
+                fos.flush();
+                fos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
     }
 
 }

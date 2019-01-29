@@ -105,12 +105,11 @@ public class UserUtils {
                     context.startActivity(intent);
                     ((Activity)context).finish();
                 } else {
-                    Toast.makeText(context,e.getMessage(),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context,"用户名或者密码不正确",Toast.LENGTH_SHORT).show();
                     SharedPreferences sharedPreferences = context.getSharedPreferences("login", MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putBoolean("loginbool", false);
-                    Intent intent = new Intent(context,MainActivity.class);
-                    intent.putExtra("frId",R.id.ll_index);
+                    Intent intent = new Intent(context,LoginInActivity.class);
                     context.startActivity(intent);
                     ((Activity)context).finish();
                 }

@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.clxk.h.sdustcamp.MyApplication;
 import com.clxk.h.sdustcamp.R;
 import com.clxk.h.sdustcamp.bean.User;
+import com.clxk.h.sdustcamp.ui.ConnectStuId;
 import com.clxk.h.sdustcamp.ui.LoginInActivity;
 import com.clxk.h.sdustcamp.ui.MineChangePassword;
 import com.clxk.h.sdustcamp.ui.SettingActivity;
@@ -72,6 +73,7 @@ public class MineFragment extends Fragment {
         tv_signIn.setOnClickListener(new onClick());
         iv_prof.setOnClickListener(new onClick());
         ll_modifyKey.setOnClickListener(new onClick());
+        ll_stuId.setOnClickListener(new onClick());
     }
 
     /**
@@ -164,6 +166,16 @@ public class MineFragment extends Fragment {
                     startActivity(intent);
                     getActivity().onBackPressed();
                     break;
+                case R.id.ll_stuId:
+                    if(!isLogin) {
+                        intent = new Intent(getActivity(), LoginInActivity.class);
+                    } else {
+                        intent = new Intent(getActivity(), ConnectStuId.class);
+                    }
+                    startActivity(intent);
+                    getActivity().onBackPressed();
+                    break;
+
             }
         }
     }

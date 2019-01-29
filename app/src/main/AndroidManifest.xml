@@ -72,6 +72,8 @@
         <activity android:name=".ui.ImStrangerInfo"/>
         <activity android:name=".ui.ImMineFriendActivity"/>
         <activity android:name=".ui.ChatActivity"/>
+        <activity android:name=".ui.ConnectStuId"/>
+        <activity android:name=".ui.ScoreActivity"/>
         <!--MOBSDK-->
         <activity
             android:name="com.mob.tools.MobUIShell"

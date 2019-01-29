@@ -10,6 +10,8 @@ import com.clxk.h.sdustcamp.handle.MyMessageHandle;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.util.HashMap;
+import java.util.Map;
 
 import cn.bmob.newim.BmobIM;
 
@@ -19,6 +21,8 @@ public class MyApplication extends Application {
     private static MyApplication myApp;
     public MarketGoods marketGoods = new MarketGoods();
     public User user = new User();
+    public Map<String,String> cookie = new HashMap<>();
+
     public Context context;
     @Override
     public void onCreate() {

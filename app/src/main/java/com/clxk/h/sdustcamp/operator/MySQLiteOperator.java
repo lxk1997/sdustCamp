@@ -16,34 +16,35 @@ public class MySQLiteOperator {
     private SQLiteDatabase db;//数据库
 
     public MySQLiteOperator(Context context) {
-        mySQLiteUtil = new MySQLiteUtil(context, "timetable.db", null,1);
+        mySQLiteUtil = new MySQLiteUtil(context, "scl.db", null,1);
         db = mySQLiteUtil.getWritableDatabase();
     }
 
     //add
-    public void add(String className, String classRoom, String teacher, String classStart, String classEnd, String classDay, String classNum) {
-        db.execSQL("insert into user_tb values(null,?,?,?,?,?,?,?)", new Object[] {className.toString(), classRoom.toString(), teacher.toString(), classStart.toString(), classEnd.toString(), classDay.toString(), classNum.toString()});
+    public void add(String className, String classRoom, String teacher, String classStart, String classEnd, String classDay, String classNum, String term) {
+        Log.i("123","aaaaa");
+        db.execSQL("insert into schedule_db values(null,?,?,?,?,?,?,?,?)", new Object[] {className, classRoom, teacher, classStart, classEnd, classDay, classNum, term});
     }
 
     //update
     public void update(TimeTable node, int id) {
-        db.execSQL("update user_tb set className=?,classRoom=?,teacher=?,classStart=?,classEnd=?,classDay=?,classNum=? where _id=?",new Object[] {node.getClassName(), node.getClassRoom(),
-                node.getTeacher(), node.getClassStart(),node.getClassEnd(),node.getClassDay(), node.getClassNum(), id+""});
+        db.execSQL("update schedule_db set className=?,classRoom=?,teacher=?,classStart=?,classEnd=?,classDay=?,classNum=?, term=? where _id=?",new Object[] {node.getClassName(), node.getClassRoom(),
+                node.getTeacher(), node.getClassStart(),node.getClassEnd(),node.getClassDay(), node.getClassNum(), node.getTerm(), id+""});
     }
 
     //delete
     public void delete(Object id) {
-        db.execSQL("delete from user_tb where _id=?", new Object[] {id});
+        db.execSQL("delete from schedule_db where _id=?", new Object[] {id});
 
     }
 
     //search
-    public boolean search(String className, String classRoom, String teacher, String classStart, String classEnd, String classDay, String classNum) {
-        Cursor cursor = db.rawQuery("select * from user_tb", null);
+    public boolean search(String className, String classRoom, String teacher, String classStart, String classEnd, String classDay, String classNum, String term) {
+        Cursor cursor = db.rawQuery("select * from schedule_db", null);
         while (cursor.moveToNext()) {
-            if(cursor.getString(1).equals(className.toString()) &&  cursor.getString(2).equals(classRoom.toString()) && cursor.getString(3).equals(teacher.toString())
-                    && cursor.getString(4).equals(classStart.toString()) && cursor.getString(5).equals(classEnd.toString()) && cursor.getString(6).equals(classDay.toString())
-                    && cursor.getString(7).equals(classNum.toString()))
+            if(cursor.getString(1).equals(className) &&  cursor.getString(2).equals(classRoom) && cursor.getString(3).equals(teacher)
+                    && cursor.getString(4).equals(classStart) && cursor.getString(5).equals(classEnd) && cursor.getString(6).equals(classDay)
+                    && cursor.getString(7).equals(classNum) && cursor.getString(8).equals(term))
                 return true;
         }
         cursor.close();
@@ -51,12 +52,12 @@ public class MySQLiteOperator {
     }
 
     //search
-    public int getId(String className, String classRoom, String teacher, String classStart, String classEnd, String classDay, String classNum) {
-        Cursor cursor = db.rawQuery("select * from user_tb", null);
+    public int getId(String className, String classRoom, String teacher, String classStart, String classEnd, String classDay, String classNum, String term) {
+        Cursor cursor = db.rawQuery("select * from schedule_db", null);
         while (cursor.moveToNext()) {
-            if(cursor.getString(1).equals(className.toString()) &&  cursor.getString(2).equals(classRoom.toString()) && cursor.getString(3).equals(teacher.toString())
-                    && cursor.getString(4).equals(classStart.toString()) && cursor.getString(5).equals(classEnd.toString()) && cursor.getString(6).equals(classDay.toString())
-                    && cursor.getString(7).equals(classNum.toString()))
+            if(cursor.getString(1).equals(className) &&  cursor.getString(2).equals(classRoom) && cursor.getString(3).equals(teacher)
+                    && cursor.getString(4).equals(classStart) && cursor.getString(5).equals(classEnd) && cursor.getString(6).equals(classDay)
+                    && cursor.getString(7).equals(classNum) && cursor.getString(8).equals(term))
                 return cursor.getInt(0);
         }
         cursor.close();
@@ -66,7 +67,7 @@ public class MySQLiteOperator {
     //query
     public TimeTable query(int id) {
         TimeTable node = new TimeTable();
-        Cursor cursor = db.rawQuery("select * from user_tb where _id=?", new String[] {id+""});
+        Cursor cursor = db.rawQuery("select * from schedule_db where _id=?", new String[] {id+""});
         while (cursor.moveToNext()) {
             node.setClassName(cursor.getString(1));
             node.setClassRoom(cursor.getString(2));
@@ -75,6 +76,7 @@ public class MySQLiteOperator {
             node.setClassEnd(cursor.getString(5));
             node.setClassDay(cursor.getString(6));
             node.setClassNum(cursor.getString(7));
+            node.setTerm(cursor.getString(8));
         }
         cursor.close();
         return node;
@@ -83,7 +85,7 @@ public class MySQLiteOperator {
     //query all text
     public ArrayList<TimeTable> queryAll() {
         ArrayList<TimeTable> records = new ArrayList<TimeTable>();
-        Cursor cursor = db.rawQuery("select * from user_tb", null);
+        Cursor cursor = db.rawQuery("select * from schedule_db", null);
         while (cursor.moveToNext()) {
             TimeTable node = new TimeTable();
             node.setClassName(cursor.getString(1));
@@ -93,6 +95,7 @@ public class MySQLiteOperator {
             node.setClassEnd(cursor.getString(5));
             node.setClassDay(cursor.getString(6));
             node.setClassNum(cursor.getString(7));
+            node.setTerm(cursor.getString(8));
             records.add(node);
         }
         cursor.close();

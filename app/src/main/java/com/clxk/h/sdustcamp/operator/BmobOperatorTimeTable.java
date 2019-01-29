@@ -89,7 +89,7 @@ public class BmobOperatorTimeTable {
                     if(!f.exists()) {
                         ProperUtil.writeDateToLocalFile("is_loadInToMySql", "1");
                         for(TimeTable t: object) {
-                            mySql.add(t.getClassName(), t.getClassRoom(), t.getTeacher(), t.getClassStart(), t.getClassEnd(), t.getClassDay(), t.getClassNum());
+                            mySql.add(t.getClassName(), t.getClassRoom(), t.getTeacher(), t.getClassStart(), t.getClassEnd(), t.getClassDay(), t.getClassNum(),t.getTerm());
                         }
                     }
                 } else {

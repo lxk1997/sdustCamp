@@ -1,47 +1,26 @@
 package com.clxk.h.sdustcamp.ui;
 
-import java.text.ParseException;
-
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.KeyEvent;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
-import android.view.ViewGroup;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -50,6 +29,16 @@ import com.clxk.h.sdustcamp.R;
 import com.clxk.h.sdustcamp.bean.TimeTable;
 import com.clxk.h.sdustcamp.operator.BmobOperatorTimeTable;
 import com.clxk.h.sdustcamp.operator.MySQLiteOperator;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
 
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.exception.BmobException;
@@ -197,20 +186,19 @@ public class Schedule extends AppCompatActivity{
         btn_cedit = (Button)findViewById(R.id.btn_cedit);
 
         mySql = new MySQLiteOperator(this);
-        // bmobOperator = new BmobOperatorTimeTable();
-        //bmobOperator.queryAll(this);
-        BmobQuery<TimeTable>bmobQuery = new BmobQuery<TimeTable>();
+
+        BmobQuery<TimeTable>bmobQuery = new BmobQuery<>();
         bmobQuery.findObjects(new FindListener<TimeTable>() {
             @Override
             public void done(List<TimeTable> list, BmobException e) {
                 if(e == null) {
                     for(TimeTable t: list) {
-                        mySql.add(t.getClassName(), t.getClassRoom(), t.getTeacher(), t.getClassStart(), t.getClassEnd(), t.getClassDay(), t.getClassNum());
+                        mySql.add(t.getClassName(), t.getClassRoom(), t.getTeacher(), t.getClassStart(), t.getClassEnd(), t.getClassDay(), t.getClassNum(), t.getTerm());
                     }
                 }
             }
         });
-        list = new ArrayList<TimeTable>();
+        list = new ArrayList<>();
         list = mySql.queryAll();
         Log.i("12345",list.size()+"");
         classItem = new HashMap<>();
@@ -329,7 +317,7 @@ public class Schedule extends AppCompatActivity{
         //setOnClick
         String[] week = {"第1周","第2周","第3周","第4周","第5周","第6周","第7周","第8周","第9周","第10周","第11周","第12周",
                 "第13周","第14周","第15周","第16周","第17周","第18周","第19周","第20周","第21周","第22周"};
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, week);
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, week);
         //设置下拉列表的风格
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sp_week.setAdapter(adapter);
@@ -428,7 +416,7 @@ public class Schedule extends AppCompatActivity{
         SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd");
         Date d1 = null;
         Date d2 = null;
-        String dt_end = df.format(current).toString();
+        String dt_end = df.format(current);
         try {
             d1 = df.parse(dt_start);
             d2 = df.parse(dt_end);
@@ -709,7 +697,7 @@ public class Schedule extends AppCompatActivity{
                     } else if(et_skjs.getText().toString() == "") {
                         Toast.makeText(Schedule.this, "授课教师格式错误", Toast.LENGTH_SHORT).show();
                     } else {
-                        mySql.add(et_kcmc.getText().toString(),et_js.getText().toString(), et_skjs.getText().toString(), st+"", en+"",dn.substring(1, 2) , dn.substring(0, 1));
+                        mySql.add(et_kcmc.getText().toString(),et_js.getText().toString(), et_skjs.getText().toString(), st+"", en+"",dn.substring(1, 2) , dn.substring(0, 1),"2018-2019-1");
                         Toast.makeText(Schedule.this, "添加成功，更新后显示", Toast.LENGTH_SHORT).show();
                         ll_classInput.setVisibility(View.GONE);
                         ifClick(true);
@@ -724,10 +712,10 @@ public class Schedule extends AppCompatActivity{
                     ll_ifInput.setVisibility(View.GONE);
                     TimeTable tt = new TimeTable();
                     tt = classItem.get(dn);
-                    et_kcmc.setText(tt.getClassName().toString());
+                    et_kcmc.setText(tt.getClassName());
                     et_zc.setText(tt.getClassStart() + '-' + tt.getClassEnd());
-                    et_js.setText(tt.getClassRoom().toString());
-                    et_skjs.setText(tt.getTeacher().toString());
+                    et_js.setText(tt.getClassRoom());
+                    et_skjs.setText(tt.getTeacher());
                     ll_classInput.setVisibility(View.VISIBLE);
                     break;
                 case R.id.btn_cedit:
@@ -737,7 +725,7 @@ public class Schedule extends AppCompatActivity{
                 case R.id.btn_dedit:
                     TimeTable tb = new TimeTable();
                     tb = classItem.get(dn);
-                    int id = mySql.getId(tb.getClassName().toString(), tb.getClassRoom().toString(), tb.getTeacher().toString(), tb.getClassStart().toString(), tb.getClassEnd().toString(), tb.getClassDay().toString(), tb.getClassNum().toString());
+                    int id = mySql.getId(tb.getClassName(), tb.getClassRoom(), tb.getTeacher(), tb.getClassStart(), tb.getClassEnd(), tb.getClassDay(), tb.getClassNum(),"2018-2019-1");
                     mySql.delete(id);
                     Toast.makeText(Schedule.this, "删除成功", Toast.LENGTH_SHORT).show();
                     ll_ifInput.setVisibility(View.GONE);
@@ -1136,15 +1124,17 @@ public class Schedule extends AppCompatActivity{
         String[] colorString = new String[]{"#FFB5C5","#FFC125", "#AB82FF", "#6E8B3D", "#87CEFF", "#98FB98", "#FF7F50", "#00EE76", "#00CED1", "#00CD66", "#6495ED", "#7D9EC0", "#BDB76B", "#F08080"};
         int idx = Integer.parseInt(index);
         for(TimeTable t : list) {
-            int st = Integer.parseInt(t.getClassStart().toString());
-            int en = Integer.parseInt(t.getClassEnd().toString());
+            int st = Integer.parseInt(t.getClassStart());
+            int en = Integer.parseInt(t.getClassEnd());
             if(st <= idx && en >= idx) {
-                String dw = t.getClassNum().toString()+t.getClassDay().toString();
+                String dw = t.getClassNum() + t.getClassDay();
+                Log.i("123周课",dw);
                 Random random;
                 GradientDrawable myGrad;
                 classItem.put(dw, t);
-                switch (dw) {
+                switch (dw.trim()) {
                     case "11":
+                        Log.i("123class","123");
                         btn_11.setText(t.getClassName() + "@" + t.getClassRoom());
                         random = new Random();
                         myGrad = (GradientDrawable)btn_11.getBackground();
