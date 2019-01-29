@@ -1,16 +1,18 @@
 package com.clxk.h.sdustcamp.ui;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
-import android.text.Editable;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -32,6 +34,8 @@ public class ConnectStuId extends MyBaseActivity implements View.OnClickListener
     private ImageView iv_sdustvertif;
     private Button btn_connectsdust;
 
+    private ImageButton ib_back;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +50,8 @@ public class ConnectStuId extends MyBaseActivity implements View.OnClickListener
     private void initEvent() {
 
         btn_connectsdust.setOnClickListener(this);
+        ib_back.setOnClickListener(this);
+
         iv_sdustvertif.setOnTouchListener(this);
 
         getSafeCode();
@@ -59,6 +65,8 @@ public class ConnectStuId extends MyBaseActivity implements View.OnClickListener
         et_sdustvertif = findViewById(R.id.et_sdustvertif);
         iv_sdustvertif = findViewById(R.id.iv_sdustvertif);
         btn_connectsdust = findViewById(R.id.btn_sdustconnect);
+
+        ib_back = findViewById(R.id.ib_market_back);
     }
 
     public void getSafeCode() {
@@ -84,6 +92,13 @@ public class ConnectStuId extends MyBaseActivity implements View.OnClickListener
         switch (v.getId()) {
             case R.id.btn_sdustconnect:
                 authLogin(et_sdustcode.getText().toString(),et_sdustpass.getText().toString(),et_sdustvertif.getText().toString());
+                break;
+            case R.id.ib_market_back:
+                Intent intent = new Intent(ConnectStuId.this, MainActivity.class);
+                intent.putExtra("frId",R.id.ll_mine);
+                startActivity(intent);
+                finish();
+                break;
         }
     }
 
@@ -135,4 +150,15 @@ public class ConnectStuId extends MyBaseActivity implements View.OnClickListener
             return true;
         }
     };
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode == KeyEvent.KEYCODE_BACK) {
+            Intent intent = new Intent(ConnectStuId.this, MainActivity.class);
+            intent.putExtra("frId",R.id.ll_mine);
+            startActivity(intent);
+            finish();
+        }
+        return false;
+    }
 }
