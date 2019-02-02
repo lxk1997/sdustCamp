@@ -17,7 +17,6 @@ import cn.bmob.newim.BmobIM;
 
 public class MyApplication extends Application {
 
-    public boolean is_loginIn = false;
     private static MyApplication myApp;
     public MarketGoods marketGoods = new MarketGoods();
     public User user = new User();

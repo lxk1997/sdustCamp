@@ -27,8 +27,7 @@ import android.widget.Toast;
 
 import com.clxk.h.sdustcamp.R;
 import com.clxk.h.sdustcamp.bean.TimeTable;
-import com.clxk.h.sdustcamp.operator.BmobOperatorTimeTable;
-import com.clxk.h.sdustcamp.operator.MySQLiteOperator;
+import com.clxk.h.sdustcamp.operator.MySQLiteOperatorOfSchedule;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -36,13 +35,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Random;
-
-import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.FindListener;
 
 public class Schedule extends AppCompatActivity{
     private Spinner sp_week;
@@ -110,8 +104,7 @@ public class Schedule extends AppCompatActivity{
     private Button btn_dedit;
     private Button btn_cedit;
 
-    private BmobOperatorTimeTable bmobOperator;
-    private MySQLiteOperator mySql;
+    private MySQLiteOperatorOfSchedule mySql;
 
     private Boolean is_item = false;
     private Boolean is_have;
@@ -185,19 +178,8 @@ public class Schedule extends AppCompatActivity{
         btn_dedit = (Button)findViewById(R.id.btn_dedit);
         btn_cedit = (Button)findViewById(R.id.btn_cedit);
 
-        mySql = new MySQLiteOperator(this);
+        mySql = new MySQLiteOperatorOfSchedule(this);
 
-        BmobQuery<TimeTable>bmobQuery = new BmobQuery<>();
-        bmobQuery.findObjects(new FindListener<TimeTable>() {
-            @Override
-            public void done(List<TimeTable> list, BmobException e) {
-                if(e == null) {
-                    for(TimeTable t: list) {
-                        mySql.add(t.getClassName(), t.getClassRoom(), t.getTeacher(), t.getClassStart(), t.getClassEnd(), t.getClassDay(), t.getClassNum(), t.getTerm());
-                    }
-                }
-            }
-        });
         list = new ArrayList<>();
         list = mySql.queryAll();
         Log.i("12345",list.size()+"");

@@ -1,9 +1,12 @@
 package com.clxk.h.sdustcamp.spider;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.clxk.h.sdustcamp.MyApplication;
 import com.clxk.h.sdustcamp.bean.TimeTable;
+import com.clxk.h.sdustcamp.utils.LocalSave;
 
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
@@ -24,11 +27,13 @@ import cn.bmob.v3.BmobObject;
 public class GetSchedule {
 
     private static String url = "http://jwgl.sdust.edu.cn/jsxsd/xskb/xskb_list.do";
-    private static Map<String,String> cookie = MyApplication.getInstance().cookie;
+    private static SharedPreferences sp = MyApplication.getInstance().context.getSharedPreferences("cookie", Context.MODE_PRIVATE);
+    private static LocalSave localSave = new LocalSave(sp);
+    private static Map<String,String> cookie = localSave.getCookies();
     private static String term;
 
-    public static List<BmobObject> getSchedule() throws IOException {
-        List<BmobObject> sources = new ArrayList<>();
+    public static List<TimeTable> getSchedule() throws IOException {
+        List<TimeTable> sources = new ArrayList<>();
         Connection connection = Jsoup.connect(url).method(Connection.Method.GET)
                 .userAgent("Mozilla").header("Accept","text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8")
                 .cookies(cookie).timeout(3000);

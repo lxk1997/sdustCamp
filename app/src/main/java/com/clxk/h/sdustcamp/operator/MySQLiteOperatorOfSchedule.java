@@ -10,12 +10,15 @@ import android.util.Log;
 import com.clxk.h.sdustcamp.bean.TimeTable;
 import com.clxk.h.sdustcamp.utils.MySQLiteUtil;
 
-public class MySQLiteOperator {
+/**
+ * 本地的课程表数据库操作
+ */
+public class MySQLiteOperatorOfSchedule {
 
     private MySQLiteUtil mySQLiteUtil;//辅助数据库
     private SQLiteDatabase db;//数据库
 
-    public MySQLiteOperator(Context context) {
+    public MySQLiteOperatorOfSchedule(Context context) {
         mySQLiteUtil = new MySQLiteUtil(context, "scl.db", null,1);
         db = mySQLiteUtil.getWritableDatabase();
     }
@@ -36,6 +39,11 @@ public class MySQLiteOperator {
     public void delete(Object id) {
         db.execSQL("delete from schedule_db where _id=?", new Object[] {id});
 
+    }
+
+    //deleteAll
+    public void deleteAll() {
+        db.execSQL("delete from schedule_db");
     }
 
     //search

@@ -7,7 +7,8 @@ import android.database.sqlite.SQLiteDatabase.CursorFactory;
 
 public class MySQLiteUtil extends SQLiteOpenHelper {
 
-    public static final String CREATE_TABLE_SQL = "create table schedule_db(_id integer primary key autoincrement,className,classRoom,teacher,classStart,classEnd,classDay,classNum,term)";
+    public static final String CREATE_TABLE_SQL_SCHEDULE = "create table schedule_db(_id integer primary key autoincrement,className,classRoom,teacher,classStart,classEnd,classDay,classNum,term)";
+    public static final String CREATE_TABLE_SQL_SCORE = "create table score_db(_id integer primary key autoincrement, id, term, classId, classname, score, scoretag, classprop, credit, gpa, testway, minor, remark)";
     private Context mContext;
     public MySQLiteUtil(Context context, String name, CursorFactory factory, int version
     ) {
@@ -20,7 +21,8 @@ public class MySQLiteUtil extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         // TODO Auto-generated method stub
-        db.execSQL(CREATE_TABLE_SQL);
+        db.execSQL(CREATE_TABLE_SQL_SCHEDULE);
+        db.execSQL(CREATE_TABLE_SQL_SCORE);
     }
 
     @Override

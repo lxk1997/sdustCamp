@@ -66,7 +66,7 @@ public class ConnectStuId extends MyBaseActivity implements View.OnClickListener
         iv_sdustvertif = findViewById(R.id.iv_sdustvertif);
         btn_connectsdust = findViewById(R.id.btn_sdustconnect);
 
-        ib_back = findViewById(R.id.ib_market_back);
+        ib_back = findViewById(R.id.ib_market_header_back);
     }
 
     public void getSafeCode() {
@@ -93,7 +93,7 @@ public class ConnectStuId extends MyBaseActivity implements View.OnClickListener
             case R.id.btn_sdustconnect:
                 authLogin(et_sdustcode.getText().toString(),et_sdustpass.getText().toString(),et_sdustvertif.getText().toString());
                 break;
-            case R.id.ib_market_back:
+            case R.id.ib_market_header_back:
                 Intent intent = new Intent(ConnectStuId.this, MainActivity.class);
                 intent.putExtra("frId",R.id.ll_mine);
                 startActivity(intent);

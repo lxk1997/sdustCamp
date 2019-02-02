@@ -59,6 +59,8 @@ public class MainActivity extends MyBaseActivity {
 
         checkAndGetPermission();
 
+        MyApplication.getInstance().context = this;
+
         initView();
         initEvent();
 

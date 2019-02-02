@@ -1,9 +1,12 @@
 package com.clxk.h.sdustcamp.spider;
 
-import android.util.Log;
+import android.content.Context;
+import android.content.SharedPreferences;
 
 import com.clxk.h.sdustcamp.MyApplication;
 import com.clxk.h.sdustcamp.bean.TimeTable;
+import com.clxk.h.sdustcamp.operator.MySQLiteOperatorOfSchedule;
+import com.clxk.h.sdustcamp.utils.LocalSave;
 import com.clxk.h.sdustcamp.utils.Utils;
 
 import org.jsoup.Connection;
@@ -14,14 +17,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import cn.bmob.v3.BmobBatch;
-import cn.bmob.v3.BmobObject;
-import cn.bmob.v3.datatype.BatchResult;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.QueryListListener;
-
-import static com.clxk.h.sdustcamp.spider.GetSchedule.getSchedule;
-
 public class AutoLogin {
     private static String url_safecode = "http://jwgl.sdust.edu.cn/verifycode.servlet?0.124567"; // 验证码
     private static String url_encode = "http://jwgl.sdust.edu.cn/Logon.do?method=logon&flag=sess"; // 加密字符串
@@ -29,7 +24,9 @@ public class AutoLogin {
     private String username = "";
     private String password = "";
     private static String path = "/sdcard/safecode.png";
-    private static Map<String, String> cookie = MyApplication.getInstance().cookie;
+    private static SharedPreferences sp = MyApplication.getInstance().context.getSharedPreferences("cookie", Context.MODE_PRIVATE);
+    private static Map<String, String> cookie;
+    private static LocalSave localSave = new LocalSave(sp);
 
     /**
      * 下载验证码
@@ -40,7 +37,8 @@ public class AutoLogin {
         Connection.Response response = Jsoup.connect(url_safecode).ignoreContentType(true) // 获取图片需设置忽略内容类型
                 .userAgent("Mozilla").method(Connection.Method.GET).timeout(3000).execute();
         cookie = response.cookies();
-        MyApplication.getInstance().cookie = cookie;
+        localSave.setPreferences(sp);
+        localSave.setCookies(cookie);
         byte[] bytes = response.bodyAsBytes();
         Utils.saveFile(path, bytes);
     }
@@ -59,7 +57,7 @@ public class AutoLogin {
                             "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8")
                     .userAgent("Mozilla").method(Connection.Method.POST).data(data).cookies(cookie).timeout(3000);
             Connection.Response response = connect.execute();
-            MyApplication.getInstance().cookie = response.cookies();
+            localSave.setCookies(response.cookies());
         } catch (IOException e) {
 
         }
@@ -101,15 +99,12 @@ public class AutoLogin {
 
     public static int authLogin(String username, String password, String code) throws IOException {
         initLogin(code,username,password);
-        List<BmobObject> schedules = GetSchedule.getSchedule();
-        new BmobBatch().insertBatch(schedules).doBatch(new QueryListListener<BatchResult>() {
-            @Override
-            public void done(List<BatchResult> list, BmobException e) {
-                if(e == null) {
-                    Log.i("111","添加成功 共"+list.size()+"条数据");
-                }
-            }
-        });
+        List<TimeTable> schedules = GetSchedule.getSchedule();
+        MySQLiteOperatorOfSchedule sqLiteOperator = new MySQLiteOperatorOfSchedule(MyApplication.getInstance().context);
+        sqLiteOperator.deleteAll();
+        for(TimeTable t : schedules) {
+            sqLiteOperator.add(t.getClassName(),t.getClassRoom(),t.getTeacher(),t.getClassStart(),t.getClassEnd(),t.getClassDay(),t.getClassNum(),t.getTerm());
+        }
         return 1;
     }
 }
