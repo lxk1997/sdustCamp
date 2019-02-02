@@ -4,8 +4,10 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.clxk.h.sdustcamp.MyApplication;
+import com.clxk.h.sdustcamp.bean.Score;
 import com.clxk.h.sdustcamp.bean.TimeTable;
 import com.clxk.h.sdustcamp.operator.MySQLiteOperatorOfSchedule;
+import com.clxk.h.sdustcamp.operator.MySQLiteOperatorOfScore;
 import com.clxk.h.sdustcamp.utils.LocalSave;
 import com.clxk.h.sdustcamp.utils.Utils;
 
@@ -104,6 +106,13 @@ public class AutoLogin {
         sqLiteOperator.deleteAll();
         for(TimeTable t : schedules) {
             sqLiteOperator.add(t.getClassName(),t.getClassRoom(),t.getTeacher(),t.getClassStart(),t.getClassEnd(),t.getClassDay(),t.getClassNum(),t.getTerm());
+        }
+        List<Score> scores = GetScore.getScore();
+        MySQLiteOperatorOfScore sqLiteOperator_2 = new MySQLiteOperatorOfScore(MyApplication.getInstance().context);
+        sqLiteOperator_2.deleteAll();
+        for(Score s : scores) {
+            sqLiteOperator_2.add(s.getId(),s.getTerm(),s.getClassId(),s.getClassname(),s.getScore(),s.getScoretag(),s.getClassprop()
+                    ,s.getCredit(),s.getGpa(),s.getTestway(),s.getMinor(),s.getRemark());
         }
         return 1;
     }

@@ -10,6 +10,8 @@ import android.support.v4.content.ContextCompat;
 
 import com.clxk.h.sdustcamp.Constans;
 
+import butterknife.ButterKnife;
+
 
 /**
  * Created by Chook_lxk on 18/12/27
@@ -20,6 +22,12 @@ public class MyBaseActivity extends FragmentActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ButterKnife.bind(this);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 
     /**

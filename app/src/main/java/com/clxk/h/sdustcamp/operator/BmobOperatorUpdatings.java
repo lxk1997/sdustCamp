@@ -1,19 +1,13 @@
 package com.clxk.h.sdustcamp.operator;
 
-import java.io.File;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Context;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.ListView;
 
 import com.clxk.h.sdustcamp.adapter.UpdatingsAdapter;
 import com.clxk.h.sdustcamp.bean.Updatings;
-import com.clxk.h.sdustcamp.operator.MySQLiteOperator;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.exception.BmobException;
@@ -24,7 +18,6 @@ import cn.bmob.v3.listener.UpdateListener;
 public class BmobOperatorUpdatings {
     private static Updatings node;
     private static Context context;
-    private static MySQLiteOperator mySql;
 
     private UpdatingsAdapter myAdapter;
     public List<Updatings> source = new ArrayList<Updatings>();

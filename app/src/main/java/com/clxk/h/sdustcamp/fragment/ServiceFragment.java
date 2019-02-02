@@ -17,6 +17,7 @@ import com.clxk.h.sdustcamp.ui.Cet46Activity;
 import com.clxk.h.sdustcamp.ui.MarketActivity;
 import com.clxk.h.sdustcamp.ui.MobileFeeActivity;
 import com.clxk.h.sdustcamp.ui.Schedule;
+import com.clxk.h.sdustcamp.ui.ScoreActivity;
 
 /**
  * Created by Chook_lxk on 18/9
@@ -112,6 +113,11 @@ public class ServiceFragment extends Fragment {
                     break;
                 case R.id.ll_mobile:
                     intent = new Intent(getActivity(), MobileFeeActivity.class);
+                    startActivity(intent);
+                    getActivity().onBackPressed();
+                    break;
+                case R.id.ll_queryScore:
+                    intent = new Intent(getActivity(), ScoreActivity.class);
                     startActivity(intent);
                     getActivity().onBackPressed();
                     break;

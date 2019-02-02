@@ -17,7 +17,6 @@ import android.widget.TextView;
 
 import com.clxk.h.sdustcamp.R;
 import com.clxk.h.sdustcamp.bean.User;
-import com.clxk.h.sdustcamp.operator.MySQLiteOperator;
 import com.clxk.h.sdustcamp.utils.UserUtils;
 
 public class LoginInActivity extends AppCompatActivity {
@@ -29,7 +28,6 @@ public class LoginInActivity extends AppCompatActivity {
     private EditText et_key;
 
     private Button btn_loginIn;
-    private MySQLiteOperator mySqliteOperator;
 
     private boolean is_registed;
     private String phoneNum;
@@ -47,7 +45,6 @@ public class LoginInActivity extends AppCompatActivity {
         et_key = findViewById(R.id.et_key);
         btn_loginIn = findViewById(R.id.btn_loginIn);
         btn_forgetKey = findViewById(R.id.btn_forgetKey);
-        mySqliteOperator = new MySQLiteOperator(this);
 
 
         Drawable drawable = ContextCompat.getDrawable(this,R.drawable.arrowleft);

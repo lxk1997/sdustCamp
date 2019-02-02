@@ -18,7 +18,7 @@ import cn.bmob.v3.listener.UpdateListener;
 public class BmobOperatorTimeTable {
     private static TimeTable node;
     private static Context context;
-    private static MySQLiteOperator mySql;
+    private static MySQLiteOperatorOfSchedule mySql;
 
     public BmobOperatorTimeTable() {
     }
@@ -76,7 +76,7 @@ public class BmobOperatorTimeTable {
 
     public void queryAll(Context context) {
         this.context = context;
-        mySql = new MySQLiteOperator(context);
+        mySql = new MySQLiteOperatorOfSchedule(context);
         BmobQuery<TimeTable> bmobQuery = new BmobQuery<TimeTable>();
         bmobQuery.findObjects(new FindListener<TimeTable>() {
 

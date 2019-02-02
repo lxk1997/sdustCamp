@@ -1,49 +1,29 @@
 package com.clxk.h.sdustcamp.ui;
 
-import com.clxk.h.sdustcamp.R;
-import com.clxk.h.sdustcamp.bean.User;
-import com.clxk.h.sdustcamp.operator.MySQLiteOperator;
-import com.clxk.h.sdustcamp.utils.CountDownTimerUtils;
-import com.clxk.h.sdustcamp.utils.UserUtils;
-import com.mob.MobSDK;
-
-import java.security.Key;
-import java.util.ArrayList;
-import java.util.List;
-
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.KeyEvent;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.clxk.h.sdustcamp.R;
+import com.clxk.h.sdustcamp.bean.User;
+import com.clxk.h.sdustcamp.utils.CountDownTimerUtils;
+import com.clxk.h.sdustcamp.utils.UserUtils;
+import com.mob.MobSDK;
+
 import cn.bmob.v3.Bmob;
-import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.FindListener;
-import cn.bmob.v3.listener.SaveListener;
 import cn.smssdk.EventHandler;
 import cn.smssdk.SMSSDK;
 
@@ -63,7 +43,6 @@ public class RegistActivity extends AppCompatActivity {
 
     private TextView tv_registTitle;
     private EventHandler eh;
-    private MySQLiteOperator mySqlLiteOperator;
     private CountDownTimerUtils myCountDownTimerUtils;
 
     @Override
@@ -83,7 +62,6 @@ public class RegistActivity extends AppCompatActivity {
         iv_logo = (ImageView)findViewById(R.id.iv_loginLogo);
 
         myCountDownTimerUtils = new CountDownTimerUtils(btn_phoneModify, 30000, 1000);
-        mySqlLiteOperator = new MySQLiteOperator(this);
         et_phoneNum.setText("");
         et_phoneKey.setText("");
         et_phoneModify.setText("");

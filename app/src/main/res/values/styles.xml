@@ -10,8 +10,9 @@
 
     <style name="MyTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowBackground">@color/smssdk_transparent</item>
+        <item name="android:windowDisablePreview">true</item>
         <item name="android:colorBackgroundCacheHint">@null</item>
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsTranslucent">false</item>
         <item name="vpiTabPageIndicatorStyle">@style/MyWidget.TabPageIndicator</item>
         <item name="vpiUnderlinePageIndicatorStyle">@style/CustomUnderlinePageIndicator</item>
 
