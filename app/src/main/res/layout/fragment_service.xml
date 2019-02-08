@@ -63,7 +63,7 @@
     <RelativeLayout
         android:id="@+id/rl_allApp"
         android:layout_width="match_parent"
-        android:layout_height="110dp"
+        android:layout_height="130dp"
         android:layout_marginTop="10dp"
         android:background="#fff">
 
@@ -81,7 +81,7 @@
         <LinearLayout
             android:id="@+id/ll_timeTable"
             android:layout_width="60dp"
-            android:layout_height="35dp"
+            android:layout_height="40dp"
             android:layout_below="@id/tv_allApp"
             android:layout_marginTop="5dp"
             android:background="#ffffffff"
@@ -110,7 +110,7 @@
         <LinearLayout
             android:id="@+id/ll_2market"
             android:layout_width="60dp"
-            android:layout_height="35dp"
+            android:layout_height="40dp"
             android:layout_marginTop="5dp"
             android:background="#ffffffff"
             android:layout_below="@id/ll_timeTable"
@@ -139,7 +139,7 @@
         <LinearLayout
             android:id="@+id/ll_mobile"
             android:layout_width="60dp"
-            android:layout_height="35dp"
+            android:layout_height="40dp"
             android:layout_marginTop="5dp"
             android:background="#ffffffff"
             android:layout_toRightOf="@id/ll_2market"
@@ -169,7 +169,7 @@
         <LinearLayout
             android:id="@+id/ll_stuCardRecharge"
             android:layout_width="60dp"
-            android:layout_height="35dp"
+            android:layout_height="40dp"
             android:layout_marginTop="5dp"
             android:background="#ffffffff"
             android:layout_toRightOf="@id/ll_mobile"
@@ -199,7 +199,7 @@
         <LinearLayout
             android:id="@+id/ll_stuClass"
             android:layout_width="60dp"
-            android:layout_height="35dp"
+            android:layout_height="40dp"
             android:layout_marginTop="5dp"
             android:background="#ffffffff"
             android:layout_alignBottom="@+id/ll_timeTable"
@@ -229,7 +229,7 @@
         <LinearLayout
             android:id="@+id/ll_mealCard"
             android:layout_width="60dp"
-            android:layout_height="35dp"
+            android:layout_height="40dp"
             android:layout_marginTop="5dp"
             android:background="#ffffffff"
             android:layout_alignBottom="@+id/ll_stuClass"
@@ -259,7 +259,7 @@
         <LinearLayout
             android:id="@+id/ll_queryScore"
             android:layout_width="60dp"
-            android:layout_height="35dp"
+            android:layout_height="40dp"
             android:layout_marginTop="5dp"
             android:background="#ffffffff"
             android:layout_alignBottom="@+id/ll_mealCard"
@@ -289,7 +289,7 @@
         <LinearLayout
             android:id="@+id/ll_library"
             android:layout_width="60dp"
-            android:layout_height="35dp"
+            android:layout_height="40dp"
             android:layout_marginTop="5dp"
             android:background="#ffffffff"
             android:layout_alignBottom="@+id/ll_queryScore"
@@ -319,7 +319,7 @@
         <LinearLayout
             android:id="@+id/ll_cet46"
             android:layout_width="60dp"
-            android:layout_height="35dp"
+            android:layout_height="40dp"
             android:layout_marginTop="5dp"
             android:background="#ffffffff"
             android:layout_alignBottom="@+id/ll_library"

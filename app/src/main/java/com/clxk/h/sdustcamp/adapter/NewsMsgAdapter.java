@@ -9,8 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.clxk.h.sdustcamp.R;
-import com.clxk.h.sdustcamp.utils.ImageLoader;
 import com.makeramen.roundedimageview.RoundedImageView;
 
 import java.io.IOException;
@@ -62,19 +62,9 @@ public class NewsMsgAdapter extends ArrayAdapter {
         Log.i("NewsgAdapter",userInfo.getAvatar());
         Log.i("NewsgAdapter","aaa");
         final Activity a = (Activity) viewHolder.riv_news_msg_avator.getContext();
-        a.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                if(userInfo.getAvatar() != null) {
-                    try {
-                        ImageLoader.getInstance().displayImage(viewHolder.riv_news_msg_avator,userInfo.getAvatar());
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        });
-
+        if(userInfo.getAvatar() != null) {
+            Glide.with(viewHolder.riv_news_msg_avator.getContext()).load(userInfo.getAvatar()).into(viewHolder.riv_news_msg_avator);
+        }
         return convertView;
     }
 

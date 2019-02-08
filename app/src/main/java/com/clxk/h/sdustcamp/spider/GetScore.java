@@ -36,7 +36,7 @@ public class GetScore {
         Connection.Response response = Jsoup.connect(url).method(Connection.Method.GET)
                 .userAgent("Mozilla").header("Accept","text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8")
                 .cookies(cookie).timeout(3000).execute();
-        if(response.statusCode() == 404) {
+        if(response.statusCode() != 200) {
             return null;
         } else {
             Document doc = response.parse();

@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.clxk.h.sdustcamp.MyApplication;
 import com.clxk.h.sdustcamp.R;
 import com.clxk.h.sdustcamp.bean.User;
@@ -22,7 +23,6 @@ import com.clxk.h.sdustcamp.ui.MineChangePassword;
 import com.clxk.h.sdustcamp.ui.SettingActivity;
 import com.clxk.h.sdustcamp.ui.UserInfoActivity;
 import com.clxk.h.sdustcamp.ui.UserProf;
-import com.clxk.h.sdustcamp.utils.ImageLoader;
 import com.makeramen.roundedimageview.RoundedImageView;
 
 import java.io.IOException;
@@ -39,8 +39,6 @@ public class MineFragment extends Fragment {
     private LinearLayout ll_setting;
     private LinearLayout ll_modifyKey;
     private LinearLayout ll_stuId;
-    private LinearLayout ll_stuQQ;
-    private LinearLayout ll_stuWechat;
 
     private TextView tv_signIn;
     private RoundedImageView iv_prof;
@@ -84,8 +82,6 @@ public class MineFragment extends Fragment {
         ll_modifyKey = currentView.findViewById(R.id.ll_modifyKey);
         ll_setting = currentView.findViewById(R.id.ll_setting);
         ll_stuId = currentView.findViewById(R.id.ll_stuId);
-        ll_stuQQ = currentView.findViewById(R.id.ll_stuQQ);
-        ll_stuWechat = currentView.findViewById(R.id.ll_stuWecha);
 
         tv_signIn = currentView.findViewById(R.id.tv_signIn);
         iv_prof = currentView.findViewById(R.id.iv_prof);
@@ -104,16 +100,7 @@ public class MineFragment extends Fragment {
                 tv_signIn.setText(user.getNick());
             }
             if(user.getAvatar() != null) {
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-                            ImageLoader.getInstance().displayImage(iv_prof,user.getAvatar().getFileUrl());
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                });
+                Glide.with(getContext()).load(user.getAvatar().getFileUrl()).into(iv_prof);
             }
         }
 

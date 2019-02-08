@@ -2,78 +2,143 @@ package com.clxk.h.sdustcamp.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ListView;
-import android.widget.Toast;
 
+import com.ajguan.library.EasyRefreshLayout;
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.clxk.h.sdustcamp.MyApplication;
 import com.clxk.h.sdustcamp.R;
-import com.clxk.h.sdustcamp.adapter.UpdatingsAdapter;
+import com.clxk.h.sdustcamp.adapter.UpdatingsKDYWAdapter;
 import com.clxk.h.sdustcamp.bean.Updatings;
-import com.clxk.h.sdustcamp.spider.Crawler;
+import com.clxk.h.sdustcamp.listener.EndScrollListener;
+import com.clxk.h.sdustcamp.spider.GetKDXW;
 import com.clxk.h.sdustcamp.ui.UpdatingsKDYW;
 
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
-
-import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.FindListener;
 
 public class UpdatingsKDYWFragment extends Fragment {
 
     private View currentView;
 
-    private Crawler crawler;
 
-    private UpdatingsAdapter myAdapter;
     private ArrayList<Updatings> source;
-    private ListView lv_updatings;
+    private RecyclerView rv_updatings;
+
+    private LinearLayoutManager linearLayoutManager;
+    private UpdatingsKDYWAdapter kdywAdapter;
+    private EasyRefreshLayout erl_updatings_kdyw;
+    private ArrayList<Updatings> curSources;
+
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        currentView =  inflater.inflate(R.layout.fragment_updatings_kdyw,container,false);
+        currentView = inflater.inflate(R.layout.fragment_updatings_kdyw, container, false);
 
         initView();
 
         initEvent();
 
-        crawler.GetUpdatingKDYW(getContext());
-
         getKDXW();
+
 
         return currentView;
     }
+
+    private void getKDXW() {
+        new Thread() {
+            @Override
+            public void run() {
+                try {
+                    source = (ArrayList<Updatings>) GetKDXW.getKDYW(null);
+                    Message msg = new Message();
+                    msg.what = 1;
+                    msg.obj = source;
+                    handler.sendMessage(msg);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }.start();
+    }
+
+    public Handler handler = new Handler() {
+
+        @Override
+        public void handleMessage(Message msg) {
+            if (msg.what == 1) {
+                curSources.clear();
+                for (int i = 0; i < 10 && i < source.size(); i++) {
+                    curSources.add(source.get(i));
+                }
+                kdywAdapter = new UpdatingsKDYWAdapter(R.layout.updating_item, curSources);
+                rv_updatings.setAdapter(kdywAdapter);
+                kdywAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                        Log.i("qqq","dasdass");
+                        MyApplication.getInstance().updatings = source.get(position);
+                        Intent intent = new Intent(getActivity(), UpdatingsKDYW.class);
+                        startActivity(intent);
+                        getActivity().onBackPressed();
+                    }
+                });
+            }
+        }
+    };
 
     /**
      * View事件
      */
     private void initEvent() {
 
-        lv_updatings.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        erl_updatings_kdyw.addEasyEvent(new EasyRefreshLayout.EasyEvent() {
+            @Override
+            public void onLoadMore() {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        final int len = kdywAdapter.getData().size();
+                        final List<Updatings> cur = new ArrayList<>();
+                        for (int i = len; i < len + 10 && i < source.size(); i++) {
+                            cur.add(source.get(i));
+                        }
+                        erl_updatings_kdyw.loadMoreComplete(new EasyRefreshLayout.Event() {
+                            @Override
+                            public void complete() {
+                                kdywAdapter.getData().addAll(cur);
+                                kdywAdapter.notifyDataSetChanged();
+                            }
+                        }, 500);
+                    }
+                },2000);
+            }
 
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // TODO Auto-generated method stub
-                Updatings tt = source.get(position);
-                Intent intent = new Intent(getActivity(), UpdatingsKDYW.class);
-                intent.putExtra("Updatings", (Parcelable)tt);
-                startActivity(intent);
-                getActivity().onBackPressed();
+            public void onRefreshing() {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        getKDXW();
+                        erl_updatings_kdyw.refreshComplete();
+                    }
+                },1000);
             }
         });
-
     }
 
     /**
@@ -81,51 +146,15 @@ public class UpdatingsKDYWFragment extends Fragment {
      */
     private void initView() {
 
-        lv_updatings = currentView.findViewById(R.id.lv_updatings_kdyw);
+        rv_updatings = currentView.findViewById(R.id.rv_updatings_kdyw);
 
-        crawler = new Crawler();
-        source = new ArrayList<Updatings>();
+        linearLayoutManager = new LinearLayoutManager(getContext());
+        rv_updatings.setLayoutManager(linearLayoutManager);
+        erl_updatings_kdyw = currentView.findViewById(R.id.erl_updatings_kdyw);
+
+        curSources = new ArrayList<>();
+        source = new ArrayList<>();
 
     }
 
-    /**
-     * 返回Bmob科大新闻信息到source
-     */
-    private void getKDXW() {
-        BmobQuery<Updatings> bmobQuery = new BmobQuery<Updatings>();
-        bmobQuery.findObjects(new FindListener<Updatings>() {
-
-            private List<Updatings> object;
-            private BmobException arg1;
-
-            @Override
-            public void done(List<Updatings> object, BmobException arg1) {
-                this.object = object;
-                this.arg1 = arg1;
-                // TODO Auto-generated method stub
-                if(arg1 == null) {
-                    Log.i("查询成功：共" + object.size() + "条数据。","123");
-                    for(Updatings t: object) {
-                        source.add(t);
-                        Log.i("111","1234");
-                    }
-                    Log.i("qyqyqyq",source.size() + "");
-                    if(source.size() == 0) {
-                        Toast.makeText(getContext(), "网络错误，请设置网络后再试", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-                    Collections.sort(source,new Comparator<Updatings>() {
-                        @Override
-                        public int compare(Updatings o1, Updatings o2) {
-                            return o2.getTime().compareTo(o1.getTime());
-                        }
-                    });
-                    myAdapter = new UpdatingsAdapter(getContext(), R.layout.updating_item, source);
-                    lv_updatings.setAdapter(myAdapter);
-                } else {
-                    Toast.makeText(getContext(), "网络错误，请设置网络后再试", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-    }
 }

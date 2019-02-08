@@ -12,13 +12,13 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.clxk.h.sdustcamp.MyApplication;
 import com.clxk.h.sdustcamp.R;
 import com.clxk.h.sdustcamp.base.MyBaseActivity;
 import com.clxk.h.sdustcamp.bean.NewFriend;
 import com.clxk.h.sdustcamp.bean.User;
 import com.clxk.h.sdustcamp.message.AddFriendMessage;
-import com.clxk.h.sdustcamp.utils.ImageLoader;
 import com.makeramen.roundedimageview.RoundedImageView;
 
 import java.io.IOException;
@@ -34,7 +34,6 @@ import cn.bmob.newim.core.ConnectionStatus;
 import cn.bmob.newim.listener.ConnectListener;
 import cn.bmob.newim.listener.ConnectStatusChangeListener;
 import cn.bmob.newim.listener.MessageSendListener;
-import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.exception.BmobException;
 
@@ -128,19 +127,9 @@ public class ImStrangerInfo extends MyBaseActivity implements View.OnClickListen
                 btn_im_user_chatAsStranger.setVisibility(btn_im_user_add.INVISIBLE);
             }
         }
-
-
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    if(stranger.getAvatar() != null)
-                        ImageLoader.getInstance().displayImage(riv_im_user_avatar,stranger.getAvatar().getFileUrl());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+        if(stranger.getAvatar() != null) {
+            Glide.with(riv_im_user_avatar).load(stranger.getAvatar().getFileUrl()).into(riv_im_user_avatar);
+        }
     }
 
     @Override

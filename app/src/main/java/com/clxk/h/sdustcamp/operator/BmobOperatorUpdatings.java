@@ -3,7 +3,6 @@ package com.clxk.h.sdustcamp.operator;
 import android.content.Context;
 import android.util.Log;
 
-import com.clxk.h.sdustcamp.adapter.UpdatingsAdapter;
 import com.clxk.h.sdustcamp.bean.Updatings;
 
 import java.util.ArrayList;
@@ -16,7 +15,7 @@ import cn.bmob.v3.listener.SaveListener;
 import cn.bmob.v3.listener.UpdateListener;
 
 public class BmobOperatorUpdatings {
-    private static Updatings node;
+   /* private static Updatings node;
     private static Context context;
 
     private UpdatingsAdapter myAdapter;
@@ -95,6 +94,6 @@ public class BmobOperatorUpdatings {
                 }
             }
         });
-    }
+    }*/
 
 }

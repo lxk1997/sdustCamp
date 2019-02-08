@@ -1,7 +1,8 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:orientation="vertical"
     android:background="#f0eef4" >
 
     <TextView
@@ -14,46 +15,92 @@
         android:drawableLeft="@drawable/arrowleft"
         android:gravity="center|left"
         android:background="#fafafc"
-        android:layout_alignParentTop="true"
         android:paddingLeft="10dp"/>
 
-    <Button
-        android:id="@+id/btn_update"
+    <LinearLayout
+        android:id="@+id/ll_update"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:background="#fafafc"
-        android:paddingLeft="10dp"
-        android:text="   检查更新"
-        android:textColor="#5e5e5e"
-        android:gravity="center|left"
+        android:orientation="horizontal">
 
-        android:layout_below="@id/tv_titleSetting"
-        android:layout_marginTop="7dp"
-        android:drawableLeft="@drawable/update"/>
+        <ImageButton
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="15dp"
+            android:background="#fafafc"
+            android:scaleType="fitXY"
+            android:clickable="false"
+            android:src="@drawable/update" />
 
-    <Button
-        android:id="@+id/btn_feedBack"
+        <TextView
+            android:id="@+id/btn_update"
+            android:layout_width="1dp"
+            android:layout_height="50dp"
+            android:background="#fafafc"
+            android:gravity="center|left"
+            android:text="   检查更新"
+            android:textColor="#5e5e5e"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_feedBack"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@id/btn_update"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:background="#fafafc"
-        android:paddingLeft="10dp"
-        android:text="   用户反馈"
-        android:textColor="#5e5e5e"
-        android:gravity="center|left"
-        android:drawableLeft="@drawable/feedback"/>
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/btn_about"
+        <ImageButton
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="15dp"
+            android:background="#fafafc"
+            android:scaleType="fitXY"
+            android:clickable="false"
+            android:src="@drawable/feedback" />
+
+        <TextView
+            android:id="@+id/btn_feedBack"
+            android:layout_width="1dp"
+            android:layout_height="50dp"
+            android:background="#fafafc"
+            android:gravity="center|left"
+            android:text="   用户反馈"
+            android:textColor="#5e5e5e"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_about"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@id/btn_feedBack"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:background="#fafafc"
-        android:paddingLeft="10dp"
-        android:text="   关于我们"
-        android:textColor="#5e5e5e"
-        android:gravity="center|left"
-        android:drawableLeft="@drawable/about"/>"
+        android:orientation="horizontal">
 
+        <ImageButton
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="15dp"
+            android:background="#fafafc"
+            android:scaleType="fitXY"
+            android:clickable="false"
+            android:src="@drawable/about" />
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/btn_about"
+            android:layout_width="1dp"
+            android:layout_height="50dp"
+            android:background="#fafafc"
+            android:gravity="center|left"
+            android:text="   关于我们"
+            android:textColor="#5e5e5e"
+            android:layout_weight="1"/>
+    </LinearLayout>
+</LinearLayout>

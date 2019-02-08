@@ -67,7 +67,7 @@ public class ServiceFragment extends Fragment {
         ll_stuClass = currentView.findViewById(R.id.ll_stuClass);
         ll_queryScore = currentView.findViewById(R.id.ll_queryScore);
 
-        et_search = currentView.findViewById(R.id.et_search);
+      //  et_search = currentView.findViewById(R.id.et_search);
 
     }
 

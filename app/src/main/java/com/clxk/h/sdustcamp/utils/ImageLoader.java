@@ -47,12 +47,12 @@ public class ImageLoader {
         }
     }
 
-    public void displayImage(ImageView view, String url) throws IOException{
+    public void displayImage(ImageView view, String url, String tag) throws IOException{
         Bitmap bitmap = getBitmapFromCache(url);
-        if(bitmap != null) {
+        if(bitmap != null && view.getTag().equals(tag)) {
             view.setImageBitmap(bitmap);
         } else {
-            downloadImage(view, url);
+            downloadImage(view, url, tag);
         }
     }
 
@@ -76,7 +76,7 @@ public class ImageLoader {
         }
     }
 
-    public void downloadImage(final ImageView view, final String url) {
+    public void downloadImage(final ImageView view, final String url, final String tag) {
 
         //456.jpg
         OkHttpUtil.get().download(url, Environment.getExternalStorageDirectory().getAbsolutePath(), url.substring(url.length() - 12, url.length() - 4) + ".jpg", new OkHttpUtil.OnDownloadListener() {
@@ -84,7 +84,8 @@ public class ImageLoader {
             public void onDownloadSuccess(File file) {
                 Bitmap bitmap = BitmapUtil.radioFile(file.getAbsolutePath(),view.getWidth(), view.getHeight());
                 putBitmapToCache(bitmap, url);
-                view.setImageBitmap(bitmap);
+                if(view.getTag().equals(tag))
+                    view.setImageBitmap(bitmap);
             }
 
             @Override

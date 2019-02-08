@@ -107,9 +107,9 @@ public class ConnectStuId extends MyBaseActivity implements View.OnClickListener
             @Override
             public void run() {
                 try {
-                    AutoLogin.authLogin(code, pass, authcode);
+                    int flag = AutoLogin.authLogin(code, pass, authcode);
                     Message msg = new Message();
-                    msg.what = 2;
+                    msg.what = 2+flag;
                     handle.sendMessage(msg);
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -143,7 +143,23 @@ public class ConnectStuId extends MyBaseActivity implements View.OnClickListener
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        getSafeCode();
+                        et_sdustcode.setText("");
+                        et_sdustpass.setText("");
+                        et_sdustvertif.setText("");
+                        Toast.makeText(ConnectStuId.this, "输入有误", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+            if(msg.what == 3) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
                         Toast.makeText(ConnectStuId.this, "绑定学号成功", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(ConnectStuId.this, MainActivity.class);
+                        intent.putExtra("frId",R.id.ll_mine);
+                        startActivity(intent);
+                        finish();
                     }
                 });
             }

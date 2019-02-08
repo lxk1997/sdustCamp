@@ -38,7 +38,7 @@ public class GetSchedule {
                 .userAgent("Mozilla").header("Accept","text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8")
                 .cookies(cookie).timeout(3000);
         Connection.Response res = connection.execute();
-        if(res.statusCode() == 404) {
+        if(res.parse().getElementById("kbtable") == null) {
             return null;
         } else {
             Document doc = res.parse();

@@ -10,11 +10,11 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.clxk.h.sdustcamp.MyApplication;
 import com.clxk.h.sdustcamp.R;
 import com.clxk.h.sdustcamp.bean.User;
 import com.clxk.h.sdustcamp.ui.ImStrangerInfo;
-import com.clxk.h.sdustcamp.utils.ImageLoader;
 import com.makeramen.roundedimageview.RoundedImageView;
 
 import java.io.IOException;
@@ -52,18 +52,9 @@ public class SearchUserAdapter extends ArrayAdapter {
             viewHolder.tv_user_nick.setText(user.getNick());
         }
         final Activity a = (Activity) viewHolder.riv_user_avatar.getContext();
-        a.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                if(user.getAvatar() != null) {
-                    try {
-                        ImageLoader.getInstance().displayImage(viewHolder.riv_user_avatar,user.getAvatar().getFileUrl());
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        });
+        if(user.getAvatar() != null) {
+            Glide.with(viewHolder.riv_user_avatar.getContext()).load(user.getAvatar().getFileUrl()).into(viewHolder.riv_user_avatar);
+        }
         viewHolder.btn_im_user_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

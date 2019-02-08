@@ -107,7 +107,7 @@
             android:layout_weight="1"/>
     </LinearLayout>
 
-    <LinearLayout
+    <!--<LinearLayout
         android:id="@+id/ll_stuQQ"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -161,7 +161,7 @@
             android:gravity="center|left"
             android:text="   绑定微信"
             android:textColor="#5e5e5e" />
-    </LinearLayout>
+    </LinearLayout>-->
 
     <LinearLayout
         android:id="@+id/ll_setting"

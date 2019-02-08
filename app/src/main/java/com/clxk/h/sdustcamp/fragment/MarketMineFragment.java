@@ -15,12 +15,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.clxk.h.sdustcamp.R;
 import com.clxk.h.sdustcamp.bean.User;
 import com.clxk.h.sdustcamp.ui.MainActivity;
 import com.clxk.h.sdustcamp.ui.MarketMineAddress;
 import com.clxk.h.sdustcamp.ui.MarketMineGoods;
-import com.clxk.h.sdustcamp.utils.ImageLoader;
 import com.makeramen.roundedimageview.RoundedImageView;
 
 import java.io.IOException;
@@ -98,16 +98,7 @@ public class MarketMineFragment extends Fragment implements View.OnClickListener
                 tv_marketMineUserName.setText(user.getNick());
             }
             if(user.getAvatar() != null) {
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-                            ImageLoader.getInstance().displayImage(riv_marketMineProf,user.getAvatar().getFileUrl());
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                });
+                Glide.with(riv_marketMineProf).load(user.getAvatar().getFileUrl()).into(riv_marketMineProf);
             }
         }
 

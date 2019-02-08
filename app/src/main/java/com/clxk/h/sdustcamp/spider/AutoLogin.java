@@ -2,6 +2,7 @@ package com.clxk.h.sdustcamp.spider;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import com.clxk.h.sdustcamp.MyApplication;
 import com.clxk.h.sdustcamp.bean.Score;
@@ -48,7 +49,7 @@ public class AutoLogin {
     /**
      * 登录教务系统
      */
-    public static void initLogin(String code,String username, String password) throws IOException {
+    public static int initLogin(String code,String username, String password) throws IOException {
         try {
             Map<String, String> data = new HashMap<String, String>();
             data.put("view", "1");
@@ -59,10 +60,15 @@ public class AutoLogin {
                             "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8")
                     .userAgent("Mozilla").method(Connection.Method.POST).data(data).cookies(cookie).timeout(3000);
             Connection.Response response = connect.execute();
+            if(response.statusCode() != 200) {
+                Log.i("statue:","404");
+                return 0;
+            }
             localSave.setCookies(response.cookies());
         } catch (IOException e) {
 
         }
+        return 1;
     }
 
     /**
@@ -100,8 +106,12 @@ public class AutoLogin {
     }
 
     public static int authLogin(String username, String password, String code) throws IOException {
-        initLogin(code,username,password);
+        int flag = initLogin(code,username,password);
+        if(flag == 0) return 0;
         List<TimeTable> schedules = GetSchedule.getSchedule();
+        if(schedules == null) {
+            return 0;
+        }
         MySQLiteOperatorOfSchedule sqLiteOperator = new MySQLiteOperatorOfSchedule(MyApplication.getInstance().context);
         sqLiteOperator.deleteAll();
         for(TimeTable t : schedules) {

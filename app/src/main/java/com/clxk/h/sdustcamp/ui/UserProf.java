@@ -1,7 +1,6 @@
 package com.clxk.h.sdustcamp.ui;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
@@ -18,10 +17,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.clxk.h.sdustcamp.R;
 import com.clxk.h.sdustcamp.base.MyBaseActivity;
 import com.clxk.h.sdustcamp.bean.User;
-import com.clxk.h.sdustcamp.utils.ImageLoader;
 import com.clxk.h.sdustcamp.utils.PathGet;
 import com.makeramen.roundedimageview.RoundedImageView;
 
@@ -30,13 +29,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.List;
 
-import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BmobFile;
 import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.UpdateListener;
 import cn.bmob.v3.listener.UploadFileListener;
 
@@ -85,16 +81,7 @@ public class UserProf extends MyBaseActivity {
         if(user.getAvatar() == null) {
             iv_userProf.setImageResource(R.drawable.profile);
         } else {
-            UserProf.this.runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        ImageLoader.getInstance().displayImage(iv_userProf,user.getAvatar().getFileUrl());
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            });
+            Glide.with(iv_userProf.getContext()).load(user.getAvatar().getFileUrl()).into(iv_userProf);
         }
 
         Drawable drawable = ContextCompat.getDrawable(this,R.drawable.arrowleft);

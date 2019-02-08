@@ -24,6 +24,7 @@ import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.clxk.h.sdustcamp.MyApplication;
 import com.clxk.h.sdustcamp.R;
 import com.clxk.h.sdustcamp.bean.Updatings;
 
@@ -66,10 +67,10 @@ public class UpdatingsKDYW extends Activity {
         });
         Log.i("hehehe","12131232323");
 
-        Intent intent = getIntent();
-        Updatings node = intent.getParcelableExtra("Updatings");
+
+        Updatings node = MyApplication.getInstance().updatings;
         tv_titlekdyw.setText(node.getTitle().toString());
-        tv_timekdyw.setText("时间 " + node.getTime().toString() + " · 点击量 " + node.getRate().toString());
+        tv_timekdyw.setText("时间 " + node.getTime());
         tv_contentkdyw.setText(node.getContext().toString());
         tv_contentkdyw.setMovementMethod(ScrollingMovementMethod.getInstance());
     }
