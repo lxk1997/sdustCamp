@@ -29,7 +29,6 @@ public class LoginInActivity extends AppCompatActivity {
 
     private Button btn_loginIn;
 
-    private boolean is_registed;
     private String phoneNum;
     private String phoneKey;
     private String password;

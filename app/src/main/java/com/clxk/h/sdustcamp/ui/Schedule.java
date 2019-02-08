@@ -117,66 +117,66 @@ public class Schedule extends AppCompatActivity{
         setContentView(R.layout.activity_schedule);
 
         //find
-        sp_week = (Spinner)findViewById(R.id.sp_week);
-        btn_11 = (Button)findViewById(R.id.btn_11);
-        btn_12 = (Button)findViewById(R.id.btn_12);
-        btn_13 = (Button)findViewById(R.id.btn_13);
-        btn_14 = (Button)findViewById(R.id.btn_14);
-        btn_15 = (Button)findViewById(R.id.btn_15);
-        btn_16 = (Button)findViewById(R.id.btn_16);
-        btn_17 = (Button)findViewById(R.id.btn_17);
-        btn_21 = (Button)findViewById(R.id.btn_21);
-        btn_22 = (Button)findViewById(R.id.btn_22);
-        btn_23 = (Button)findViewById(R.id.btn_23);
-        btn_24 = (Button)findViewById(R.id.btn_24);
-        btn_25 = (Button)findViewById(R.id.btn_25);
-        btn_26 = (Button)findViewById(R.id.btn_26);
-        btn_27 = (Button)findViewById(R.id.btn_27);
-        btn_31 = (Button)findViewById(R.id.btn_31);
-        btn_32 = (Button)findViewById(R.id.btn_32);
-        btn_33 = (Button)findViewById(R.id.btn_33);
-        btn_34 = (Button)findViewById(R.id.btn_34);
-        btn_35 = (Button)findViewById(R.id.btn_35);
-        btn_36 = (Button)findViewById(R.id.btn_36);
-        btn_37 = (Button)findViewById(R.id.btn_37);
-        btn_41 = (Button)findViewById(R.id.btn_41);
-        btn_42 = (Button)findViewById(R.id.btn_42);
-        btn_43 = (Button)findViewById(R.id.btn_43);
-        btn_44 = (Button)findViewById(R.id.btn_44);
-        btn_45 = (Button)findViewById(R.id.btn_45);
-        btn_46 = (Button)findViewById(R.id.btn_46);
-        btn_47 = (Button)findViewById(R.id.btn_47);
-        ll_week = (LinearLayout)findViewById(R.id.ll_week);
-        ll_day = (LinearLayout)findViewById(R.id.ll_day);
-        ll_classItem = (LinearLayout)findViewById(R.id.ll_classItem);
-        ll_classInput = (LinearLayout)findViewById(R.id.ll_classInput);
-        ll_ifInput = (LinearLayout)findViewById(R.id.ll_ifInput);
+        sp_week = findViewById(R.id.sp_week);
+        btn_11 = findViewById(R.id.btn_11);
+        btn_12 = findViewById(R.id.btn_12);
+        btn_13 = findViewById(R.id.btn_13);
+        btn_14 = findViewById(R.id.btn_14);
+        btn_15 = findViewById(R.id.btn_15);
+        btn_16 = findViewById(R.id.btn_16);
+        btn_17 = findViewById(R.id.btn_17);
+        btn_21 = findViewById(R.id.btn_21);
+        btn_22 = findViewById(R.id.btn_22);
+        btn_23 = findViewById(R.id.btn_23);
+        btn_24 = findViewById(R.id.btn_24);
+        btn_25 = findViewById(R.id.btn_25);
+        btn_26 = findViewById(R.id.btn_26);
+        btn_27 = findViewById(R.id.btn_27);
+        btn_31 = findViewById(R.id.btn_31);
+        btn_32 = findViewById(R.id.btn_32);
+        btn_33 = findViewById(R.id.btn_33);
+        btn_34 = findViewById(R.id.btn_34);
+        btn_35 = findViewById(R.id.btn_35);
+        btn_36 = findViewById(R.id.btn_36);
+        btn_37 = findViewById(R.id.btn_37);
+        btn_41 = findViewById(R.id.btn_41);
+        btn_42 = findViewById(R.id.btn_42);
+        btn_43 = findViewById(R.id.btn_43);
+        btn_44 = findViewById(R.id.btn_44);
+        btn_45 = findViewById(R.id.btn_45);
+        btn_46 = findViewById(R.id.btn_46);
+        btn_47 = findViewById(R.id.btn_47);
+        ll_week = findViewById(R.id.ll_week);
+        ll_day = findViewById(R.id.ll_day);
+        ll_classItem = findViewById(R.id.ll_classItem);
+        ll_classInput = findViewById(R.id.ll_classInput);
+        ll_ifInput = findViewById(R.id.ll_ifInput);
         if(!is_item) ll_classItem.setVisibility(View.GONE);
         ll_classInput.setVisibility(View.GONE);
         ll_ifInput.setVisibility(View.GONE);
 
-        et_js = (EditText)findViewById(R.id.et_js);
-        et_zc = (EditText)findViewById(R.id.et_zc);
-        et_kcmc = (EditText)findViewById(R.id.et_kcmc);
-        et_skjs = (EditText)findViewById(R.id.et_skjs);
+        et_js = findViewById(R.id.et_js);
+        et_zc = findViewById(R.id.et_zc);
+        et_kcmc = findViewById(R.id.et_kcmc);
+        et_skjs = findViewById(R.id.et_skjs);
 
-        tv_schedule = (TextView)findViewById(R.id.tv_schedule);
+        tv_schedule = findViewById(R.id.tv_schedule);
 
-        tv_day1 = (TextView)findViewById(R.id.tv_day1);
-        tv_week1 = (TextView)findViewById(R.id.tv_week1);
+        tv_day1 = findViewById(R.id.tv_day1);
+        tv_week1 = findViewById(R.id.tv_week1);
 
-        tv_kcmcc = (TextView)findViewById(R.id.tv_kcmcc);
-        tv_zcc = (TextView)findViewById(R.id.tv_zcc);
-        tv_jsc = (TextView)findViewById(R.id.tv_jsc);
-        tv_skjsc = (TextView)findViewById(R.id.tv_skjsc);
+        tv_kcmcc = findViewById(R.id.tv_kcmcc);
+        tv_zcc = findViewById(R.id.tv_zcc);
+        tv_jsc = findViewById(R.id.tv_jsc);
+        tv_skjsc = findViewById(R.id.tv_skjsc);
 
-        btn_closeItem = (Button)findViewById(R.id.btn_closeItem);
-        btn_sureItem = (Button)findViewById(R.id.btn_sureItem);
-        btn_quitItem = (Button)findViewById(R.id.btn_quitItem);
+        btn_closeItem = findViewById(R.id.btn_closeItem);
+        btn_sureItem = findViewById(R.id.btn_sureItem);
+        btn_quitItem = findViewById(R.id.btn_quitItem);
 
-        btn_iedit = (Button)findViewById(R.id.btn_iedit);
-        btn_dedit = (Button)findViewById(R.id.btn_dedit);
-        btn_cedit = (Button)findViewById(R.id.btn_cedit);
+        btn_iedit = findViewById(R.id.btn_iedit);
+        btn_dedit = findViewById(R.id.btn_dedit);
+        btn_cedit = findViewById(R.id.btn_cedit);
 
         mySql = new MySQLiteOperatorOfSchedule(this);
 
@@ -295,7 +295,7 @@ public class Schedule extends AppCompatActivity{
         lp_47.height = h;lp_47.width=w;
         btn_47.setLayoutParams(lp_47);
 
-        btn_schedule_left = (Button)findViewById(R.id.btn_schedule_left);
+        btn_schedule_left = findViewById(R.id.btn_schedule_left);
         //setOnClick
         String[] week = {"第1周","第2周","第3周","第4周","第5周","第6周","第7周","第8周","第9周","第10周","第11周","第12周",
                 "第13周","第14周","第15周","第16周","第17周","第18周","第19周","第20周","第21周","第22周"};
@@ -390,7 +390,7 @@ public class Schedule extends AppCompatActivity{
         });
         //更新周次
         Date current = new Date(System.currentTimeMillis());
-        String dt_start="2018-9-3";
+        String dt_start="2019-2-25";
         Calendar calendar = Calendar.getInstance();
         int year = calendar.get(Calendar.YEAR);
         int mouth = calendar.get(Calendar.MONTH)+1;
