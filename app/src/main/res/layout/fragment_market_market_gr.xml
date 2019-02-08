@@ -5,12 +5,18 @@
     android:layout_height="match_parent"
     android:background="#f0eef4">
 
-    <ListView
-        android:id="@+id/lv_market_market_gr"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#fafafc"
-        android:layout_marginTop="5dp"
-        android:dividerHeight="7dp" />
+    <com.ajguan.library.EasyRefreshLayout
+        android:id="@+id/erl_market_market_gr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_market_market_gr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fafafc"
+            android:layout_marginTop="5dp">
+        </android.support.v7.widget.RecyclerView>
+    </com.ajguan.library.EasyRefreshLayout>
+
 
 </LinearLayout>

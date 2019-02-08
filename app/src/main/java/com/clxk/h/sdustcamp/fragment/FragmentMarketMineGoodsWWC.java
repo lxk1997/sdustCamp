@@ -87,8 +87,8 @@ public class FragmentMarketMineGoodsWWC extends Fragment implements AdapterView.
                             source.add(mg);
                         }
                     }
-                    mMarketAdapter = new MarketBuyAdapter(getContext(),R.layout.market_buy_item,source);
-                    lv_market_mine_goods_wwc.setAdapter(mMarketAdapter);
+                    mMarketAdapter = new MarketBuyAdapter(R.layout.market_buy_item,source);
+                   // lv_market_mine_goods_wwc.setAdapter(mMarketAdapter);
 
                 } else {
                     throw new IllegalArgumentException("网络连接失败！");

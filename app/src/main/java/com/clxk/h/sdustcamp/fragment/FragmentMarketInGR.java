@@ -6,6 +6,8 @@ import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +16,8 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.ajguan.library.EasyRefreshLayout;
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.clxk.h.sdustcamp.MyApplication;
 import com.clxk.h.sdustcamp.R;
 import com.clxk.h.sdustcamp.adapter.MarketBuyAdapter;
@@ -36,7 +40,9 @@ public class FragmentMarketInGR extends Fragment {
 
     private View currentView;
 
-    private ListView lv_market_market_gr;
+    private RecyclerView rv_market_market_gr;
+    private EasyRefreshLayout erl_market_market_gr;
+    private LinearLayoutManager linearLayoutManager;
     private MarketBuyAdapter myAdapter;
     private ArrayList<MarketGoods> source;
 
@@ -59,18 +65,6 @@ public class FragmentMarketInGR extends Fragment {
     private void initEvent() {
 
         getSource();
-
-        lv_market_market_gr.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                MarketGoods tt = source.get(position);
-                MyApplication.getInstance().marketGoods = tt;
-                Intent intent = new Intent(getContext(), MarketBuyGoodsDetails.class);
-                intent.putExtra("Goods", (Parcelable)tt);
-                startActivity(intent);
-                getActivity().onBackPressed();
-            }
-        });
     }
 
     /**
@@ -78,7 +72,10 @@ public class FragmentMarketInGR extends Fragment {
      */
     private void initView() {
 
-        lv_market_market_gr = currentView.findViewById(R.id.lv_market_market_gr);
+        rv_market_market_gr = currentView.findViewById(R.id.rv_market_market_gr);
+        erl_market_market_gr = currentView.findViewById(R.id.erl_market_market_gr);
+        linearLayoutManager = new LinearLayoutManager(getContext());
+        rv_market_market_gr.setLayoutManager(linearLayoutManager);
 
         source = new ArrayList<>();
     }
@@ -92,13 +89,20 @@ public class FragmentMarketInGR extends Fragment {
             @Override
             public void done(List<MarketGoods> list, BmobException e) {
                 if(e == null) {
-                    Log.i("manyq",list.size()+"");
                     for(MarketGoods mg : list) {
                         source.add(mg);
-                        Log.i("manyq",mg.getgName());
                     }
-                    myAdapter = new MarketBuyAdapter(getContext(),R.layout.market_buy_item,source);
-                    lv_market_market_gr.setAdapter(myAdapter);
+                    myAdapter = new MarketBuyAdapter(R.layout.market_buy_item,source);
+                    rv_market_market_gr.setAdapter(myAdapter);
+                    myAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                            MyApplication.getInstance().marketGoods = source.get(position);
+                            Intent intent = new Intent(getContext(), MarketBuyGoodsDetails.class);
+                            startActivity(intent);
+                            getActivity().onBackPressed();
+                        }
+                    });
                 } else {
                     Toast.makeText(getContext(),"未知错误404！",Toast.LENGTH_SHORT).show();
                 }
