@@ -4,7 +4,8 @@ import android.app.Application;
 import android.content.Context;
 
 import com.clxk.h.sdustcamp.bean.MarketGoods;
-import com.clxk.h.sdustcamp.bean.Updatings;
+import com.clxk.h.sdustcamp.bean.UpdatingsKDYW;
+import com.clxk.h.sdustcamp.bean.UpdatingsSPKD;
 import com.clxk.h.sdustcamp.bean.User;
 import com.clxk.h.sdustcamp.handle.MyMessageHandle;
 
@@ -20,7 +21,8 @@ public class MyApplication extends Application {
 
     private static MyApplication myApp;
     public MarketGoods marketGoods = new MarketGoods();
-    public Updatings updatings = new Updatings();
+    public UpdatingsKDYW updatings = new UpdatingsKDYW();
+    public UpdatingsSPKD updatingsSPKD = new UpdatingsSPKD();
     public User user = new User();
     public Map<String,String> cookie = new HashMap<>();
 

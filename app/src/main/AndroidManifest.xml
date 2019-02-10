@@ -33,7 +33,7 @@
             android:name=".ui.Schedule">
         </activity>
         <activity
-            android:name=".ui.UpdatingsKDYW">
+            android:name=".ui.UpdatingsKDYWActivity">
         </activity>
         <activity
             android:name=".ui.MarketActivity">
@@ -74,6 +74,7 @@
         <activity android:name=".ui.ChatActivity"/>
         <activity android:name=".ui.ConnectStuId"/>
         <activity android:name=".ui.ScoreActivity"/>
+        <activity android:name=".ui.UpdatingsSPKDActivity"/>
         <!--MOBSDK-->
         <activity
             android:name="com.mob.tools.MobUIShell"

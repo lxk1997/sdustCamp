@@ -2,8 +2,7 @@ package com.clxk.h.sdustcamp.spider;
 
 import android.support.v7.app.AppCompatActivity;
 
-import com.clxk.h.sdustcamp.bean.Updatings;
-import com.clxk.h.sdustcamp.operator.BmobOperatorUpdatings;
+import com.clxk.h.sdustcamp.bean.UpdatingsKDYW;
 
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
@@ -20,9 +19,9 @@ public class GetKDXW extends AppCompatActivity {
     private static String url = "http://www.sdust.edu.cn/sylm/kdyw.htm";
     private static String url_pre = "http://www.sdust.edu.cn";
 
-    public static List<Updatings> getKDYW(String title) throws IOException {
+    public static List<UpdatingsKDYW> getKDYW(String title) throws IOException {
 
-        List<Updatings> updatings = new ArrayList<>();
+        List<UpdatingsKDYW> updatings = new ArrayList<>();
         Connection.Response response = Jsoup.connect(url).method(Connection.Method.GET).userAgent("Mozilla")
                 .timeout(3000).execute();
 
@@ -51,10 +50,10 @@ public class GetKDXW extends AppCompatActivity {
                 nodeContent += '\n';
             }
             if (url_image == null || url_image.equals("") || url_image.equals(url_pre)){
-                Updatings up = new Updatings(nodeTitle, nodeContent,nodeTime,null);
+                UpdatingsKDYW up = new UpdatingsKDYW(nodeTitle, nodeContent,nodeTime,null);
                 updatings.add(up);
             } else {
-                Updatings up = new Updatings(nodeTitle, nodeContent,nodeTime,url_image);
+                UpdatingsKDYW up = new UpdatingsKDYW(nodeTitle, nodeContent,nodeTime,url_image);
                 updatings.add(up);
             }
         }

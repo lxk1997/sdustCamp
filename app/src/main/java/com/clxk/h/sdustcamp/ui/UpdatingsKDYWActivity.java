@@ -1,34 +1,24 @@
 package com.clxk.h.sdustcamp.ui;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.KeyEvent;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.clxk.h.sdustcamp.MyApplication;
 import com.clxk.h.sdustcamp.R;
-import com.clxk.h.sdustcamp.bean.Updatings;
+import com.clxk.h.sdustcamp.base.MyBaseActivity;
+import com.clxk.h.sdustcamp.bean.UpdatingsKDYW;
 
-public class UpdatingsKDYW extends Activity {
+public class UpdatingsKDYWActivity extends MyBaseActivity {
 
     private TextView tv_titlekdyw;
     private TextView tv_timekdyw;
@@ -41,10 +31,10 @@ public class UpdatingsKDYW extends Activity {
         setContentView(R.layout.updating_kdyw);
 
         //find
-        tv_kdyw = (TextView)findViewById(R.id.tv_kdyw);
-        tv_timekdyw = (TextView)findViewById(R.id.tv_timekdyw);
-        tv_contentkdyw = (TextView)findViewById(R.id.tv_contentkdyw);
-        tv_titlekdyw = (TextView)findViewById(R.id.tv_titlekdyw);
+        tv_kdyw = findViewById(R.id.tv_kdyw);
+        tv_timekdyw = findViewById(R.id.tv_timekdyw);
+        tv_contentkdyw = findViewById(R.id.tv_contentkdyw);
+        tv_titlekdyw = findViewById(R.id.tv_titlekdyw);
 
         Drawable drawable = ContextCompat.getDrawable(this,R.drawable.arrowleft);
         drawable.setBounds(0,0,60,60);
@@ -57,7 +47,7 @@ public class UpdatingsKDYW extends Activity {
             public boolean onTouch(View v, MotionEvent event) {
                 // TODO Auto-generated method stub
                 if(event.getX() <= tv_kdyw.getCompoundDrawables()[0].getBounds().width() * 4) {
-                    Intent intent = new Intent(UpdatingsKDYW.this, MainActivity.class);
+                    Intent intent = new Intent(UpdatingsKDYWActivity.this, MainActivity.class);
                     intent.putExtra("frId",R.id.ll_updatings);
                     startActivity(intent);
                     finish();
@@ -68,7 +58,7 @@ public class UpdatingsKDYW extends Activity {
         Log.i("hehehe","12131232323");
 
 
-        Updatings node = MyApplication.getInstance().updatings;
+        UpdatingsKDYW node = MyApplication.getInstance().updatings;
         tv_titlekdyw.setText(node.getTitle().toString());
         tv_timekdyw.setText("时间 " + node.getTime());
         tv_contentkdyw.setText(node.getContext().toString());
@@ -88,7 +78,7 @@ public class UpdatingsKDYW extends Activity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if(keyCode == KeyEvent.KEYCODE_BACK) {
-            Intent intent = new Intent(UpdatingsKDYW.this, MainActivity.class);
+            Intent intent = new Intent(UpdatingsKDYWActivity.this, MainActivity.class);
             intent.putExtra("frId",R.id.ll_updatings);
             startActivity(intent);
             finish();

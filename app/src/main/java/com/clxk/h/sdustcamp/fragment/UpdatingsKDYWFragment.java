@@ -19,9 +19,10 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.clxk.h.sdustcamp.MyApplication;
 import com.clxk.h.sdustcamp.R;
 import com.clxk.h.sdustcamp.adapter.UpdatingsKDYWAdapter;
-import com.clxk.h.sdustcamp.bean.Updatings;
+
+import com.clxk.h.sdustcamp.bean.UpdatingsKDYW;
 import com.clxk.h.sdustcamp.spider.GetKDXW;
-import com.clxk.h.sdustcamp.ui.UpdatingsKDYW;
+import com.clxk.h.sdustcamp.ui.UpdatingsKDYWActivity;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -32,13 +33,13 @@ public class UpdatingsKDYWFragment extends Fragment {
     private View currentView;
 
 
-    private ArrayList<Updatings> source;
+    private ArrayList<UpdatingsKDYW> source;
     private RecyclerView rv_updatings;
 
     private LinearLayoutManager linearLayoutManager;
     private UpdatingsKDYWAdapter kdywAdapter;
     private EasyRefreshLayout erl_updatings_kdyw;
-    private ArrayList<Updatings> curSources;
+    private ArrayList<UpdatingsKDYW> curSources;
 
 
     @Nullable
@@ -62,7 +63,7 @@ public class UpdatingsKDYWFragment extends Fragment {
             @Override
             public void run() {
                 try {
-                    source = (ArrayList<Updatings>) GetKDXW.getKDYW(null);
+                    source = (ArrayList<UpdatingsKDYW>) GetKDXW.getKDYW(null);
                     Message msg = new Message();
                     msg.what = 1;
                     msg.obj = source;
@@ -83,14 +84,14 @@ public class UpdatingsKDYWFragment extends Fragment {
                 for (int i = 0; i < 10 && i < source.size(); i++) {
                     curSources.add(source.get(i));
                 }
-                kdywAdapter = new UpdatingsKDYWAdapter(R.layout.updating_item, curSources);
+                kdywAdapter = new UpdatingsKDYWAdapter(R.layout.updating_kdyw_item, curSources);
                 rv_updatings.setAdapter(kdywAdapter);
                 kdywAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
                     @Override
                     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                         Log.i("qqq","dasdass");
                         MyApplication.getInstance().updatings = source.get(position);
-                        Intent intent = new Intent(getActivity(), UpdatingsKDYW.class);
+                        Intent intent = new Intent(getActivity(), UpdatingsKDYWActivity.class);
                         startActivity(intent);
                         getActivity().onBackPressed();
                     }
@@ -111,7 +112,7 @@ public class UpdatingsKDYWFragment extends Fragment {
                     @Override
                     public void run() {
                         final int len = kdywAdapter.getData().size();
-                        final List<Updatings> cur = new ArrayList<>();
+                        final List<UpdatingsKDYW> cur = new ArrayList<>();
                         for (int i = len; i < len + 10 && i < source.size(); i++) {
                             cur.add(source.get(i));
                         }

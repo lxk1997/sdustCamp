@@ -5,20 +5,20 @@ import android.os.Parcelable;
 import cn.bmob.v3.BmobObject;
 import cn.bmob.v3.datatype.BmobFile;
 
-public class Updatings{
+public class UpdatingsKDYW{
     private String title;
     private String context;
     private String time;
     private String image;
 
-    public Updatings(String title, String context, String time, String image) {
+    public UpdatingsKDYW(String title, String context, String time, String image) {
         // TODO Auto-generated constructor stub
         this.title = title;
         this.context = context;
         this.time = time;
         this.image = image;
     }
-    public Updatings() {
+    public UpdatingsKDYW() {
 
     }
 

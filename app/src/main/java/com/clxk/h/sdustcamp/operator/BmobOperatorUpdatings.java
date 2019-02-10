@@ -1,19 +1,5 @@
 package com.clxk.h.sdustcamp.operator;
 
-import android.content.Context;
-import android.util.Log;
-
-import com.clxk.h.sdustcamp.bean.Updatings;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.FindListener;
-import cn.bmob.v3.listener.SaveListener;
-import cn.bmob.v3.listener.UpdateListener;
-
 public class BmobOperatorUpdatings {
    /* private static Updatings node;
     private static Context context;
