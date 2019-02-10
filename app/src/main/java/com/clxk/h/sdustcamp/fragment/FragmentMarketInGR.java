@@ -2,6 +2,7 @@ package com.clxk.h.sdustcamp.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -45,6 +46,7 @@ public class FragmentMarketInGR extends Fragment {
     private LinearLayoutManager linearLayoutManager;
     private MarketBuyAdapter myAdapter;
     private ArrayList<MarketGoods> source;
+    private ArrayList<MarketGoods> cursources;
 
     @Nullable
     @Override
@@ -65,6 +67,41 @@ public class FragmentMarketInGR extends Fragment {
     private void initEvent() {
 
         getSource();
+
+        erl_market_market_gr.addEasyEvent(new EasyRefreshLayout.EasyEvent() {
+            @Override
+            public void onLoadMore() {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        int len = myAdapter.getData().size();
+                        final List<MarketGoods> cur = new ArrayList<>();
+                        for(int i = len; i < len+10 && i < source.size(); i++) {
+                            cur.add(source.get(i));
+                        }
+
+                        erl_market_market_gr.loadMoreComplete(new EasyRefreshLayout.Event() {
+                            @Override
+                            public void complete() {
+                                myAdapter.getData().addAll(cur);
+                                myAdapter.notifyDataSetChanged();
+                            }
+                        },500);
+                    }
+                },2000);
+            }
+
+            @Override
+            public void onRefreshing() {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        getSource();
+                        erl_market_market_gr.refreshComplete();
+                    }
+                }, 1000);
+            }
+        });
     }
 
     /**
@@ -78,6 +115,7 @@ public class FragmentMarketInGR extends Fragment {
         rv_market_market_gr.setLayoutManager(linearLayoutManager);
 
         source = new ArrayList<>();
+        cursources = new ArrayList<>();
     }
 
     /**
@@ -89,10 +127,15 @@ public class FragmentMarketInGR extends Fragment {
             @Override
             public void done(List<MarketGoods> list, BmobException e) {
                 if(e == null) {
+                    source.clear();
                     for(MarketGoods mg : list) {
                         source.add(mg);
                     }
-                    myAdapter = new MarketBuyAdapter(R.layout.market_buy_item,source);
+                    cursources.clear();
+                    for(int i = 0; i < 10 && i < source.size(); i++) {
+                        cursources.add(source.get(i));
+                    }
+                    myAdapter = new MarketBuyAdapter(R.layout.market_buy_item,cursources);
                     rv_market_market_gr.setAdapter(myAdapter);
                     myAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
                         @Override

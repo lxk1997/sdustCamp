@@ -13,9 +13,8 @@
             android:id="@+id/rv_market_market_gr"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#fafafc"
-            android:layout_marginTop="5dp">
-        </android.support.v7.widget.RecyclerView>
+            android:background="#fcfcfc"
+            android:layout_weight="1"/>
     </com.ajguan.library.EasyRefreshLayout>
 
 

@@ -31,6 +31,5 @@ public class UpdatingsKDYWAdapter extends BaseQuickAdapter<Updatings, BaseViewHo
         } else {
             Glide.with(viewHolder.itemView.getContext()).load(R.drawable.kdywgeneral).into((ImageButton) viewHolder.getView(R.id.ib_updatingsItemImage));
         }
-
     }
 }

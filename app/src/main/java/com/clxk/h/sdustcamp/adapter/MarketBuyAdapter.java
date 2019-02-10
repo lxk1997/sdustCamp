@@ -12,6 +12,7 @@ import com.clxk.h.sdustcamp.bean.User;
 import com.makeramen.roundedimageview.RoundedImageView;
 
 import java.util.List;
+import java.util.logging.Handler;
 
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.exception.BmobException;
@@ -29,6 +30,7 @@ public class MarketBuyAdapter extends BaseQuickAdapter<MarketGoods, BaseViewHold
         super(layoutResId, data);
     }
 
+
     @Override
     protected void convert(final BaseViewHolder helper, final MarketGoods item) {
 
@@ -40,38 +42,38 @@ public class MarketBuyAdapter extends BaseQuickAdapter<MarketGoods, BaseViewHold
                     for (User u : list) {
                         if (u.getMobilePhoneNumber().trim().equals(item.getUserId().trim())) {
                             user = u;
-                            if (user.getAvatar() == null) {
-                                Glide.with(helper.itemView.getContext()).load(R.drawable.profile).into((RoundedImageView) helper.getView(R.id.iv_2marketUserPro));
-                            } else {
-                                if (user.getAvatar() != null) {
-                                    Glide.with(helper.itemView.getContext()).load(user.getAvatar().getFileUrl()).into((RoundedImageView) helper.getView(R.id.iv_2marketUserPro));
-                                }
-                                if (user.getNick() != null) {
-                                    helper.setText(R.id.tv_2marketUserName,user.getNick());
-                                } else {
-                                    helper.setText(R.id.tv_2marketUserName,user.getMobilePhoneNumber());
-                                }
-                            }
+                            setItem(user);
+                            break;
                         }
-                        break;
                     }
                 }
             }
-
+            private void setItem(User user) {
+                if (user.getAvatar() == null) {
+                    Glide.with(helper.itemView.getContext()).load(R.drawable.profile).into((RoundedImageView) helper.getView(R.id.iv_2marketUserPro));
+                } else {
+                    if (user.getAvatar() != null) {
+                        Glide.with(helper.itemView.getContext()).load(user.getAvatar().getFileUrl()).into((RoundedImageView) helper.getView(R.id.iv_2marketUserPro));
+                    }
+                    if (user.getNick() != null) {
+                        helper.setText(R.id.tv_2marketUserName,user.getNick());
+                    } else {
+                        helper.setText(R.id.tv_2marketUserName,user.getMobilePhoneNumber());
+                    }
+                }
+                if (item.getgImage1() != null) {
+                    Glide.with(helper.itemView.getContext()).load(item.getgImage1().getFileUrl()).into((ImageView)helper.getView(R.id.iv_2marketImage1));
+                }
+                if (item.getgImage2() != null) {
+                    Glide.with(helper.itemView.getContext()).load(item.getgImage2().getFileUrl()).into((ImageView)helper.getView(R.id.iv_2marketImage2));
+                }
+                if (item.getgImage3() != null) {
+                    Glide.with(helper.itemView.getContext()).load(item.getgImage3().getFileUrl()).into((ImageView)helper.getView(R.id.iv_2marketImage3));
+                }
+                helper.setText(R.id.tv_2marketMoney,item.getgPrice() + "¥");
+                helper.setText(R.id.tv_2marketUserTime,"刚刚来过");
+                helper.setText(R.id.tv_2marketRecomment,item.getgDetail());
+            }
         });
-
-        if (item.getgImage1() != null) {
-            Glide.with(helper.itemView.getContext()).load(item.getgImage1().getFileUrl()).into((ImageView)helper.getView(R.id.iv_2marketImage1));
-        }
-        if (item.getgImage2() != null) {
-            Glide.with(helper.itemView.getContext()).load(item.getgImage2().getFileUrl()).into((ImageView)helper.getView(R.id.iv_2marketImage2));
-        }
-        if (item.getgImage3() != null) {
-            Glide.with(helper.itemView.getContext()).load(item.getgImage3().getFileUrl()).into((ImageView)helper.getView(R.id.iv_2marketImage3));
-        }
-
-        helper.setText(R.id.tv_2marketMoney,item.getgPrice() + "¥");
-        helper.setText(R.id.tv_2marketUserTime,"刚刚来过");
-        helper.setText(R.id.tv_2marketRecomment,item.getgDetail());
     }
 }
