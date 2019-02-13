@@ -139,7 +139,7 @@ public class MarketBuyGoodsDetails extends AppCompatActivity implements View.OnT
                 window.setStatusBarColor(activity.getResources().getColor(colorResId));
 
                 //底部导航栏
-                //window.setNavigationBarColor(activity.getResources().getColor(colorResId));
+                //window.setNavigationBarColor(updatings_xxgg.getResources().getColor(colorResId));
             }
         } catch (Exception e) {
             e.printStackTrace();

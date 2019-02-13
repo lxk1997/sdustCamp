@@ -4,10 +4,13 @@ import android.app.Application;
 import android.content.Context;
 
 import com.clxk.h.sdustcamp.bean.MarketGoods;
+import com.clxk.h.sdustcamp.bean.Student;
 import com.clxk.h.sdustcamp.bean.UpdatingsKDYW;
 import com.clxk.h.sdustcamp.bean.UpdatingsSPKD;
+import com.clxk.h.sdustcamp.bean.UpdatingsXXGG;
 import com.clxk.h.sdustcamp.bean.User;
 import com.clxk.h.sdustcamp.handle.MyMessageHandle;
+import com.mob.MobSDK;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -23,8 +26,12 @@ public class MyApplication extends Application {
     public MarketGoods marketGoods = new MarketGoods();
     public UpdatingsKDYW updatings = new UpdatingsKDYW();
     public UpdatingsSPKD updatingsSPKD = new UpdatingsSPKD();
+    public UpdatingsXXGG updatingsXXGG = new UpdatingsXXGG();
     public User user = new User();
-    public Map<String,String> cookie = new HashMap<>();
+    public Student student = new Student();
+    public String sdust_token = "";
+    public int zc;
+    public String term;
 
     public Context context;
     @Override
@@ -33,6 +40,7 @@ public class MyApplication extends Application {
         super.onCreate();
         //TODO 集成：1.8、初始化IM SDK，并注册消息接收器
         if (getApplicationInfo().packageName.equals(getMyProcessName())){
+            MobSDK.init(this);
             BmobIM.init(this);
             BmobIM.registerDefaultMessageHandler(new MyMessageHandle());
         }

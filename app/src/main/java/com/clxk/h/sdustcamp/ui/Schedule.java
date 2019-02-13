@@ -408,7 +408,7 @@ public class Schedule extends AppCompatActivity{
         }
         //Date d2=new Date(System.currentTimeMillis());
         int weekId = (int) ((d2.getTime()-d1.getTime())/(60*60*1000*24) / 7);
-        sp_week.setSelection(weekId);
+        sp_week.setSelection(1);
     }
 
     //获得状态栏高度

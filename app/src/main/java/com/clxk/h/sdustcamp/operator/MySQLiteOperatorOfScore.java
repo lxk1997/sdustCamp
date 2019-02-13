@@ -20,42 +20,42 @@ public class MySQLiteOperatorOfScore {
     private SQLiteDatabase db;//数据库
 
     public MySQLiteOperatorOfScore(Context context) {
-        mySQLiteUtil = new MySQLiteUtil(context, "score.db", null,1);
+        mySQLiteUtil = new MySQLiteUtil(context, "scor_db", null,1);
         db = mySQLiteUtil.getWritableDatabase();
     }
 
     //add
-    public void add(String id, String term,String classId, String classname, String score, String scoretag
-            , String classprop, String credit, String gpa, String testway, String minor, String remark) {
-        db.execSQL("insert into score_db values(null,?,?,?,?,?,?,?,?,?,?,?,?)", new Object[] {id,term,classId,classname,score,scoretag,classprop,credit,gpa,testway,minor,remark});
+    public void add(String term, String classname, String score, String scoretag
+            , String classprop, String credit, String gpa, String testway, String remark) {
+        db.execSQL("insert into scor_db values(null,?,?,?,?,?,?,?,?,?)", new Object[] {term,classname,score,scoretag,classprop,credit,gpa,testway,remark});
     }
 
     //update
     public void update(Score node, int id) {
-        db.execSQL("update score_db set id=?,term=?,classId=?,className=?,score=?,scoretag=?,classprop=?, credit=?, gpa=?, testway=?,minor=?, remark=? where _id=?",new Object[] {node.getId(), node.getTerm(),
-                node.getClassId(), node.getClassname(),node.getScore(),node.getScoretag(), node.getClassprop(), node.getCredit(), node.getGpa(), node.getTestway(), node.getMinor(), node.getRemark(), id+""});
+        db.execSQL("update scor_db set term=?,className=?,score=?,scoretag=?,classprop=?, credit=?, gpa=?, testway=?,remark=? where _id=?",new Object[] {node.getTerm(),
+                 node.getClassname(),node.getScore(),node.getScoretag(), node.getClassprop(), node.getCredit(), node.getGpa(), node.getTestway(), node.getRemark(), id+""});
     }
 
     //delete
     public void delete(Object id) {
-        db.execSQL("delete from score_db where _id=?", new Object[] {id});
+        db.execSQL("delete from scor_db where _id=?", new Object[] {id});
 
     }
 
     //deleteAll
     public void deleteAll() {
-        db.execSQL("delete from score_db");
+        db.execSQL("delete from scor_db");
     }
 
     //search
-    public boolean search(String id, String term,String classId, String classname, String score, String scoretag
-            , String classprop, String credit, String gpa, String testway, String minor, String remark) {
-        Cursor cursor = db.rawQuery("select * from score_db", null);
+    public boolean search(String term,String classname, String score, String scoretag
+            , String classprop, String credit, String gpa, String testway, String remark) {
+        Cursor cursor = db.rawQuery("select * from scor_db", null);
         while (cursor.moveToNext()) {
-            if(cursor.getString(1).equals(id) &&  cursor.getString(2).equals(term) && cursor.getString(3).equals(classId)
-                    && cursor.getString(4).equals(classname) && cursor.getString(5).equals(score) && cursor.getString(6).equals(scoretag)
-                    && cursor.getString(7).equals(classprop) && cursor.getString(8).equals(credit) && cursor.getString(9).equals(gpa)
-                    && cursor.getString(10).equals(testway) && cursor.getString(11).equals(minor) && cursor.getString(12).equals(remark))
+            if(cursor.getString(1).equals(term)
+                    && cursor.getString(2).equals(classname) && cursor.getString(3).equals(score) && cursor.getString(4).equals(scoretag)
+                    && cursor.getString(5).equals(classprop) && cursor.getString(6).equals(credit) && cursor.getString(7).equals(gpa)
+                    && cursor.getString(8).equals(testway)&& cursor.getString(9).equals(remark))
                 return true;
         }
         cursor.close();
@@ -63,14 +63,14 @@ public class MySQLiteOperatorOfScore {
     }
 
     //search
-    public int getId(String id, String term,String classId, String classname, String score, String scoretag
-            , String classprop, String credit, String gpa, String testway, String minor, String remark) {
-        Cursor cursor = db.rawQuery("select * from score_db", null);
+    public int getId(String term,String classname, String score, String scoretag
+            , String classprop, String credit, String gpa, String testway,String remark) {
+        Cursor cursor = db.rawQuery("select * from scor_db", null);
         while (cursor.moveToNext()) {
-            if(cursor.getString(1).equals(id) &&  cursor.getString(2).equals(term) && cursor.getString(3).equals(classId)
-                    && cursor.getString(4).equals(classname) && cursor.getString(5).equals(score) && cursor.getString(6).equals(scoretag)
-                    && cursor.getString(7).equals(classprop) && cursor.getString(8).equals(credit) && cursor.getString(9).equals(gpa)
-                    && cursor.getString(10).equals(testway) && cursor.getString(11).equals(minor) && cursor.getString(12).equals(remark))
+            if(cursor.getString(1).equals(term)
+                    && cursor.getString(2).equals(classname) && cursor.getString(3).equals(score) && cursor.getString(4).equals(scoretag)
+                    && cursor.getString(5).equals(classprop) && cursor.getString(6).equals(credit) && cursor.getString(7).equals(gpa)
+                    && cursor.getString(8).equals(testway)&& cursor.getString(9).equals(remark))
                 return cursor.getInt(0);
         }
         cursor.close();
@@ -80,20 +80,17 @@ public class MySQLiteOperatorOfScore {
     //query
     public Score query(int id) {
         Score node = new Score();
-        Cursor cursor = db.rawQuery("select * from score_db where _id=?", new String[] {id+""});
+        Cursor cursor = db.rawQuery("select * from scor_db where _id=?", new String[] {id+""});
         while (cursor.moveToNext()) {
-            node.setId(cursor.getString(1));
-            node.setTerm(cursor.getString(2));
-            node.setClassId(cursor.getString(3));
-            node.setClassname(cursor.getString(4));
-            node.setScore(cursor.getString(5));
-            node.setScoretag(cursor.getString(6));
-            node.setClassprop(cursor.getString(7));
-            node.setCredit(cursor.getString(8));
-            node.setGpa(cursor.getString(9));
-            node.setTestway(cursor.getString(10));
-            node.setMinor(cursor.getString(11));
-            node.setRemark(cursor.getString(12));
+            node.setTerm(cursor.getString(1));
+            node.setClassname(cursor.getString(2));
+            node.setScore(cursor.getString(3));
+            node.setScoretag(cursor.getString(4));
+            node.setClassprop(cursor.getString(5));
+            node.setCredit(cursor.getString(6));
+            node.setGpa(cursor.getString(7));
+            node.setTestway(cursor.getString(8));
+            node.setRemark(cursor.getString(9));
         }
         cursor.close();
         return node;
@@ -102,21 +99,18 @@ public class MySQLiteOperatorOfScore {
     //query all text
     public ArrayList<Score> queryAll() {
         ArrayList<Score> records = new ArrayList<>();
-        Cursor cursor = db.rawQuery("select * from score_db", null);
+        Cursor cursor = db.rawQuery("select * from scor_db", null);
         while (cursor.moveToNext()) {
             Score node = new Score();
-            node.setId(cursor.getString(1));
-            node.setTerm(cursor.getString(2));
-            node.setClassId(cursor.getString(3));
-            node.setClassname(cursor.getString(4));
-            node.setScore(cursor.getString(5));
-            node.setScoretag(cursor.getString(6));
-            node.setClassprop(cursor.getString(7));
-            node.setCredit(cursor.getString(8));
-            node.setGpa(cursor.getString(9));
-            node.setTestway(cursor.getString(10));
-            node.setMinor(cursor.getString(11));
-            node.setRemark(cursor.getString(12));
+            node.setTerm(cursor.getString(1));
+            node.setClassname(cursor.getString(2));
+            node.setScore(cursor.getString(3));
+            node.setScoretag(cursor.getString(4));
+            node.setClassprop(cursor.getString(5));
+            node.setCredit(cursor.getString(6));
+            node.setGpa(cursor.getString(7));
+            node.setTestway(cursor.getString(8));
+            node.setRemark(cursor.getString(9));
             records.add(node);
         }
         cursor.close();

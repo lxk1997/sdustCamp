@@ -75,6 +75,7 @@
         <activity android:name=".ui.ConnectStuId"/>
         <activity android:name=".ui.ScoreActivity"/>
         <activity android:name=".ui.UpdatingsSPKDActivity"/>
+        <activity android:name=".ui.UpdatingsXXGGActivity"/>
         <!--MOBSDK-->
         <activity
             android:name="com.mob.tools.MobUIShell"

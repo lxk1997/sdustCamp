@@ -20,18 +20,18 @@ import com.clxk.h.sdustcamp.R;
 import com.clxk.h.sdustcamp.base.MyBaseActivity;
 import com.clxk.h.sdustcamp.spider.AutoLogin;
 
+import org.json.JSONException;
+
 import java.io.IOException;
 
 /**
  * Created on 19/1/28
  * 学号绑定
  */
-public class ConnectStuId extends MyBaseActivity implements View.OnClickListener, View.OnTouchListener {
+public class ConnectStuId extends MyBaseActivity implements View.OnClickListener {
 
     private EditText et_sdustcode;
     private EditText et_sdustpass;
-    private EditText et_sdustvertif;
-    private ImageView iv_sdustvertif;
     private Button btn_connectsdust;
 
     private ImageButton ib_back;
@@ -52,9 +52,6 @@ public class ConnectStuId extends MyBaseActivity implements View.OnClickListener
         btn_connectsdust.setOnClickListener(this);
         ib_back.setOnClickListener(this);
 
-        iv_sdustvertif.setOnTouchListener(this);
-
-        getSafeCode();
 
     }
 
@@ -62,28 +59,9 @@ public class ConnectStuId extends MyBaseActivity implements View.OnClickListener
 
         et_sdustcode = findViewById(R.id.et_sdustcode);
         et_sdustpass = findViewById(R.id.et_sdustpass);
-        et_sdustvertif = findViewById(R.id.et_sdustvertif);
-        iv_sdustvertif = findViewById(R.id.iv_sdustvertif);
         btn_connectsdust = findViewById(R.id.btn_sdustconnect);
 
         ib_back = findViewById(R.id.ib_market_header_back);
-    }
-
-    public void getSafeCode() {
-        //验证码显示
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    AutoLogin.getSafeCode();
-                    Message msg = new Message();
-                    msg.what = 1;
-                    handle.sendMessage(msg);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }).start();
     }
 
     @Override
@@ -91,7 +69,7 @@ public class ConnectStuId extends MyBaseActivity implements View.OnClickListener
 
         switch (v.getId()) {
             case R.id.btn_sdustconnect:
-                authLogin(et_sdustcode.getText().toString(),et_sdustpass.getText().toString(),et_sdustvertif.getText().toString());
+                authLogin(et_sdustcode.getText().toString(),et_sdustpass.getText().toString());
                 break;
             case R.id.ib_market_header_back:
                 Intent intent = new Intent(ConnectStuId.this, MainActivity.class);
@@ -102,51 +80,36 @@ public class ConnectStuId extends MyBaseActivity implements View.OnClickListener
         }
     }
 
-    private void authLogin(final String code, final String pass, final String authcode) {
+    private void authLogin(final String code, final String pass) {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
-                    int flag = AutoLogin.authLogin(code, pass, authcode);
+                    int flag = AutoLogin.authLogin(code, pass);
                     Message msg = new Message();
                     msg.what = 2+flag;
                     handle.sendMessage(msg);
                 } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
         }).start();
     }
 
-    @Override
-    public boolean onTouch(View v, MotionEvent event) {
-        if(v.getId() == R.id.iv_sdustvertif) {
-            getSafeCode();
-        }
-        return false;
-    }
 
     public Handler handle = new Handler() {
 
         @Override
         public boolean sendMessageAtTime(Message msg, long uptimeMillis) {
-            if(msg.what == 1) {
-               runOnUiThread(new Runnable() {
-                   @Override
-                   public void run() {
-                       Bitmap bitmap = BitmapFactory.decodeFile("/sdcard/safecode.png");
-                       iv_sdustvertif.setImageBitmap(bitmap);
-                   }
-               });
-            }
+
             if(msg.what == 2) {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        getSafeCode();
-                        et_sdustcode.setText("");
-                        et_sdustpass.setText("");
-                        et_sdustvertif.setText("");
+                        et_sdustcode.setText(null);
+                        et_sdustpass.setText(null);
                         Toast.makeText(ConnectStuId.this, "输入有误", Toast.LENGTH_SHORT).show();
                     }
                 });

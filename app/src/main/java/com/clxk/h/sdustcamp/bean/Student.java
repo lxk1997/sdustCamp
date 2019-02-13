@@ -1,35 +1,40 @@
 package com.clxk.h.sdustcamp.bean;
 
-import cn.bmob.v3.BmobObject;
-
-public class Student extends BmobObject {
-    private String phoneNum;
-    private String password;
+public class Student{
     private String username;
-    private String stuCardId;
+    private String school;
+    private String stuid;
 
-    public String getUserName() {
-        return username;
+    public Student() {
+
     }
-    public void setUserName(String username) {
+    public Student(String stuid,String username, String school) {
+        this.stuid = stuid;
+        this.school = school;
         this.username = username;
     }
-    public String getStuCardId() {
-        return stuCardId;
+
+    public void setSchool(String school) {
+        this.school = school;
     }
-    public void setStuCardId(String stuCardId) {
-        this.stuCardId = stuCardId;
+
+    public void setUsername(String username) {
+        this.username = username;
     }
-    public String getPhoneNum() {
-        return phoneNum;
+
+    public void setStuid(String stuid) {
+        this.stuid = stuid;
     }
-    public void setPhoneNum(String phoneNum) {
-        this.phoneNum = phoneNum;
+
+    public String getSchool() {
+        return school;
     }
-    public String getPassword() {
-        return password;
+
+    public String getUsername() {
+        return username;
     }
-    public void setPassword(String password) {
-        this.password = password;
+
+    public String getStuid() {
+        return stuid;
     }
 }

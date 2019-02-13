@@ -8,6 +8,9 @@ import com.clxk.h.sdustcamp.MyApplication;
 import com.clxk.h.sdustcamp.bean.TimeTable;
 import com.clxk.h.sdustcamp.utils.LocalSave;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -26,48 +29,33 @@ import cn.bmob.v3.BmobObject;
  */
 public class GetSchedule {
 
-    private static String url = "http://jwgl.sdust.edu.cn/jsxsd/xskb/xskb_list.do";
-    private static SharedPreferences sp = MyApplication.getInstance().context.getSharedPreferences("cookie", Context.MODE_PRIVATE);
-    private static LocalSave localSave = new LocalSave(sp);
-    private static Map<String,String> cookie = localSave.getCookies();
-    private static String term;
+    private static String url = "http://jwgl.sdust.edu.cn/app.do?method=getKbcxAzc";
 
-    public static List<TimeTable> getSchedule() throws IOException {
+    public static List<TimeTable> getSchedule() throws IOException, JSONException {
+        GetCurrentTime.getCurrentTime();
+//        if(MyApplication.getInstance().zc == 0) {
+//            return null;
+//        }
         List<TimeTable> sources = new ArrayList<>();
-        Connection connection = Jsoup.connect(url).method(Connection.Method.GET)
-                .userAgent("Mozilla").header("Accept","text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8")
-                .cookies(cookie).timeout(3000);
-        Connection.Response res = connection.execute();
-        if(res.parse().getElementById("kbtable") == null) {
-            return null;
-        } else {
-            Document doc = res.parse();
-            Elements els = doc.getElementsByTag("option");
-            term = els.select("option[selected=selected]").html();
-            Log.i("GetSchedule",term);
-            els = doc.getElementById("kbtable").getElementsByTag("tr");
-            for(int i = 1; i <= 4; i++) {
-                Elements td = els.get(i).getElementsByTag("td");
-                for(int j = 0; j < 7; j++) {
-                    String arrclass = td.get(j).getElementsByTag("div").get(1).text();
-                    if(arrclass == null || arrclass.equals("")) {
-                        continue;
-                    } else {
-                        String spclass[] = arrclass.split("\\s");
-                        if(spclass.length == 5) {
-                            sources.add(new TimeTable(spclass[0],spclass[4],spclass[2],spclass[3].split("-")[0]
-                                    ,spclass[3].split("-")[1].substring(0,spclass[3].split("-")[1].length()-3),j+1+"",i+"",term));
-                        } else if(spclass.length == 11) {
-                            sources.add(new TimeTable(spclass[0],spclass[4],spclass[2],spclass[3].split("-")[0]
-                                    ,spclass[3].split("-")[1].substring(0,1),j+1+"",i+"",term));
-                            sources.add(new TimeTable(spclass[6],spclass[10],spclass[8],spclass[9].split("-")[0]
-                                    ,spclass[9].split("-")[1].substring(0,spclass[9].split("-")[1].length()-3),j+1+"",i+"",term));
-                        }
-                    }
-                }
+        for(int i = 10; i < 30; i++) {
+            url = url+"&xh="+MyApplication.getInstance().student.getStuid()+"&xnxqid=2018-2019-2"+"&zc="+i;
+            Connection connection = Jsoup.connect(url).method(Connection.Method.GET)
+                    .userAgent("Mozilla").header("token",MyApplication.getInstance().sdust_token)
+                    .timeout(3000);
+            Connection.Response res = connection.execute();
+            JSONArray jsonArray = new JSONArray(res.body());
+            if(res.body() == null || res.body().equals("")) {
+                break;
             }
-            return sources;
+            for(int u = 0; u < jsonArray.length(); u++) {
+                JSONObject o = (JSONObject) jsonArray.get(u);
+                TimeTable table = new TimeTable(o.getString("kcmc"),o.getString("jsmc"),o.getString("jsxm"),o.getString("kkzc").split("-")[0]
+                ,o.getString("kkzc").split("-")[1],o.get("kcsj").toString().substring(0,1),Integer.valueOf(o.get("kcsj").toString().substring(4,5))/2+"",MyApplication.getInstance().term);
+                sources.add(table);
+            }
+            Log.i("111",res.body()+"aaa");
         }
 
+        return sources;
     }
 }

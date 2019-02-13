@@ -136,7 +136,7 @@ public class ScoreActivity extends MyBaseActivity implements View.OnClickListene
             }
         }
         if(cursources.size() == 0) {
-            cursources.add(new Score("-1","暂无数据","","","","","","","","","",""));
+            cursources.add(new Score("-1","暂无数据","","","","","","",""));
         }
         st_score.setData(cursources);
     }

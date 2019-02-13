@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteDatabase.CursorFactory;
 public class MySQLiteUtil extends SQLiteOpenHelper {
 
     public static final String CREATE_TABLE_SQL_SCHEDULE = "create table schedule_db(_id integer primary key autoincrement,className,classRoom,teacher,classStart,classEnd,classDay,classNum,term)";
-    public static final String CREATE_TABLE_SQL_SCORE = "create table score_db(_id integer primary key autoincrement, id, term, classId, classname, score, scoretag, classprop, credit, gpa, testway, minor, remark)";
+    public static final String CREATE_TABLE_SQL_SCORE = "create table scor_db(_id integer primary key autoincrement, term, classname, score, scoretag, classprop, credit, gpa, testway, remark)";
     private Context mContext;
     public MySQLiteUtil(Context context, String name, CursorFactory factory, int version
     ) {

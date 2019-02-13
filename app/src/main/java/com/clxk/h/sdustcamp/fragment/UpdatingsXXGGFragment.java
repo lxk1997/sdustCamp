@@ -1,5 +1,6 @@
 package com.clxk.h.sdustcamp.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -14,10 +15,12 @@ import android.view.ViewGroup;
 
 import com.ajguan.library.EasyRefreshLayout;
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.clxk.h.sdustcamp.MyApplication;
 import com.clxk.h.sdustcamp.R;
 import com.clxk.h.sdustcamp.adapter.UpdatingsXXGGAdapter;
 import com.clxk.h.sdustcamp.bean.UpdatingsXXGG;
 import com.clxk.h.sdustcamp.spider.GetXXGG;
+import com.clxk.h.sdustcamp.ui.UpdatingsXXGGActivity;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -119,7 +122,10 @@ public class UpdatingsXXGGFragment extends Fragment {
             mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
                 @Override
                 public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-
+                    MyApplication.getInstance().updatingsXXGG = sources.get(position);
+                    Intent intent = new Intent(getContext(), UpdatingsXXGGActivity.class);
+                    startActivity(intent);
+                    getActivity().onBackPressed();
                 }
             });
         }
