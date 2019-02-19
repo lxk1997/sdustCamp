@@ -19,14 +19,16 @@ import com.clxk.h.sdustcamp.MyApplication;
 import com.clxk.h.sdustcamp.R;
 import com.clxk.h.sdustcamp.adapter.UpdatingsSPKDAdapter;
 import com.clxk.h.sdustcamp.bean.UpdatingsSPKD;
+import com.clxk.h.sdustcamp.operator.SPKDOperator;
 import com.clxk.h.sdustcamp.spider.GetSPKD;
 import com.clxk.h.sdustcamp.ui.UpdatingsSPKDActivity;
+import com.clxk.h.sdustcamp.utils.SpaceItemDecoration;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UpdatingsSPKDFragment extends Fragment {
+public class UpdatingsSPKDFragment extends Fragment implements BaseQuickAdapter.OnItemClickListener {
 
     private View currentView;
 
@@ -36,10 +38,11 @@ public class UpdatingsSPKDFragment extends Fragment {
     private List<UpdatingsSPKD> sources;
     private List<UpdatingsSPKD> cursources;
     private UpdatingsSPKDAdapter mAdapter;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        currentView = inflater.inflate(R.layout.fragment_updatings_spkd,container,false);
+        currentView = inflater.inflate(R.layout.fragment_updatings_spkd, container, false);
 
         initView();
 
@@ -59,7 +62,7 @@ public class UpdatingsSPKDFragment extends Fragment {
                     public void run() {
                         int len = mAdapter.getData().size();
                         final List<UpdatingsSPKD> cur = new ArrayList<>();
-                        for(int i = len; i < len+10 && i < sources.size(); i++) {
+                        for (int i = len; i < len + 10 && i < sources.size(); i++) {
                             cur.add(sources.get(i));
                         }
 
@@ -69,7 +72,7 @@ public class UpdatingsSPKDFragment extends Fragment {
                                 mAdapter.getData().addAll(cur);
                                 mAdapter.notifyDataSetChanged();
                             }
-                        },500);
+                        }, 500);
                     }
                 }, 2000);
             }
@@ -94,42 +97,28 @@ public class UpdatingsSPKDFragment extends Fragment {
         rv_updatings_spkd = currentView.findViewById(R.id.rv_updatings_spkd);
         erl_updatings_spkd = currentView.findViewById(R.id.erl_updatings_spkd);
         rv_updatings_spkd.setLayoutManager(linearLayoutManager);
+        rv_updatings_spkd.addItemDecoration(new SpaceItemDecoration(30));
     }
 
     private void getSPKD() {
-        new Thread() {
-            @Override
-            public void run() {
-                try {
-                    sources = GetSPKD.getSPKD();
-                    Message msg = new Message();
-                    msg.obj = sources;
-                    handler.sendMessage(msg);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }.start();
+        SPKDOperator spkdOperator = new SPKDOperator(getContext());
+
+        sources = spkdOperator.queryAll();
+        cursources.clear();
+        for (int i = 0; i < 10 && i < sources.size(); i++) {
+            cursources.add(sources.get(i));
+        }
+        mAdapter = new UpdatingsSPKDAdapter(R.layout.updating_spkd_item, cursources);
+        rv_updatings_spkd.setAdapter(mAdapter);
+        mAdapter.setOnItemClickListener(this);
+
     }
 
-    private Handler handler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            cursources.clear();
-            for(int i = 0; i < 10 && i < sources.size(); i++) {
-                cursources.add(sources.get(i));
-            }
-            mAdapter = new UpdatingsSPKDAdapter(R.layout.updating_spkd_item, cursources);
-            rv_updatings_spkd.setAdapter(mAdapter);
-            mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
-                @Override
-                public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                    MyApplication.getInstance().updatingsSPKD = sources.get(position);
-                    Intent intent = new Intent(getActivity(), UpdatingsSPKDActivity.class);
-                    startActivity(intent);
-                    getActivity().onBackPressed();
-                }
-            });
-        }
-    };
+    @Override
+    public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+        MyApplication.getInstance().updatingsSPKD = sources.get(position);
+        Intent intent = new Intent(getActivity(), UpdatingsSPKDActivity.class);
+        startActivity(intent);
+        getActivity().onBackPressed();
+    }
 }

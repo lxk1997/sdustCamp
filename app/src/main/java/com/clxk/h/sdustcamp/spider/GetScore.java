@@ -1,27 +1,19 @@
 package com.clxk.h.sdustcamp.spider;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.clxk.h.sdustcamp.MyApplication;
 import com.clxk.h.sdustcamp.bean.Score;
-import com.clxk.h.sdustcamp.operator.MySQLiteOperatorOfScore;
-import com.clxk.h.sdustcamp.utils.LocalSave;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created on 19/1/29

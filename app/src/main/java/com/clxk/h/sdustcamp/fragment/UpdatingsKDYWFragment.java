@@ -21,14 +21,16 @@ import com.clxk.h.sdustcamp.R;
 import com.clxk.h.sdustcamp.adapter.UpdatingsKDYWAdapter;
 
 import com.clxk.h.sdustcamp.bean.UpdatingsKDYW;
+import com.clxk.h.sdustcamp.operator.KDYWOperator;
 import com.clxk.h.sdustcamp.spider.GetKDXW;
 import com.clxk.h.sdustcamp.ui.UpdatingsKDYWActivity;
+import com.clxk.h.sdustcamp.utils.SpaceItemDecoration;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UpdatingsKDYWFragment extends Fragment {
+public class UpdatingsKDYWFragment extends Fragment implements BaseQuickAdapter.OnItemClickListener {
 
     private View currentView;
 
@@ -59,46 +61,19 @@ public class UpdatingsKDYWFragment extends Fragment {
     }
 
     private void getKDXW() {
-        new Thread() {
-            @Override
-            public void run() {
-                try {
-                    source = (ArrayList<UpdatingsKDYW>) GetKDXW.getKDYW(null);
-                    Message msg = new Message();
-                    msg.what = 1;
-                    msg.obj = source;
-                    handler.sendMessage(msg);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }.start();
+        KDYWOperator kdywOperator = new KDYWOperator(getContext());
+
+        source = kdywOperator.queryAll();
+        curSources.clear();
+        for (int i = 0; i < 10 && i < source.size(); i++) {
+            curSources.add(source.get(i));
+        }
+        kdywAdapter = new UpdatingsKDYWAdapter(R.layout.updating_kdyw_item, curSources);
+        rv_updatings.setAdapter(kdywAdapter);
+        kdywAdapter.setOnItemClickListener(this);
+
     }
 
-    public Handler handler = new Handler() {
-
-        @Override
-        public void handleMessage(Message msg) {
-            if (msg.what == 1) {
-                curSources.clear();
-                for (int i = 0; i < 10 && i < source.size(); i++) {
-                    curSources.add(source.get(i));
-                }
-                kdywAdapter = new UpdatingsKDYWAdapter(R.layout.updating_kdyw_item, curSources);
-                rv_updatings.setAdapter(kdywAdapter);
-                kdywAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                        Log.i("qqq","dasdass");
-                        MyApplication.getInstance().updatings = source.get(position);
-                        Intent intent = new Intent(getActivity(), UpdatingsKDYWActivity.class);
-                        startActivity(intent);
-                        getActivity().onBackPressed();
-                    }
-                });
-            }
-        }
-    };
 
     /**
      * View事件
@@ -124,7 +99,7 @@ public class UpdatingsKDYWFragment extends Fragment {
                             }
                         }, 500);
                     }
-                },2000);
+                }, 2000);
             }
 
             @Override
@@ -135,7 +110,7 @@ public class UpdatingsKDYWFragment extends Fragment {
                         getKDXW();
                         erl_updatings_kdyw.refreshComplete();
                     }
-                },1000);
+                }, 1000);
             }
         });
     }
@@ -149,6 +124,7 @@ public class UpdatingsKDYWFragment extends Fragment {
 
         linearLayoutManager = new LinearLayoutManager(getContext());
         rv_updatings.setLayoutManager(linearLayoutManager);
+        rv_updatings.addItemDecoration(new SpaceItemDecoration(30));
         erl_updatings_kdyw = currentView.findViewById(R.id.erl_updatings_kdyw);
 
         curSources = new ArrayList<>();
@@ -156,4 +132,12 @@ public class UpdatingsKDYWFragment extends Fragment {
 
     }
 
+    @Override
+    public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+        Log.i("qqq", "dasdass");
+        MyApplication.getInstance().updatings = source.get(position);
+        Intent intent = new Intent(getActivity(), UpdatingsKDYWActivity.class);
+        startActivity(intent);
+        getActivity().onBackPressed();
+    }
 }

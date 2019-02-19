@@ -16,7 +16,7 @@ import com.bin.david.form.core.SmartTable;
 import com.clxk.h.sdustcamp.R;
 import com.clxk.h.sdustcamp.base.MyBaseActivity;
 import com.clxk.h.sdustcamp.bean.Score;
-import com.clxk.h.sdustcamp.operator.MySQLiteOperatorOfScore;
+import com.clxk.h.sdustcamp.operator.ScoreOperator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +39,7 @@ public class ScoreActivity extends MyBaseActivity implements View.OnClickListene
 
     private List<String> props;
     private List<String> terms;
-    private MySQLiteOperatorOfScore sqLiteOperatorOfScore;
+    private ScoreOperator sqLiteOperatorOfScore;
     private List<Score> sources;
 
     @Override
@@ -62,6 +62,7 @@ public class ScoreActivity extends MyBaseActivity implements View.OnClickListene
         ib_back.setOnClickListener(this);
         sp_term.setOnItemSelectedListener(this);
         sp_classprop.setOnItemSelectedListener(this);
+        //Log.i("123","1");
     }
 
     private void initView() {
@@ -93,7 +94,7 @@ public class ScoreActivity extends MyBaseActivity implements View.OnClickListene
         ArrayAdapter<String> adapter_prop = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, props);
         adapter_prop.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sp_classprop.setAdapter(adapter_prop);
-        sqLiteOperatorOfScore = new MySQLiteOperatorOfScore(this);
+        sqLiteOperatorOfScore = new ScoreOperator(this);
         sources = sqLiteOperatorOfScore.queryAll();
         st_score.setData(sources);
     }

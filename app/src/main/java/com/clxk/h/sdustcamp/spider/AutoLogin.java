@@ -1,17 +1,13 @@
 package com.clxk.h.sdustcamp.spider;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.clxk.h.sdustcamp.MyApplication;
 import com.clxk.h.sdustcamp.bean.Score;
 import com.clxk.h.sdustcamp.bean.Student;
 import com.clxk.h.sdustcamp.bean.TimeTable;
-import com.clxk.h.sdustcamp.operator.MySQLiteOperatorOfSchedule;
-import com.clxk.h.sdustcamp.operator.MySQLiteOperatorOfScore;
-import com.clxk.h.sdustcamp.utils.LocalSave;
-import com.clxk.h.sdustcamp.utils.Utils;
+import com.clxk.h.sdustcamp.operator.ScheduleOperator;
+import com.clxk.h.sdustcamp.operator.ScoreOperator;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -19,9 +15,7 @@ import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class AutoLogin {
 
@@ -62,8 +56,11 @@ public class AutoLogin {
     public static int authLogin(String username, String password) throws IOException, JSONException {
         int flag = initLogin(username, password);
         if (flag == 0) return 0;
+        return 1;
+    }
+    public static void getStudentMsg() throws IOException, JSONException {
         List<TimeTable> schedules = GetSchedule.getSchedule();
-        MySQLiteOperatorOfSchedule sqLiteOperator = new MySQLiteOperatorOfSchedule(MyApplication.getInstance().context);
+        ScheduleOperator sqLiteOperator = new ScheduleOperator(MyApplication.getInstance().context);
         sqLiteOperator.deleteAll();
         if(schedules != null) {
             for (TimeTable t : schedules) {
@@ -71,13 +68,12 @@ public class AutoLogin {
             }
         }
         List<Score> scores = GetScore.getScore();
-        MySQLiteOperatorOfScore sqLiteOperator_2 = new MySQLiteOperatorOfScore(MyApplication.getInstance().context);
+        ScoreOperator sqLiteOperator_2 = new ScoreOperator(MyApplication.getInstance().context);
         sqLiteOperator_2.deleteAll();
         for (Score s : scores) {
             sqLiteOperator_2.add(s.getTerm(), s.getClassname(), s.getScore(), s.getScoretag(), s.getClassprop()
                     , s.getCredit(), s.getGpa(), s.getTestway(), s.getRemark());
         }
-        return 1;
     }
 
 }

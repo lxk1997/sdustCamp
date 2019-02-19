@@ -47,6 +47,11 @@ public class UpdatingsXXGGActivity extends MyBaseActivity implements View.OnClic
 
     private void initView() {
 
+        tv_updatings_content = findViewById(R.id.tv_updatings_content);
+        tv_updatings_time = findViewById(R.id.tv_updatings_time);
+        tv_updatings_title = findViewById(R.id.tv_updatings_title);
+        ib_back = findViewById(R.id.ib_market_header_back);
+
         UpdatingsXXGG xxgg = MyApplication.getInstance().updatingsXXGG;
         tv_updatings_title.setText(xxgg.getTitle());
         tv_updatings_time.setText(xxgg.getTime());

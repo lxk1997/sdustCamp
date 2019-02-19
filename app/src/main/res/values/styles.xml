@@ -38,7 +38,7 @@
     </style>
 
     <style name="CustomUnderlinePageIndicator">
-        <item name="selectedColor">#4f94cd</item>
+        <item name="selectedColor">#0359a2</item>
         <item name="android:background">#e8e8e8</item>
         <item name="fadeLength">1000</item>
         <item name="fadeDelay">1000</item>

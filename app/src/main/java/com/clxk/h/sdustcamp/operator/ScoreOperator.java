@@ -5,22 +5,20 @@ import java.util.ArrayList;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
 import com.clxk.h.sdustcamp.bean.Score;
-import com.clxk.h.sdustcamp.bean.TimeTable;
-import com.clxk.h.sdustcamp.utils.MySQLiteUtil;
+import com.clxk.h.sdustcamp.utils.SdkdLoginSQLUtils;
 
 /**
  * 本地的成绩数据库操作
  */
-public class MySQLiteOperatorOfScore {
+public class ScoreOperator {
 
-    private MySQLiteUtil mySQLiteUtil;//辅助数据库
+    private SdkdLoginSQLUtils mySQLiteUtil;//辅助数据库
     private SQLiteDatabase db;//数据库
 
-    public MySQLiteOperatorOfScore(Context context) {
-        mySQLiteUtil = new MySQLiteUtil(context, "scor_db", null,1);
+    public ScoreOperator(Context context) {
+        mySQLiteUtil = new SdkdLoginSQLUtils(context, "scor_db", null,1);
         db = mySQLiteUtil.getWritableDatabase();
     }
 

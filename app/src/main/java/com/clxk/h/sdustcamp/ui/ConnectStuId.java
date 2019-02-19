@@ -69,11 +69,11 @@ public class ConnectStuId extends MyBaseActivity implements View.OnClickListener
 
         switch (v.getId()) {
             case R.id.btn_sdustconnect:
-                authLogin(et_sdustcode.getText().toString(),et_sdustpass.getText().toString());
+                authLogin(et_sdustcode.getText().toString(), et_sdustpass.getText().toString());
                 break;
             case R.id.ib_market_header_back:
                 Intent intent = new Intent(ConnectStuId.this, MainActivity.class);
-                intent.putExtra("frId",R.id.ll_mine);
+                intent.putExtra("frId", R.id.ll_mine);
                 startActivity(intent);
                 finish();
                 break;
@@ -87,7 +87,7 @@ public class ConnectStuId extends MyBaseActivity implements View.OnClickListener
                 try {
                     int flag = AutoLogin.authLogin(code, pass);
                     Message msg = new Message();
-                    msg.what = 2+flag;
+                    msg.what = 2 + flag;
                     handle.sendMessage(msg);
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -102,39 +102,43 @@ public class ConnectStuId extends MyBaseActivity implements View.OnClickListener
     public Handler handle = new Handler() {
 
         @Override
-        public boolean sendMessageAtTime(Message msg, long uptimeMillis) {
-
-            if(msg.what == 2) {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        et_sdustcode.setText(null);
-                        et_sdustpass.setText(null);
-                        Toast.makeText(ConnectStuId.this, "输入有误", Toast.LENGTH_SHORT).show();
-                    }
-                });
+        public void handleMessage(Message msg) {
+            if (msg.what == 2) {
+                et_sdustcode.setText(null);
+                et_sdustpass.setText(null);
+                Toast.makeText(ConnectStuId.this, "输入有误", Toast.LENGTH_SHORT).show();
             }
-            if(msg.what == 3) {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Toast.makeText(ConnectStuId.this, "绑定学号成功", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(ConnectStuId.this, MainActivity.class);
-                        intent.putExtra("frId",R.id.ll_mine);
-                        startActivity(intent);
-                        finish();
-                    }
-                });
+            if (msg.what == 3) {
+                Toast.makeText(ConnectStuId.this, "绑定学号成功", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(ConnectStuId.this, MainActivity.class);
+                intent.putExtra("frId", R.id.ll_mine);
+                startActivity(intent);
+                getStuMsg();
+                finish();
             }
-            return true;
         }
     };
 
+    private void getStuMsg() {
+        new Thread() {
+            @Override
+            public void run() {
+                try {
+                    AutoLogin.getStudentMsg();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }.start();
+    }
+
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if(keyCode == KeyEvent.KEYCODE_BACK) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
             Intent intent = new Intent(ConnectStuId.this, MainActivity.class);
-            intent.putExtra("frId",R.id.ll_mine);
+            intent.putExtra("frId", R.id.ll_mine);
             startActivity(intent);
             finish();
         }

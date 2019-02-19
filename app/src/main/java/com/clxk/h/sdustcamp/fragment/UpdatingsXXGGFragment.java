@@ -19,6 +19,7 @@ import com.clxk.h.sdustcamp.MyApplication;
 import com.clxk.h.sdustcamp.R;
 import com.clxk.h.sdustcamp.adapter.UpdatingsXXGGAdapter;
 import com.clxk.h.sdustcamp.bean.UpdatingsXXGG;
+import com.clxk.h.sdustcamp.operator.XXGGOperator;
 import com.clxk.h.sdustcamp.spider.GetXXGG;
 import com.clxk.h.sdustcamp.ui.UpdatingsXXGGActivity;
 
@@ -26,7 +27,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UpdatingsXXGGFragment extends Fragment {
+public class UpdatingsXXGGFragment extends Fragment implements BaseQuickAdapter.OnItemClickListener {
 
     private View currentView;
     private RecyclerView rv_updatings_xxgg;
@@ -95,39 +96,23 @@ public class UpdatingsXXGGFragment extends Fragment {
     }
 
     private void getXXGG() {
-        new Thread() {
-            @Override
-            public void run() {
-                try {
-                    sources = GetXXGG.getXXGG();
-                    Message msg = new Message();
-                    msg.obj = sources;
-                    handler.sendMessage(msg);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }.start();
+        XXGGOperator xxggOperator = new XXGGOperator(getContext());
+                    sources = xxggOperator.queryAll();
+        cursources.clear();
+        for(int i = 0; i < 10 && i < sources.size(); i++) {
+            cursources.add(sources.get(i));
+        }
+        mAdapter = new UpdatingsXXGGAdapter(R.layout.updating_xxgg_item, cursources);
+        rv_updatings_xxgg.setAdapter(mAdapter);
+        mAdapter.setOnItemClickListener(this);
+
     }
 
-    private Handler handler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            cursources.clear();
-            for(int i = 0; i < 10 && i < sources.size(); i++) {
-                cursources.add(sources.get(i));
-            }
-            mAdapter = new UpdatingsXXGGAdapter(R.layout.updating_xxgg_item, cursources);
-            rv_updatings_xxgg.setAdapter(mAdapter);
-            mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
-                @Override
-                public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                    MyApplication.getInstance().updatingsXXGG = sources.get(position);
-                    Intent intent = new Intent(getContext(), UpdatingsXXGGActivity.class);
-                    startActivity(intent);
-                    getActivity().onBackPressed();
-                }
-            });
-        }
-    };
+    @Override
+    public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+        MyApplication.getInstance().updatingsXXGG = sources.get(position);
+        Intent intent = new Intent(getContext(), UpdatingsXXGGActivity.class);
+        startActivity(intent);
+        getActivity().onBackPressed();
+    }
 }

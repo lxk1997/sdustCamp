@@ -37,23 +37,24 @@ public class GetSchedule {
 //            return null;
 //        }
         List<TimeTable> sources = new ArrayList<>();
-        for(int i = 10; i < 30; i++) {
-            url = url+"&xh="+MyApplication.getInstance().student.getStuid()+"&xnxqid=2018-2019-2"+"&zc="+i;
-            Connection connection = Jsoup.connect(url).method(Connection.Method.GET)
+        for(int i = 1; i < 30; i++) {
+            String url_cur = url+"&xh="+MyApplication.getInstance().student.getStuid()+"&xnxqid=2018-2019-2"+"&zc="+i;
+            Log.i("111",url_cur);
+            Connection connection = Jsoup.connect(url_cur).method(Connection.Method.GET)
                     .userAgent("Mozilla").header("token",MyApplication.getInstance().sdust_token)
                     .timeout(3000);
             Connection.Response res = connection.execute();
-            JSONArray jsonArray = new JSONArray(res.body());
-            if(res.body() == null || res.body().equals("")) {
+            if(res.body() == null || res.body().equals("") || res.body().trim().equals("[null]")) {
                 break;
             }
+            Log.i("111",res.body()+"111");
+            JSONArray jsonArray = new JSONArray(res.body());
             for(int u = 0; u < jsonArray.length(); u++) {
                 JSONObject o = (JSONObject) jsonArray.get(u);
                 TimeTable table = new TimeTable(o.getString("kcmc"),o.getString("jsmc"),o.getString("jsxm"),o.getString("kkzc").split("-")[0]
                 ,o.getString("kkzc").split("-")[1],o.get("kcsj").toString().substring(0,1),Integer.valueOf(o.get("kcsj").toString().substring(4,5))/2+"",MyApplication.getInstance().term);
                 sources.add(table);
             }
-            Log.i("111",res.body()+"aaa");
         }
 
         return sources;

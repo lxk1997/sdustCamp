@@ -27,7 +27,7 @@ import android.widget.Toast;
 
 import com.clxk.h.sdustcamp.R;
 import com.clxk.h.sdustcamp.bean.TimeTable;
-import com.clxk.h.sdustcamp.operator.MySQLiteOperatorOfSchedule;
+import com.clxk.h.sdustcamp.operator.ScheduleOperator;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -104,7 +104,7 @@ public class Schedule extends AppCompatActivity{
     private Button btn_dedit;
     private Button btn_cedit;
 
-    private MySQLiteOperatorOfSchedule mySql;
+    private ScheduleOperator mySql;
 
     private Boolean is_item = false;
     private Boolean is_have;
@@ -178,7 +178,7 @@ public class Schedule extends AppCompatActivity{
         btn_dedit = findViewById(R.id.btn_dedit);
         btn_cedit = findViewById(R.id.btn_cedit);
 
-        mySql = new MySQLiteOperatorOfSchedule(this);
+        mySql = new ScheduleOperator(this);
 
         list = new ArrayList<>();
         list = mySql.queryAll();
