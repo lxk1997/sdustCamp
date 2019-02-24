@@ -62,13 +62,13 @@ public class MarketBuyAdapter extends BaseQuickAdapter<MarketGoods, BaseViewHold
                     }
                 }
                 if (item.getgImage1() != null) {
-                    Glide.with(helper.itemView.getContext()).load(item.getgImage1().getFileUrl()).into((ImageView)helper.getView(R.id.iv_2marketImage1));
+                    Glide.with(helper.itemView.getContext()).load(item.getgImage1()).into((ImageView)helper.getView(R.id.iv_2marketImage1));
                 }
                 if (item.getgImage2() != null) {
-                    Glide.with(helper.itemView.getContext()).load(item.getgImage2().getFileUrl()).into((ImageView)helper.getView(R.id.iv_2marketImage2));
+                    Glide.with(helper.itemView.getContext()).load(item.getgImage2()).into((ImageView)helper.getView(R.id.iv_2marketImage2));
                 }
                 if (item.getgImage3() != null) {
-                    Glide.with(helper.itemView.getContext()).load(item.getgImage3().getFileUrl()).into((ImageView)helper.getView(R.id.iv_2marketImage3));
+                    Glide.with(helper.itemView.getContext()).load(item.getgImage3()).into((ImageView)helper.getView(R.id.iv_2marketImage3));
                 }
                 helper.setText(R.id.tv_2marketMoney,item.getgPrice() + "¥");
                 helper.setText(R.id.tv_2marketUserTime,"刚刚来过");

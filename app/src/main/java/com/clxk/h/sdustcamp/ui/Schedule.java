@@ -2,6 +2,7 @@ package com.clxk.h.sdustcamp.ui;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
@@ -179,10 +180,12 @@ public class Schedule extends AppCompatActivity{
         btn_cedit = findViewById(R.id.btn_cedit);
 
         mySql = new ScheduleOperator(this);
-
         list = new ArrayList<>();
         list = mySql.queryAll();
-        Log.i("12345",list.size()+"");
+        SharedPreferences preferences = getSharedPreferences("stuconnect",MODE_PRIVATE);
+        if(preferences == null || preferences.getBoolean("stulogin", false) == false || list == null || list.size() == 0) {
+            Toast.makeText(Schedule.this, "请先绑定学号之后查看课表", Toast.LENGTH_SHORT).show();
+        }
         classItem = new HashMap<>();
 
         //设置长宽

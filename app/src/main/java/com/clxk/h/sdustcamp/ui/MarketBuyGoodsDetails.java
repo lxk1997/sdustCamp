@@ -98,13 +98,13 @@ public class MarketBuyGoodsDetails extends AppCompatActivity implements View.OnT
         tv_2marketGoodsMoney.setText(mg.getgPrice()+"¥");
         tv_2marketGoodsDetails.setText(mg.getgDetail());
         if(mg.getgImage1() != null){
-            Glide.with(iv_2marketGoodsImage1).load(mg.getgImage1().getFileUrl()).into(iv_2marketGoodsImage1);
+            Glide.with(iv_2marketGoodsImage1).load(mg.getgImage1()).into(iv_2marketGoodsImage1);
         }
         if(mg.getgImage2() != null){
-            Glide.with(iv_2marketGoodsImage2).load(mg.getgImage2().getFileUrl()).into(iv_2marketGoodsImage2);
+            Glide.with(iv_2marketGoodsImage2).load(mg.getgImage2()).into(iv_2marketGoodsImage2);
         }
         if(mg.getgImage3() != null){
-            Glide.with(iv_2marketGoodsImage3).load(mg.getgImage3().getFileUrl()).into(iv_2marketGoodsImage3);
+            Glide.with(iv_2marketGoodsImage3).load(mg.getgImage3()).into(iv_2marketGoodsImage3);
         }
 
         //setOnClick

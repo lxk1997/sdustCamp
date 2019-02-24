@@ -1,6 +1,7 @@
 package com.clxk.h.sdustcamp.ui;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.bin.david.form.core.SmartTable;
 import com.clxk.h.sdustcamp.R;
@@ -88,8 +90,13 @@ public class ScoreActivity extends MyBaseActivity implements View.OnClickListene
         ArrayAdapter<String> adapter_prop = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, props);
         adapter_prop.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sp_classprop.setAdapter(adapter_prop);
+
         sqLiteOperatorOfScore = new ScoreOperator(this);
         sources = sqLiteOperatorOfScore.queryAll();
+        SharedPreferences preferences = getSharedPreferences("stuconnect",MODE_PRIVATE);
+        if(preferences == null || preferences.getBoolean("stulogin", false) == false || sources == null || sources.size() == 0) {
+            Toast.makeText(ScoreActivity.this, "请先绑定学号之后查看成绩", Toast.LENGTH_SHORT).show();
+        }
         st_score.setData(sources);
     }
 

@@ -1,6 +1,7 @@
 package com.clxk.h.sdustcamp.ui;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -110,6 +111,12 @@ public class ConnectStuId extends MyBaseActivity implements View.OnClickListener
             }
             if (msg.what == 3) {
                 Toast.makeText(ConnectStuId.this, "绑定学号成功", Toast.LENGTH_SHORT).show();
+                SharedPreferences preferences = getSharedPreferences("stuconnect",MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putString("stuid", String.valueOf(et_sdustcode.getText()));
+                editor.putString("stupass", String.valueOf(et_sdustpass.getText()));
+                editor.putBoolean("stulogin",true);
+                editor.commit();
                 Intent intent = new Intent(ConnectStuId.this, MainActivity.class);
                 intent.putExtra("frId", R.id.ll_mine);
                 startActivity(intent);

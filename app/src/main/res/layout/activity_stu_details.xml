@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f0eef4">
+
+    <include layout="@layout/market_header"/>
+
+    <ImageView
+    android:layout_width="150dp"
+    android:layout_height="150dp"
+    android:src="@drawable/sdustlogo"
+    android:layout_marginTop="50dp"
+    android:layout_gravity="center"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="学号:"
+            android:textSize="26sp"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/tv_stuid"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="50dp"
+            android:text="201601060217"
+            android:textSize="26sp"
+            android:gravity="left"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="姓名:"
+            android:textSize="26sp"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/tv_stuname"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="50dp"
+            android:text="刘心宽"
+            android:textSize="26sp"
+            android:gravity="left"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="学院:"
+            android:textSize="26sp"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/tv_stuschool"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="50dp"
+            android:text="计算机科学与工程学院"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textSize="21sp"
+            android:gravity="left"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_disconnect"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/btn_nomal_shape"
+        android:layout_marginTop="15dp"
+        android:text="解除绑定"
+        android:gravity="center"
+        android:textSize="23sp"
+        android:textColor="#fff"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"/>
+
+</LinearLayout>

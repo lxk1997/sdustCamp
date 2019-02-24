@@ -30,6 +30,9 @@ public class MyApplication extends Application {
     public User user = new User();
     public Student student = new Student();
     public String sdust_token = "";
+    public String sdust_id = "";
+    public String sdust_name = "";
+    public String sdust_school = "";
     public int zc;
     public String term;
 

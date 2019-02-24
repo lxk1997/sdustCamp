@@ -41,9 +41,9 @@ public class AutoLogin {
             String name = json.getString("userrealname");
             String school = json.getString("userdwmc");
             String token = json.getString("token");
-            Log.i("111",name);
-            Log.i("111",school);
-            Log.i("111",token);
+            MyApplication.getInstance().sdust_id = username;
+            MyApplication.getInstance().sdust_name = name;
+            MyApplication.getInstance().sdust_school = school;
 
             MyApplication.getInstance().student = new Student(username,name,school);
             MyApplication.getInstance().sdust_token = token;

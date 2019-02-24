@@ -15,11 +15,14 @@ import com.clxk.h.sdustcamp.bean.User;
 import com.clxk.h.sdustcamp.operator.KDYWOperator;
 import com.clxk.h.sdustcamp.operator.SPKDOperator;
 import com.clxk.h.sdustcamp.operator.XXGGOperator;
+import com.clxk.h.sdustcamp.spider.AutoLogin;
 import com.clxk.h.sdustcamp.spider.GetKDXW;
 import com.clxk.h.sdustcamp.spider.GetSPKD;
 import com.clxk.h.sdustcamp.spider.GetXXGG;
 import com.clxk.h.sdustcamp.ui.MainActivity;
 import com.clxk.h.sdustcamp.utils.UserUtils;
+
+import org.json.JSONException;
 
 import java.io.IOException;
 import java.util.List;
@@ -47,6 +50,23 @@ public class StartActivity extends MyBaseActivity {
     }
 
     public void autoLogin() {
+        SharedPreferences preferences = getSharedPreferences("stuconnect",MODE_PRIVATE);
+        if(preferences == null || preferences.getBoolean("stulogin",false) == true) {
+            final String stuid = preferences.getString("stuid","1234");
+            final String stupass = preferences.getString("stupass","1234");
+            new Thread() {
+                @Override
+                public void run() {
+                    try {
+                        AutoLogin.authLogin(stuid,stupass);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }.start();
+        }
         SharedPreferences sharedPreferences = getSharedPreferences("login",MODE_PRIVATE);
         if(sharedPreferences == null || sharedPreferences.getBoolean("loginbool",false) == false) return;
         final String phoneNum = sharedPreferences.getString("account","12345678");

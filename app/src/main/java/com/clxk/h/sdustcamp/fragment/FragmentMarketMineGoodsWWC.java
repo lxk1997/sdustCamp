@@ -2,16 +2,21 @@ package com.clxk.h.sdustcamp.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.ajguan.library.EasyRefreshLayout;
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.clxk.h.sdustcamp.MyApplication;
 import com.clxk.h.sdustcamp.R;
 import com.clxk.h.sdustcamp.adapter.MarketBuyAdapter;
@@ -36,9 +41,12 @@ public class FragmentMarketMineGoodsWWC extends Fragment implements AdapterView.
 
     private View currentView;
 
-    private ListView lv_market_mine_goods_wwc;
+    private RecyclerView rv_market;
+    private LinearLayoutManager linearLayoutManager;
+    private EasyRefreshLayout erl_market;
     private MarketBuyAdapter mMarketAdapter;
     private List<MarketGoods> source;
+    private List<MarketGoods> cursource;
 
     @Nullable
     @Override
@@ -47,8 +55,6 @@ public class FragmentMarketMineGoodsWWC extends Fragment implements AdapterView.
         currentView = inflater.inflate(R.layout.fragment_market_mine_goods_wwc,container,false);
 
         initView();
-
-        getMineGoods();
 
         initEvent();
 
@@ -59,7 +65,41 @@ public class FragmentMarketMineGoodsWWC extends Fragment implements AdapterView.
      * View事件
      */
     private void initEvent() {
-        lv_market_mine_goods_wwc.setOnItemClickListener(this);
+        getMineGoods();
+        erl_market.addEasyEvent(new EasyRefreshLayout.EasyEvent() {
+            @Override
+            public void onLoadMore() {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        int len = mMarketAdapter.getData().size();
+                        final List<MarketGoods> cur = new ArrayList<>();
+                        for(int i = len; i < len+10 && i < source.size(); i++) {
+                            cur.add(source.get(i));
+                        }
+
+                        erl_market.loadMoreComplete(new EasyRefreshLayout.Event() {
+                            @Override
+                            public void complete() {
+                                mMarketAdapter.getData().addAll(cur);
+                                mMarketAdapter.notifyDataSetChanged();
+                            }
+                        },500);
+                    }
+                },2000);
+            }
+
+            @Override
+            public void onRefreshing() {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        getMineGoods();
+                        erl_market.refreshComplete();
+                    }
+                }, 1000);
+            }
+        });
     }
 
     /**
@@ -67,8 +107,12 @@ public class FragmentMarketMineGoodsWWC extends Fragment implements AdapterView.
      */
     private void initView() {
 
-        lv_market_mine_goods_wwc = currentView.findViewById(R.id.lv_market_mine_wwc);
+        rv_market = currentView.findViewById(R.id.rv_market);
+        erl_market = currentView.findViewById(R.id.erl_market);
+        linearLayoutManager = new LinearLayoutManager(getContext());
+        rv_market.setLayoutManager(linearLayoutManager);
         source = new ArrayList<>();
+        cursource = new ArrayList<>();
     }
 
     /**
@@ -76,20 +120,32 @@ public class FragmentMarketMineGoodsWWC extends Fragment implements AdapterView.
      *
      */
     private void  getMineGoods() {
-
         BmobQuery<MarketGoods> bmobQuery = new BmobQuery<>();
         bmobQuery.findObjects(new FindListener<MarketGoods>() {
             @Override
             public void done(List<MarketGoods> list, BmobException e) {
                 if(e == null) {
+                    source.clear();
+                    cursource.clear();
                     for(MarketGoods mg : list) {
                         if(mg.getgStatue() == 1 && mg.getUserId().equals(BmobUser.getCurrentUser(User.class).getUsername())) {
                             source.add(mg);
                         }
                     }
-                    mMarketAdapter = new MarketBuyAdapter(R.layout.market_buy_item,source);
-                   // lv_market_mine_goods_wwc.setAdapter(mMarketAdapter);
-
+                   for(int i = 0; i < 10 && i < source.size(); i++) {
+                       cursource.add(source.get(i));
+                    }
+                    mMarketAdapter = new MarketBuyAdapter(R.layout.market_buy_item,cursource);
+                    rv_market.setAdapter(mMarketAdapter);
+                    mMarketAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                            MyApplication.getInstance().marketGoods = source.get(position);
+                            Intent intent = new Intent(getContext(), MarketBuyGoodsDetails.class);
+                            startActivity(intent);
+                            getActivity().onBackPressed();
+                        }
+                    });
                 } else {
                     throw new IllegalArgumentException("网络连接失败！");
                 }

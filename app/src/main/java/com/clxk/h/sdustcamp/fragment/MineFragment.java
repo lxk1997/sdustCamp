@@ -21,6 +21,7 @@ import com.clxk.h.sdustcamp.ui.ConnectStuId;
 import com.clxk.h.sdustcamp.ui.LoginInActivity;
 import com.clxk.h.sdustcamp.ui.MineChangePassword;
 import com.clxk.h.sdustcamp.ui.SettingActivity;
+import com.clxk.h.sdustcamp.ui.StudentInfo;
 import com.clxk.h.sdustcamp.ui.UserInfoActivity;
 import com.clxk.h.sdustcamp.ui.UserProf;
 import com.makeramen.roundedimageview.RoundedImageView;
@@ -157,7 +158,12 @@ public class MineFragment extends Fragment {
                     if(!isLogin) {
                         intent = new Intent(getActivity(), LoginInActivity.class);
                     } else {
-                        intent = new Intent(getActivity(), ConnectStuId.class);
+                        SharedPreferences preferences = getActivity().getSharedPreferences("stuconnect",Context.MODE_PRIVATE);
+                        if(preferences != null && preferences.getBoolean("stulogin",false) == true) {
+                            intent = new Intent(getActivity(), StudentInfo.class);
+                        } else {
+                            intent = new Intent(getActivity(), ConnectStuId.class);
+                        }
                     }
                     startActivity(intent);
                     getActivity().onBackPressed();

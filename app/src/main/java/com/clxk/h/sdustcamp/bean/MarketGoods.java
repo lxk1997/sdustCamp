@@ -12,9 +12,9 @@ public class MarketGoods extends BmobObject implements Parcelable {
     private String gName;
     private int gPrice;
     private String gDetail;
-    private BmobFile gImage1;
-    private BmobFile gImage2;
-    private BmobFile gImage3;
+    private String gImage1;
+    private String gImage2;
+    private String gImage3;
     private int gStatue;
 
     protected MarketGoods(Parcel in) {
@@ -56,13 +56,13 @@ public class MarketGoods extends BmobObject implements Parcelable {
     public void setgDetail(String gDetail) {
         this.gDetail = gDetail;
     }
-    public void setgImage1(BmobFile gImage1) {
+    public void setgImage1(String gImage1) {
         this.gImage1 = gImage1;
     }
-    public void setgImage2(BmobFile gImage2) {
+    public void setgImage2(String gImage2) {
         this.gImage2 = gImage2;
     }
-    public void setgImage3(BmobFile gImage3) {
+    public void setgImage3(String gImage3) {
         this.gImage3 = gImage3;
     }
     public void setgStatue(int statue) {
@@ -81,13 +81,13 @@ public class MarketGoods extends BmobObject implements Parcelable {
     public String getgDetail() {
         return this.gDetail;
     }
-    public BmobFile getgImage1() {
+    public String getgImage1() {
         return this.gImage1;
     }
-    public BmobFile getgImage2() {
+    public String getgImage2() {
         return this.gImage2;
     }
-    public BmobFile getgImage3() {
+    public String getgImage3() {
         return this.gImage3;
     }
     public int getgStatue() {return this.gStatue; }
@@ -103,6 +103,9 @@ public class MarketGoods extends BmobObject implements Parcelable {
         dest.writeString(gName);
         dest.writeInt(gPrice);
         dest.writeString(gDetail);
+        dest.writeString(gImage1);
+        dest.writeString(gImage2);
+        dest.writeString(gImage3);
         dest.writeInt(gStatue);
     }
 }
