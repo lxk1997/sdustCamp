@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.clxk.h.sdustcamp.bean.Score;
 import com.clxk.h.sdustcamp.utils.SdkdLoginSQLUtils;
@@ -54,6 +55,7 @@ public class ScoreOperator {
                     && cursor.getString(2).equals(classname) && cursor.getString(3).equals(score) && cursor.getString(4).equals(scoretag)
                     && cursor.getString(5).equals(classprop) && cursor.getString(6).equals(credit) && cursor.getString(7).equals(gpa)
                     && cursor.getString(8).equals(testway)&& cursor.getString(9).equals(remark))
+                cursor.close();
                 return true;
         }
         cursor.close();
@@ -112,6 +114,7 @@ public class ScoreOperator {
             records.add(node);
         }
         cursor.close();
+        Log.i("111","数据库加载完毕！");
         return records;
     }
 

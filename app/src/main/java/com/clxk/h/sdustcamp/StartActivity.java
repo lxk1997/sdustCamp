@@ -43,7 +43,7 @@ public class StartActivity extends MyBaseActivity {
                 startActivity(intent);
                 finish();
             }
-        }, 3000);
+        }, 5000);
     }
 
     public void autoLogin() {

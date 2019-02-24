@@ -19,7 +19,7 @@ public class ScheduleOperator {
     private SQLiteDatabase db;//数据库
 
     public ScheduleOperator(Context context) {
-        mySQLiteUtil = new SdkdLoginSQLUtils(context, "scl.db", null,1);
+        mySQLiteUtil = new SdkdLoginSQLUtils(context, "scl", null,1);
         db = mySQLiteUtil.getWritableDatabase();
     }
 

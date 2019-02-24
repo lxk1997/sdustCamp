@@ -16,7 +16,7 @@ public class SPKDOperator {
     private SQLiteDatabase db;//数据库
 
     public SPKDOperator(Context context) {
-        mySQLiteUtil = new SdkdUpdatingsSQLUtils(context, "spkd_db.db", null,1);
+        mySQLiteUtil = new SdkdUpdatingsSQLUtils(context, "spkd_db", null,1);
         db = mySQLiteUtil.getWritableDatabase();
     }
 

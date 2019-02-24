@@ -16,7 +16,7 @@ public class KDYWOperator {
     private SQLiteDatabase db;//数据库
 
     public KDYWOperator(Context context) {
-        mySQLiteUtil = new SdkdUpdatingsSQLUtils(context, "kdyw_db.db", null,1);
+        mySQLiteUtil = new SdkdUpdatingsSQLUtils(context, "kdyw_db", null,1);
         db = mySQLiteUtil.getWritableDatabase();
     }
 

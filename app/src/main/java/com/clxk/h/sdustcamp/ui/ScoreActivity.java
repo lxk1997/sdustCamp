@@ -21,20 +21,14 @@ import com.clxk.h.sdustcamp.operator.ScoreOperator;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
-
 /**
  * Created on 19/1/29
  */
 public class ScoreActivity extends MyBaseActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
-    @BindView(R.id.ib_market_header_back)
     ImageButton ib_back;
-    @BindView(R.id.sp_term)
     Spinner sp_term;
-    @BindView(R.id.sp_classprop)
     Spinner sp_classprop;
-    @BindView(R.id.st_score)
     SmartTable st_score;
 
     private List<String> props;

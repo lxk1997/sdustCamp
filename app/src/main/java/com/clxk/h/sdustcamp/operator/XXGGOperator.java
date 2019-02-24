@@ -16,7 +16,7 @@ public class XXGGOperator {
     private SQLiteDatabase db;//数据库
 
     public XXGGOperator(Context context) {
-        mySQLiteUtil = new SdkdUpdatingsSQLUtils(context, "xxgg_db.db", null,1);
+        mySQLiteUtil = new SdkdUpdatingsSQLUtils(context, "xxgg_db", null,1);
         db = mySQLiteUtil.getWritableDatabase();
     }
 
