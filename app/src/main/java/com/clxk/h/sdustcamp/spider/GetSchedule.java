@@ -33,12 +33,12 @@ public class GetSchedule {
 
     public static List<TimeTable> getSchedule() throws IOException, JSONException {
         GetCurrentTime.getCurrentTime();
-//        if(MyApplication.getInstance().zc == 0) {
-//            return null;
-//        }
+        if(MyApplication.getInstance().zc == 0) {
+            return null;
+        }
         List<TimeTable> sources = new ArrayList<>();
         for(int i = 1; i < 30; i++) {
-            String url_cur = url+"&xh="+MyApplication.getInstance().student.getStuid()+"&xnxqid=2018-2019-2"+"&zc="+i;
+            String url_cur = url+"&xh="+MyApplication.getInstance().student.getStuid()+"&xnxqid="+MyApplication.getInstance().term+"&zc="+i;
             Log.i("111",url_cur);
             Connection connection = Jsoup.connect(url_cur).method(Connection.Method.GET)
                     .userAgent("Mozilla").header("token",MyApplication.getInstance().sdust_token)

@@ -3,6 +3,7 @@ package com.clxk.h.sdustcamp.spider;
 import android.util.Log;
 
 import com.clxk.h.sdustcamp.MyApplication;
+import com.clxk.h.sdustcamp.bean.EmptyClass;
 import com.clxk.h.sdustcamp.bean.Score;
 import com.clxk.h.sdustcamp.bean.Student;
 import com.clxk.h.sdustcamp.bean.TimeTable;
@@ -16,6 +17,8 @@ import org.jsoup.Jsoup;
 
 import java.io.IOException;
 import java.util.List;
+
+import static com.clxk.h.sdustcamp.spider.GetEmptyClass.getEmptyClass;
 
 public class AutoLogin {
 
@@ -44,6 +47,7 @@ public class AutoLogin {
             MyApplication.getInstance().sdust_id = username;
             MyApplication.getInstance().sdust_name = name;
             MyApplication.getInstance().sdust_school = school;
+            MyApplication.getInstance().password = password;
 
             MyApplication.getInstance().student = new Student(username,name,school);
             MyApplication.getInstance().sdust_token = token;

@@ -33,6 +33,7 @@ public class MyApplication extends Application {
     public String sdust_id = "";
     public String sdust_name = "";
     public String sdust_school = "";
+    public String password = "";
     public int zc;
     public String term;
 

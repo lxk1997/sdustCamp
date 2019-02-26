@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -70,6 +71,7 @@ public class ConnectStuId extends MyBaseActivity implements View.OnClickListener
 
         switch (v.getId()) {
             case R.id.btn_sdustconnect:
+                Log.i("111","aaaaa");
                 authLogin(et_sdustcode.getText().toString(), et_sdustpass.getText().toString());
                 break;
             case R.id.ib_market_header_back:
@@ -104,6 +106,7 @@ public class ConnectStuId extends MyBaseActivity implements View.OnClickListener
 
         @Override
         public void handleMessage(Message msg) {
+            Log.i("111flag",msg.what + "");
             if (msg.what == 2) {
                 et_sdustcode.setText(null);
                 et_sdustpass.setText(null);

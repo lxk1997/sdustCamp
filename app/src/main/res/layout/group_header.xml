@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:background="#f0eef4">
+
+    <TextView
+        android:id="@+id/tv_titles"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Js1教学楼"
+        android:gravity="center|left"
+        android:layout_marginLeft="15dp"
+        android:textSize="24sp"
+        android:textColor="#5e5e5e"/>
+
+</LinearLayout>

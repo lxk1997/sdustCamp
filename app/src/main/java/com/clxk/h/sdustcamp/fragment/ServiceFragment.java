@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 
 import com.clxk.h.sdustcamp.R;
 import com.clxk.h.sdustcamp.ui.Cet46Activity;
+import com.clxk.h.sdustcamp.ui.EmptyClass;
 import com.clxk.h.sdustcamp.ui.MarketActivity;
 import com.clxk.h.sdustcamp.ui.MobileFeeActivity;
 import com.clxk.h.sdustcamp.ui.Schedule;
@@ -113,6 +114,11 @@ public class ServiceFragment extends Fragment {
                     break;
                 case R.id.ll_mobile:
                     intent = new Intent(getActivity(), MobileFeeActivity.class);
+                    startActivity(intent);
+                    getActivity().onBackPressed();
+                    break;
+                case R.id.ll_stuClass:
+                    intent = new Intent(getActivity(), EmptyClass.class);
                     startActivity(intent);
                     getActivity().onBackPressed();
                     break;

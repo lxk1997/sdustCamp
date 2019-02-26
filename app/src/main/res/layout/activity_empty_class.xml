@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fafafc">
+
+    <include layout="@layout/market_header"/>
+
+    <LinearLayout
+        android:background="#fafafc"
+        android:id="@+id/ll_date"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="match_parent"
+            android:text="日期:"
+            android:gravity="center"
+            android:textSize="30sp"/>
+        <TextView
+            android:id="@+id/tv_data"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="2019-02-12"
+            android:textSize="30sp"
+            android:gravity="center"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:background="#fafafc"
+        android:id="@+id/ll_time"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="match_parent"
+            android:text="时间:"
+            android:gravity="center"
+            android:textSize="30sp"/>
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="全天"
+            android:textSize="30sp"
+            android:gravity="center"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_searchclass"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/btn_nomal_shape"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text="查询"
+        android:textSize="28sp"
+        android:textColor="#fff"/>
+
+</LinearLayout>

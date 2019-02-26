@@ -77,6 +77,8 @@
         <activity android:name=".ui.UpdatingsSPKDActivity"/>
         <activity android:name=".ui.UpdatingsXXGGActivity"/>
         <activity android:name=".ui.StudentInfo"/>
+        <activity android:name=".ui.EmptyClass"/>
+        <activity android:name=".ui.EmptyClassDetails"/>
         <!--MOBSDK-->
         <activity
             android:name="com.mob.tools.MobUIShell"

@@ -26,6 +26,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.clxk.h.sdustcamp.MyApplication;
 import com.clxk.h.sdustcamp.R;
 import com.clxk.h.sdustcamp.bean.TimeTable;
 import com.clxk.h.sdustcamp.operator.ScheduleOperator;
@@ -391,27 +392,8 @@ public class Schedule extends AppCompatActivity{
                 loadingTimeTable(index);
             }
         });
-        //更新周次
-        Date current = new Date(System.currentTimeMillis());
-        String dt_start="2019-2-25";
-        Calendar calendar = Calendar.getInstance();
-        int year = calendar.get(Calendar.YEAR);
-        int mouth = calendar.get(Calendar.MONTH)+1;
-        int day = calendar.get(Calendar.DAY_OF_MONTH);
-        SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd");
-        Date d1 = null;
-        Date d2 = null;
-        String dt_end = df.format(current);
-        try {
-            d1 = df.parse(dt_start);
-            d2 = df.parse(dt_end);
-        } catch (ParseException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        //Date d2=new Date(System.currentTimeMillis());
-        int weekId = (int) ((d2.getTime()-d1.getTime())/(60*60*1000*24) / 7);
-        sp_week.setSelection(1);
+
+        sp_week.setSelection(MyApplication.getInstance().zc-1);
     }
 
     //获得状态栏高度
@@ -432,7 +414,7 @@ public class Schedule extends AppCompatActivity{
         public void onClick(View v) {
 
             // TODO Auto-generated method stub
-            Intent intent  = null;
+            Intent intent;
             TimeTable t = new TimeTable();
             switch(v.getId()) {
                 case R.id.btn_schedule_left:
