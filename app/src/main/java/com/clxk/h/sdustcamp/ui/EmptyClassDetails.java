@@ -17,10 +17,10 @@ import com.clxk.h.sdustcamp.R;
 import com.clxk.h.sdustcamp.adapter.EmptyClassAdapter;
 import com.clxk.h.sdustcamp.bean.EmptyClass;
 import com.clxk.h.sdustcamp.base.MyBaseActivity;
+import com.clxk.h.sdustcamp.helper.SortHelper;
 import com.clxk.h.sdustcamp.spider.GetEmptyClass;
 import com.othershe.groupindexlib.decoration.DivideItemDecoration;
 import com.othershe.groupindexlib.decoration.GroupHeaderItemDecoration;
-import com.othershe.groupindexlib.helper.SortHelper;
 import com.othershe.groupindexlib.listener.OnSideBarTouchListener;
 import com.othershe.groupindexlib.weiget.SideBar;
 
@@ -40,7 +40,7 @@ public class EmptyClassDetails extends MyBaseActivity implements View.OnClickLis
     private List<String> tags;
     private EmptyClassAdapter adapter;
     private LinearLayoutManager layoutManager;
-    private String indexarr[] = {"0","1","3","11","13","14","15","S","T","Y"};
+    private String indexarr[] = {"0","1","3","5","7","11","13","14","15","S1"};
 
     private List<com.clxk.h.sdustcamp.bean.EmptyClass> datas;
 

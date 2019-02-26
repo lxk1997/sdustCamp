@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 import com.clxk.h.sdustcamp.R;
 import com.clxk.h.sdustcamp.base.MyBaseActivity;
+import com.clxk.h.sdustcamp.utils.DateUtils;
+
 import cn.qqtheme.framework.picker.DatePicker;
 import cn.qqtheme.framework.picker.OptionPicker;
 import cn.qqtheme.framework.util.ConvertUtils;
@@ -56,6 +58,7 @@ public class EmptyClass extends MyBaseActivity implements View.OnClickListener {
         ll_time = findViewById(R.id.ll_time);
         tv_data = findViewById(R.id.tv_data);
         tv_time = findViewById(R.id.tv_time);
+        tv_data.setText(DateUtils.getData());
     }
 
     @Override
@@ -87,11 +90,12 @@ public class EmptyClass extends MyBaseActivity implements View.OnClickListener {
     public  void onYearMonthDayPicker() {
         final DatePicker picker = new DatePicker(this);
         picker.setCanceledOnTouchOutside(true);
+        picker.setTextSize(24);
         picker.setUseWeight(true);
         picker.setTopPadding(ConvertUtils.toPx(this, 10));
         picker.setRangeEnd(2050, 1, 11);
-        picker.setRangeStart(2018, 1, 1);
-        picker.setSelectedItem(2019,2, 26);
+        picker.setRangeStart(2016, 1, 1);
+        picker.setSelectedItem(Integer.valueOf(DateUtils.getYear()),Integer.valueOf(DateUtils.getMonth()), Integer.valueOf(DateUtils.getDay()));
         picker.setResetWhileWheel(false);
         picker.setOnDatePickListener(new DatePicker.OnYearMonthDayPickListener() {
             @Override
@@ -125,12 +129,12 @@ public class EmptyClass extends MyBaseActivity implements View.OnClickListener {
         OptionPicker picker = new OptionPicker(this, new String[]{
                 "全天","上午","下午","晚上", "一二节", "三四节","五六节","七八节","九十节"
         });
+        picker.setTextSize(24);
         picker.setCanceledOnTouchOutside(false);
         picker.setDividerRatio(WheelView.DividerConfig.FILL);
         picker.setShadowColor(Color.RED, 40);
         picker.setSelectedIndex(0);
         picker.setCycleDisable(true);
-        picker.setTextSize(11);
         picker.setOnOptionPickListener(new OptionPicker.OnOptionPickListener() {
             @Override
             public void onOptionPicked(int index, String item) {

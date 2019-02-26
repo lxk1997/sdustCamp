@@ -2,6 +2,8 @@ package com.clxk.h.sdustcamp.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
@@ -14,6 +16,12 @@ import android.widget.Toast;
 
 import com.clxk.h.sdustcamp.R;
 import com.clxk.h.sdustcamp.base.MyBaseActivity;
+import com.clxk.h.sdustcamp.bean.Cet46;
+import com.clxk.h.sdustcamp.spider.GetCet46;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Chook_lxk on 18/12/30
@@ -25,9 +33,8 @@ public class Cet46Activity extends MyBaseActivity implements View.OnClickListene
     private ImageButton ib_header_back;
     private EditText et_cet46_num;
     private EditText et_cet46_name;
-    private EditText et_cet46_modifyKey;
-    private ImageView iv_cet46_modify;
     private Button btn_cet46_query;
+    private List<Cet46> cet46s;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,7 +54,6 @@ public class Cet46Activity extends MyBaseActivity implements View.OnClickListene
 
         ib_header_back.setOnClickListener(this);
         btn_cet46_query.setOnClickListener(this);
-        iv_cet46_modify.setOnTouchListener(this);
     }
 
     /**
@@ -56,11 +62,10 @@ public class Cet46Activity extends MyBaseActivity implements View.OnClickListene
     private void initView() {
 
         ib_header_back = findViewById(R.id.ib_market_header_back);
-        et_cet46_modifyKey = findViewById(R.id.et_cet46_modifyKey);
         et_cet46_name = findViewById(R.id.et_cet46_name);
         et_cet46_num = findViewById(R.id.et_cet46_num);
-        iv_cet46_modify = findViewById(R.id.iv_cet46_modify);
         btn_cet46_query = findViewById(R.id.btn_cet46_query);
+        cet46s = new ArrayList<>();
     }
 
     @Override
@@ -75,11 +80,34 @@ public class Cet46Activity extends MyBaseActivity implements View.OnClickListene
                 finish();
                 break;
             case R.id.btn_cet46_query:
-                Toast.makeText(Cet46Activity.this,"未知错误",Toast.LENGTH_SHORT).show();
+                quertCet46();
                 break;
 
         }
     }
+
+    private void quertCet46() {
+        new Thread() {
+            @Override
+            public void run() {
+                try {
+                    cet46s = GetCet46.getCet46(et_cet46_num.getText().toString(),et_cet46_name.getText().toString());
+                    Message msg = new Message();
+                    msg.what = 1;
+                    handler.sendMessage(msg);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }.start();
+    }
+
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            Intent intent = new Intent();
+        }
+    };
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {

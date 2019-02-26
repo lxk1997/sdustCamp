@@ -39,7 +39,9 @@ public class GetEmptyClass {
                 String jsmc = js.getString("jsmc");
                 String jzwid = js.getString("jzwid")+"";
                 String  cap = js.getString("zws");
-                list.add(new EmptyClass(jsmc,cap,jzwid));
+                if(jzwid.substring(0,1) != "T" && jzwid.substring(0,1) != "Y") {
+                    list.add(new EmptyClass(jsmc,cap,jzwid));
+                }
             }
         }
         return list;
