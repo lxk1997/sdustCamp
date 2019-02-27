@@ -79,6 +79,7 @@
         <activity android:name=".ui.StudentInfo"/>
         <activity android:name=".ui.EmptyClass"/>
         <activity android:name=".ui.EmptyClassDetails"/>
+        <activity android:name=".ui.Cet46ScoreForm"/>
         <!--MOBSDK-->
         <activity
             android:name="com.mob.tools.MobUIShell"

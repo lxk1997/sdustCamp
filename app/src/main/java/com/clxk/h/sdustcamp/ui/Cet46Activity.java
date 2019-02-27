@@ -90,14 +90,10 @@ public class Cet46Activity extends MyBaseActivity implements View.OnClickListene
         new Thread() {
             @Override
             public void run() {
-                try {
-                    cet46s = GetCet46.getCet46(et_cet46_num.getText().toString(),et_cet46_name.getText().toString());
-                    Message msg = new Message();
-                    msg.what = 1;
-                    handler.sendMessage(msg);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                //cet46s = GetCet46.getCet46(et_cet46_num.getText().toString(),et_cet46_name.getText().toString());
+                Message msg = new Message();
+                msg.what = 1;
+                handler.sendMessage(msg);
             }
         }.start();
     }
@@ -105,7 +101,9 @@ public class Cet46Activity extends MyBaseActivity implements View.OnClickListene
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-            Intent intent = new Intent();
+            Intent intent = new Intent(Cet46Activity.this, Cet46ScoreForm.class);
+            startActivity(intent);
+            finish();
         }
     };
 
