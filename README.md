@@ -2,7 +2,9 @@
 山科一站式服务APP ---已经烂尾，有兴趣的联系接锅
 
 ##### 功能展示
+<img src="https://github.com/lxk1997/sdustCamp/blob/master/imgs/news.png" alt="图片替换文本" width="300" height="550" align="bottom" /> <img src="https://github.com/lxk1997/sdustCamp/blob/master/imgs/apps.png" alt="图片替换文本" width="300" height="550" align="bottom" /> <img src="https://github.com/lxk1997/sdustCamp/blob/master/imgs/class.png" alt="图片替换文本" width="300" height="550" align="bottom" />
 
+see more imgs to [/imgs](https://github.com/lxk1997/sdustCamp/tree/master/imgs)
 
 目前提供的功能：
  - 新闻类
